@@ -38,7 +38,6 @@ RUN apt-get update \
       fonts-inconsolata \
       texinfo \
       texlive-xetex \
-## replaced with huge (texlive-full pkg for typesetting requirements)    texlive-latex-extra \
       texlive-full \
       gnupg \
       gpm \
@@ -141,6 +140,7 @@ RUN R -e "install.packages(c('rmarkdown', 'knitr', 'devtools', 'httpuv', 'xtable
          dependencies=TRUE, repos='https://cloud.r-project.org')" \
     && R -e "devtools::install_version('XML', '3.98-1.4', repos='https://cloud.r-project.org')" \
     && R -e "devtools::install_github('pmur002/layoutengine')" \
+    && R -e "devtools::install_github('pmur002/layoutenginedom')" \    
     && R -e "devtools::install_github('kcullimore/layoutenginerselenium')" \
     && R -e "r <- getOption('repos'); r['CRAN'] <- 'https://cloud.r-project.org'; options(repos=r)"
 
@@ -166,6 +166,7 @@ RUN R -e 'extrafont::font_import(prompt=FALSE)'
 # Copy Emacs configuration files, GitHub repos and set working directory
 COPY --chown=user:user ./.emacs.d $HOME/.emacs.d
 RUN git clone https://github.com/pmur002/layoutengine /opt/layoutengine
+RUN git clone https://github.com/pmur002/layoutengine /opt/layoutenginedom
 RUN git clone https://github.com/kcullimore/layoutenginerselenium /opt/layoutenginerselenium
 WORKDIR /project
 

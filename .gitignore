@@ -1,6 +1,9 @@
 # Emacs backup files
 *~
 
+# macOS finder
+**/.DS_Store
+
 # History files
 .Rhistory
 .Rapp.history
@@ -10,4 +13,3 @@
 
 # RStudio files
 .Rproj.user/
-
