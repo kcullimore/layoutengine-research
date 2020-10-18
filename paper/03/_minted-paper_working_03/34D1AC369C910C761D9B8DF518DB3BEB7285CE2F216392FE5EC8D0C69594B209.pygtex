@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 1) The randomly assigned port \PYGZsh{} is captured in a private variable}
+port \PYG{o}{\PYGZlt{}\PYGZhy{}} pageInfo\PYG{p}{(}pageID\PYG{p}{)}\PYG{o}{\PYGZdl{}}port
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 2) The defined client\PYGZdl{}run method is called}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} By default a browser is openeded and navigated to the specified URL}
+client\PYG{o}{\PYGZdl{}}run\PYG{p}{(}
+    url\PYG{o}{=}\PYG{k+kp}{paste0}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}http://\PYGZdq{}}\PYG{p}{,} host\PYG{p}{,} \PYG{l+s}{\PYGZdq{}:\PYGZdq{}}\PYG{p}{,} port\PYG{p}{,} \PYG{l+s}{\PYGZdq{}/\PYGZdq{}}\PYG{p}{)}
+    host\PYG{o}{=}host\PYG{p}{,}
+    port\PYG{o}{=}port\PYG{p}{,}
+    tag\PYG{o}{=}tag
+\PYG{o}{\PYGZca{}\PYGZca{}}I   \PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 3) The active response is added to a list to track when its resolved}
+waitForRequest\PYG{p}{(}
+    tag\PYG{o}{=}tag\PYG{p}{,}
+    limit\PYG{o}{=}\PYG{k+kp}{getOption}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}DOM.limit\PYGZdq{}}\PYG{p}{),} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Default value for number of open requests}
+    onTimeOut\PYG{o}{=}\PYG{k+kr}{function}\PYG{p}{()} closePage\PYG{p}{(}pageID\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Used to prevent indefite hanging}
+\PYG{o}{\PYGZca{}\PYGZca{}}I       \PYG{p}{)}
+\end{Verbatim}

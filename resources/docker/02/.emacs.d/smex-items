@@ -1,0 +1,16 @@
+
+;; ----- smex-history -----
+(
+ shell
+ R
+ S
+ S+
+ ag
+ cd
+ 5x5
+)
+
+;; ----- smex-data -----
+(
+ (shell . 1)
+)

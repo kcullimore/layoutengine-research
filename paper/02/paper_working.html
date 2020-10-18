@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div>
+<p style="font-size:5em">
+Can web technologies help R generate print quality graphics?
+</p>
+</div>
+<h2 id="introduction">Introduction</h2>
+<p>The <strong>R programming language</strong> is a popular open-source tool used to perform complex statistics. The language has many reliable libraries and methods to perform sophisticated statistical techniques within a relatively short amount of code.</p>
+<p>Humans working with statistics often benefit from the use of graphical representation of data to better understand and communicate its complexities. The base programming language has long supported rigorous graphical output that is accurate and effective. However, niche use-cases which require additional graphical capabilities are popping up as the language is applied to a wider variety of applications.</p>
+<h2 id="print-quality-graphics">Print Quality Graphics</h2>
+<h2 id="r-graphical-capabilities">R Graphical Capabilities</h2>
+<h2 id="state-of-modern-browsers">State of Modern Browsers</h2>
+<ul>
+<li>Modern browsers are capable graphical display engines</li>
+<li>Active specification and developer groups</li>
+<li>Growing improvements in browser capabilities</li>
+<li>Layout engines that mostly adhere to web standards
+<ul>
+<li>Gecko (FireFox)</li>
+<li>WebKit (Apple Safari)</li>
+<li>Blink (Google Chromium and Chrome)</li>
+<li>EdgeHTML (Microsoft)</li>
+<li>Presto (Opera)</li>
+</ul></li>
+<li>Large investment activity due to amount of supported commerce</li>
+<li>Browsers widely available on all user devices</li>
+<li>PCs and portable devices</li>
+<li>Users comfortable and familiar within the browser environment</li>
+</ul>
+<div class="figure">
+<img src="/home/krc/linCode/DOM_research/resources/img/soccer_plot.png" alt="Title Image" style="width:40.0%" />
+<p class="caption">Title Image</p>
+</div>
+<p>One such use-case is the requirement for a richer document formatting capability to produce highly custom print-quality graphical output. For example, users might want their plots to contain a very specific font type or a color gradient that smoothly transitions across the page. Such work is typically completed in external applications downstream from <strong>R</strong>. These steps might use Adobe Illustrator or Photoshop or some other means to transfer the R output to a more refined graphic.</p>
+<p>The base graphics package within R does not attempt to cover such needs.</p>
+<p>There are several external packages that have extended its graphical capabilities in a number of ways. R can be used to drive an interactive web-based application with the Shiny package [ref]. A variety of aesthetically pleasing standard plots can be quickly generated with the ggplot2 package [ref]. A number of smaller packages also provide helper methods to enhance color selection [ref] or modify output file formats to make downstream work more smooth [ref - svg, grid?, etc?].</p>
+<p>Despite these extensions there does not appear to be an smooth workflow to adhere to the most rigid graphical design requirements. The subject research explores whether this hypothesis is indeed true. It is possible that such a workflow may exist with some combination of existing packages which has not gained much attention.</p>
+<h1 id="product-definition">Product Definition</h1>
+<h2 id="design-requirements">Design &amp; Requirements</h2>
+<ul>
+<li>Send HTML, CSS, JS and font description to browser to render/layout</li>
+<li>After browser has loaded the data some JavaScript calculates and returns layout dimensions to the R session (and perhaps other styling info)</li>
+<li><p>The browser should have an ability to use the host machine default browser or run in the background on a headless browser</p></li>
+<li>Easy to use on all major operating systems (Windows, macOS and Linux)</li>
+<li>Minimal installation requirements</li>
+<li>Access via any modern web browser on the host machine</li>
+<li>Lightweight</li>
+<li><p>Performant</p></li>
+</ul>
+</body>
+</html>

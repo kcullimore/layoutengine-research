@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kd}{var} \PYG{n+nx}{args} \PYG{o}{=} \PYG{p}{[];} \PYG{c+c1}{// Empty array, at first.}
+\PYG{k}{for} \PYG{p}{(}\PYG{k+kd}{var} \PYG{n+nx}{i} \PYG{o}{=} \PYG{l+m+mi}{0}\PYG{p}{;} \PYG{n+nx}{i} \PYG{o}{\PYGZlt{}} \PYG{n+nx}{arguments}\PYG{p}{.}\PYG{n+nx}{length}\PYG{p}{;} \PYG{n+nx}{i}\PYG{o}{++}\PYG{p}{)} \PYG{p}{\PYGZob{}}
+    \PYG{n+nx}{args}\PYG{p}{.}\PYG{n+nx}{push}\PYG{p}{(}\PYG{n+nx}{arguments}\PYG{p}{[}\PYG{n+nx}{i}\PYG{p}{])}
+\PYG{p}{\PYGZcb{}} \PYG{c+c1}{// Now \PYGZsq{}args\PYGZsq{} is an array that holds your arguments.}
+
+\PYG{c+c1}{// ES6 arrow function}
+\PYG{k+kd}{var} \PYG{n+nx}{multiply} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{x}\PYG{p}{,} \PYG{n+nx}{y}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{p}{\PYGZob{}} \PYG{k}{return} \PYG{n+nx}{x} \PYG{o}{*} \PYG{n+nx}{y}\PYG{p}{;} \PYG{p}{\PYGZcb{};}
+
+\PYG{c+c1}{// Or even simpler}
+\PYG{k+kd}{var} \PYG{n+nx}{multiply} \PYG{o}{=} \PYG{p}{(}\PYG{n+nx}{x}\PYG{p}{,} \PYG{n+nx}{y}\PYG{p}{)} \PYG{p}{=\PYGZgt{}} \PYG{n+nx}{x} \PYG{o}{*} \PYG{n+nx}{y}\PYG{p}{;}
+\end{Verbatim}

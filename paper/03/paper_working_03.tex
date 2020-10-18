@@ -1,0 +1,1351 @@
+% Created 2020-09-22 Tue 06:34
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[a4paper,top=2.5cm,bottom=2cm,left=1.75cm,right=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.5em}
+\renewcommand{\baselinestretch}{1.25}
+\usepackage{fontspec}
+\usepackage{bold-extra}
+\setmainfont{Taviraj}[Path = /home/krc/linCode/DOM_research/resources/fonts/Taviraj/, Scale=1.1, UprightFont = *-Light, BoldFont = *-SemiBold, ItalicFont = *-LightItalic, BoldItalicFont = *-SemiBoldItalic, ... ]
+\setsansfont{Montserrat}[Path = /home/krc/linCode/DOM_research/resources/fonts/Montserrat/, Scale=MatchLowercase, UprightFont = *-Regular, BoldFont = *-Bold, ItalicFont = *-Italic, BoldItalicFont = *-BoldItalic, ... ]
+\setmonofont{Inconsolata}[Path = /home/krc/linCode/DOM_research/resources/fonts/Inconsolata/, Scale=MatchLowercase, UprightFont = *-Regular, BoldFont = *-Bold, ...]
+\usepackage {titlesec}
+\titleformat{\section}{\LARGE\sffamily\bfseries}{\thesection}{.9em}{}
+\titleformat{\subsection}{\Large\sffamily\bfseries}{\thesubsection}{.9em}{}
+\titleformat{\subsubsection}{\large\sffamily\bfseries}{\thesubsubsection}{.9em}{}
+\usepackage{graphicx}
+\usepackage{graphbox}
+\usepackage{minted}
+\usepackage{xcolor}
+\definecolor{shadecolor}{gray}{.96}
+\chead{CS-791}
+\lhead{\today}
+\rhead{Kane Cullimore}
+\date{}
+\title{COMPSCI 791 - Independent Research}
+\hypersetup{
+ pdfauthor={Kane Cullimore (ID 286367861)},
+ pdftitle={COMPSCI 791 - Independent Research},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.3 (Org mode 9.1.9)}, 
+ pdflang={English}}
+\begin{document}
+
+\bibliographystyle{unsrt}  
+\bibliography{references}
+
+\begin{document}
+
+\begin{center}
+  \vspace{10mm} 
+  \LARGE\textbf{ Can Web Technologies }
+  \linebreak
+  \LARGE\textbf{ Help R Generate Print Quality Graphics? }
+  \vspace{10mm} 
+\end{center}
+
+\begin{center}
+\begin{center}
+\includegraphics[width=4.5in]{/home/krc/linCode/DOM_research/resources/img/example_latex_graphic.pdf}
+\end{center}
+\color{red}
+\LARGE\textsf{NOTE: Image to be updated with better example}
+\end{center}
+
+\begin{center}
+  \sffamily  
+  \vspace{60mm} 
+  \normalsize\textit{CompSci 791: Research Paper [Working version]}
+  \vspace{5mm}
+  \linebreak  
+  \normalsize\textit{Kane Cullimore}
+  \vspace{5mm}
+  \linebreak  
+  \normalsize\textit{\today}
+\end{center}
+
+\thispagestyle{empty}
+
+\newpage 
+
+\begin{abstract}  
+\sffamily  
+To be continued...
+  
+\end{abstract}  
+
+\newpage  
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\newpage
+
+
+
+\section{New Structure}
+\label{sec:org6d95d31}
+\subsection{Front Cover}
+\label{sec:org95eda48}
+\begin{itemize}
+\item Include the primary graphic to showcase the ability of using layoutEngine
+\item Maybe a print of the graphic on an open page to emphasize its a ``print''
+\item Should showcase the primary benefits of what you can't do within R
+\end{itemize}
+
+\subsection{Introduction}
+\label{sec:orgef682b2}
+\begin{itemize}
+\item Include explanation of the document structure and flow of the narrative
+\end{itemize}
+
+\subsection{Problem Definition}
+\label{sec:org9f8257d}
+\begin{itemize}
+\item Narrow into the specific problem at hand quickly
+\begin{itemize}
+\item Print Quality Graphics
+\item From within R (i.e. don't cover latex and adobe, etc)
+\end{itemize}
+
+\item Get a list of specific things that can't be done in R
+\begin{itemize}
+\item Typesetting / Layout of text wrapping
+\item Font style control
+\item 
+\end{itemize}
+
+\item What is it? 
+\begin{itemize}
+\item Integration of the image within other content that is accessible programmatically
+\item Not just an embedded graphic
+\item HTML knows about the interior of the R graphic and is NOT just a dumb blob
+\end{itemize}
+
+\item What are some available options in R that we know about (not exhaustive)
+\begin{itemize}
+\item GGText
+\item Grid Layout
+\item Patchwork (arrangements of plots)
+\end{itemize}
+\end{itemize}
+
+NOTES: 
+\begin{itemize}
+\item Avoid trying to prove we can't do what we're doing in another package
+\item Express our focus as being ``different'' from other approaches (not ``better''): 
+\begin{itemize}
+\item Trying to get at all of HTML with as little work as possible
+\item Take advantage of what already exists (i.e. to generate HTML)
+\end{itemize}
+\item Don't spend too much time talking about layoutEngine and backends
+\item Use a comparison chart at the end of the paper
+\item Don't explain web technology choice in detail (just that it can do these things so we chose it) then move on
+\item My work (or solution) improves on the Cons of the layoutengine and its backends
+\item ``Solution'' is the layoutEngine but it is still being developed
+\item Examples
+\begin{itemize}
+\item Should be a series of simple examples to talk about each pieces that extends what R can do
+\item Should be 1 (or 2 max) complex examples that showcases the full range of abilities
+\end{itemize}
+\end{itemize}
+
+
+\subsection{Solution}
+\label{sec:org1df7cd0}
+\begin{itemize}
+\item HTML/CSS/JS can do these things so we chose these technologies
+\item Want to not just wrap a single piece of functionality but get access to the full range of those technologies
+\item Pros
+\begin{itemize}
+\item Access to a huge amount of functionality of the web technology stack
+\item Web Tech is a vibrant community
+\item Browsers are extremely sophisticated and competitively being enhanced each year
+\item Take advantage of the large variety of packages and methods that currently generaate HTML
+\begin{itemize}
+\item Knitr (markdown?)
+\item xtable
+\item Others?
+\end{itemize}
+\end{itemize}
+\end{itemize}
+
+
+\begin{itemize}
+\item Cons
+\begin{itemize}
+\item Have to learn and write in HTML/CSS/JS
+\item Security layer around using a browser
+\item 
+\end{itemize}
+
+\item layoutEngine
+\begin{itemize}
+\item 
+\end{itemize}
+
+\item Backends
+\begin{itemize}
+\item DOM
+\item PhantomJS
+\item CSSBox
+\end{itemize}
+
+\item Graphic of workflow
+\begin{itemize}
+\item Could show phases with colors
+\item Could show the process coming back into R as opposed to exiting immediately
+\end{itemize}
+
+\item Explain the Cons and why a new solution is being sought
+\end{itemize}
+
+
+
+\section{Introduction}
+\label{sec:orgb531a73}
+
+The \textbf{\textbf{\href{https://www.r-project.org/}{R programming language}}} is a popular open-source tool used to perform statistical analysis. The language has many reliable libraries and methods to perform sophisticated statistical techniques with relative ease.
+
+Statistical analyses often benefits from the use of graphical representation of data to communicate its complexities. Several niche use-cases are arising which require unique graphical capabilities since R has grown in popularity [ref]. \href{https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf\#Graphics}{R base graphics} has long supported high quality graphical output that is accurate and visually effective at communicating complex information.  However, it intentionally does not support the needs of niche applications which then falls to the open source community. 
+
+The publishing industry has a long history of specifying unique and complex requirements for incorporated graphics. The fields of typography, typesetting and graphic design have their roots in the first movable type printing from the 15\(^{\text{th}}\) century. Modern graphical output requires precise control of (1) content specification, (2) document layout, (3) visual rendering, and (4) output resolution and file format.
+
+The R language is regularly used in analyses whose output appears in widely distributed publications. The statistics and baseline graphical plots are handled by R. The graphics are then post-processed with external applications such as \LaTeX{}, Adobe or similar layout and graphical software to adhere to the publisher's requirements. The final result might be satisfactory however the workflow is far from efficient and often relies on the expertise of others. 
+
+The workflows produce acceptable outputs but rely on tools that fall outside of R. This requires developers to either hand-off work to other specialists or to learn these external tools themselves. 
+
+A primary feature being explored is whether print quality graphics can be generated from within the R ecosystem. More specifically, this research focuses on how web technologies might help R users generate these print quality graphics for direct use within the publishing industry. A primary focus is placed on the ease of use for existing R users so as to extend their value directly into the published document. 
+
+The research looks several existing R packages that are in various states of development [Ref]. These include the [Layout Engine] and the [DOM] packages. It also includes preliminary development of extensions to these packages. These packages explore the use of several popular web technologies. 
+
+The research finds there is promising improvements to be found by adopting web technology tools and techniques. \textcolor{red}{More details to follow here...}
+
+\newpage   
+
+\section{Problem Definition}
+\label{sec:orgf6e273b}
+
+Often statistical analyses lead to published communication of the process and results. This might be included within websites, books, journals or television. Certain platforms with large audiences will go to greater lengths to include higher quality graphical output. Efforts focus on many aspects of the output format. Some of these might include adherence to organizational branding or improving the effectiveness of communication and reader engagement with the use of certain aesthetic features.
+
+As already mentioned, the functionality of the R programming language is squarely focused on the rigors of statistical analysis and the accurate and faithful representation of data. As a result of this focus, many R users within industries that generate published work have been reliant on downstream tools to post-process graphics. 
+
+This subset of R users are the focus of this research. 
+
+\vspace{5mm}
+\noindent
+The primary requirements for generating print quality graphics being explored include: 
+\begin{enumerate}
+\item Generate the final graphic from within the R ecosystem
+\item Simplify the workflow
+\item Use \textbf{\textbf{web technologies}} as the platform to extend R's graphical capabilities
+\end{enumerate}
+
+\subsection{Print Quality Graphics}
+\label{sec:orgcd772d4}
+
+There are several aspects of generating print quality graphics. They can be categorized into the following groups:
+\begin{enumerate}
+\item Content (fonts, colors, icons, etc)
+\item Layout
+\item Rendering
+\item Image format and resolution
+\end{enumerate}
+
+\subsubsection{Content Specification}
+\label{sec:org920bea2}
+
+The publishing world relies heavily on customized visual content to help communicate in various ways. Colors are altered to improve the readability for the color-blind or for other environments such as a bright display screen. The selection and styling of font can be an art all unto itself. Icons and graphics can be added to draw attention or better communicate the characteristics of the data. 
+
+The standard R graphics output are well designed for an audience whom are primarily interested in the data alone. As an example, there are standardized sets of data-point icons [ref and provide figure] and a basic coverage of font options. However, to meet the needs of the publishing industry a much more flexible system is needed to allow custom user-defined options to be used within the graphics. \textbf{Provide example...} 
+
+\noindent  
+\begin{itemize}
+\item Custom fonts
+\item Mathematical equations
+\item Data point icons
+\end{itemize}
+
+
+\subsubsection{Document Layout}
+\label{sec:org0fbb2c0}
+
+The layout of content within books, magazines and websites is an especially important aspect of generating print quality graphics. The standards of typesetting have a long history and many general rules and guidelines exist within the publishing industry [ref]. 
+
+Traditional typesetting often arranges content within a grid system that adheres to well-known relationships with other components on the page. Graphic design professionals will often make slight tweaks that are difficult to prescribe within a predefined set of layout options. Rather, a flexible system that allows full control of all content positioning axes is needed.  
+
+\noindent  
+\begin{itemize}
+\item Fine typesetting controls
+\item others(?)
+\end{itemize}
+
+
+\vspace{10mm}
+\noindent
+\textcolor{red}{Include diagram of what the typesetting might include (similar to Rahlf's book (Chp 4))}
+
+
+\subsubsection{Visual Rendering}
+\label{sec:org41a4056}
+To meet the rich aesthetics of the publishing industry a powerful rendering engine is needed to cope with a variety of visual requirements. These include fine control of colour, gradients, resolution, scale, etc.  
+
+R has very high quality rendering engine in its baseline configuration however there are a number of features it does not support. 
+
+\noindent  
+\begin{itemize}
+\item Color gradients
+\item others(?)
+\end{itemize}
+
+
+\subsubsection{File Resolution and Format}
+\label{sec:orgeb5805e}
+
+R has a strong capability in its support of various file formats. There are several file format types which are preferred by users generating print quality graphics. Such file types help maintain quality, information preservation, consistency across the industry and performance (file size, read/write speeds, etc).  
+
+\noindent  
+\begin{itemize}
+\item Vector: PDF and PostScript
+\item Raster: PNG, JPEG and TIFF
+\item XML: SVG
+\item Web: HTML, CSS and JavaScript
+\item Color gamut
+\end{itemize}
+
+
+\newpage  
+\subsection{Existing R Workflows}
+\label{sec:org7d67aa9}
+
+Extensions have made the output graphics reach a broader variety of plot-types and effectiveness of the visualization [ref Paul's book with respect to lattice and ggplot]. However, most often the final published versions have undergone typesetting within an external post-processing step. 
+
+Despite the vast number of available R extensions there are few that improve the workflow for generating print quality graphics. 
+
+There are several which extend R's graphical capabilities but none that capture the necessary precision needed in publications. For example, R can be used to drive an interactive web-based application with the Shiny package [ref]. A variety of aesthetically pleasing standard plots can be quickly generated with the ggplot2 package [ref]. Several smaller packages also provide helper methods to enhance color selection [ref] or modify output file formats to make downstream work more smooth [ref - svg, grid?, etc?]. 
+
+The current industry employs various tools and methods to achieve these outcomes. \LaTeX{} is a very popular method for publishing documents. The Adobe suite of tools are used for a range multi-media mediums such as websites and large advertisement prints. Several others exist but are not introduced. 
+
+
+\subsubsection{\LaTeX{} Environment}
+\label{sec:org5ca8738}
+\LaTeX{} is a widely used and rich typesetting programming language that can be used to publish text books, journals, reproducible research [ref ]. The following example shows how a plot generated within R can be transformed into a much richer document.  
+
+\vspace{10mm}   
+\noindent  
+\textcolor{red}{NOTE: Just a placeholder. Will use a better example and reformat to better show workflow. }
+\vspace{10mm}   
+
+\begin{minipage}{0.8\textwidth}
+\includegraphics[align=c,height=1.5in]{/home/krc/linCode/DOM_research/resources/img/example_R_graphic.pdf}
+  \hspace*{.2in}
+  \LARGE\rightarrow
+  \hspace*{.2in}
+\includegraphics[align=c,height=2.5in]{/home/krc/linCode/DOM_research/resources/img/example_latex_graphic.pdf}
+\end{minipage}
+
+
+\subsubsection{Graphic Design Software}
+\label{sec:orgb110df4}
+
+There are many graphic design and publishing software packages available. Most are designed for the use by artistic professionals with Graphical User Interfaces (GUI) controls. Many also have the ability to be extended via macros or other methods to programatically control the work flow. \textbf{Adobe} [ref] offers a suite of software and is a market leader in this field.  
+
+\vspace{10mm}   
+\noindent  
+\textcolor{red}{NOTE: Just a placeholder. Will include an example of using Illustrator and InDesign}
+\vspace{10mm}   
+
+
+\newpage
+
+
+\section{Solution Definition}
+\label{sec:org435bd3b}
+
+\subsection{Design \& Requirements}
+\label{sec:org842389b}
+
+\begin{itemize}
+\item Send HTML, CSS, JS and font description to browser to render/layout
+\item After browser has loaded the data some JavaScript calculates and returns layout dimensions to the R session (and perhaps other styling info)
+\item The browser should have an ability to use the host machine default browser or run in the background on a headless browser
+\end{itemize}
+
+
+\begin{itemize}
+\item Easy to use on all major operating systems (Windows, macOS and Linux)
+\item Minimal installation requirements
+\item Access via any modern web browser on the host machine
+\item Lightweight
+\item Performance
+\end{itemize}
+
+
+\begin{center}
+\begin{center}
+\includegraphics[width=5in]{/home/krc/linCode/DOM_research/resources/img/old-workflow.jpg}
+\end{center}
+\end{center}
+
+\begin{center}
+\begin{center}
+\includegraphics[width=5in]{/home/krc/linCode/DOM_research/resources/img/new-workflow.jpg}
+\end{center}
+\end{center}
+
+
+
+\newpage 
+\subsection{Web Technologies}
+\label{sec:orgafe51d3}
+
+\subsubsection{State of Modern Browsers}
+\label{sec:org05d7899}
+
+\begin{itemize}
+\item Modern browsers are capable graphical display engines
+\begin{itemize}
+\item Active specification and developer groups
+\item Growing improvements in browser capabilities
+\item Layout engines that mostly adhere to web standards 
+\begin{itemize}
+\item Gecko (FireFox)
+\begin{itemize}
+\item WebKit (Apple Safari)
+\item Blink (Google Chromium and Chrome)
+\item EdgeHTML (Microsoft)
+\item Presto (Opera)
+\end{itemize}
+\end{itemize}
+\item Large investment activity due to amount of supported commerce
+\end{itemize}
+\item Browsers widely available on all user devices
+\begin{itemize}
+\item PCs and portable devices
+\item Users comfortable and familiar within the browser environment
+\end{itemize}
+\end{itemize}
+
+
+\subsubsection{HTML Standard}
+\label{sec:org197e087}
+
+The specification for the HTML standard is constantly evolving. This is generally a good thing as new technologies are continuously evolving and improving the web experience. However, the continuous updates creates a moving target to developers of both the web browsers as well as websites.  
+
+The HTML specification is controlled by the World Wide Web Consortium (W3C) [ref]. Various browsers support most of the newly available definitions being released however not all are in sync. The browsers that typically support the latest specifications sooner are Mozilla Firefox [ref] and Google Chrome [ref]. Apple Safari [ref] is often not far behind. Microsoft has notoriously been sluggish in their adoption of the latest specification with its Internet Explorer browser which was only updated along with its Windows operating system. Most recently Microsoft's superseeding browser, Edge [ref], is much better in its support.  
+
+For the use of development it is recommended that either Firefox or Chrome are used with \texttt{DOM}. The discussion of potential updates to \texttt{DOM} will take into consideration the need to be compatible with Safari and Edge into the future.  
+
+
+
+\newpage
+
+
+\section{layoutEngine}
+\label{sec:org6949464}
+
+\subsection{Overview}
+\label{sec:orgeb0857f}
+
+\subsubsection{Links}
+\label{sec:org56a9145}
+\begin{itemize}
+\item \href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html}{layoutEngine Overview}
+\item \href{https://github.com/pmur002/layoutengine}{GitHub Repository}
+\end{itemize}
+
+\subsection{Design}
+\label{sec:orgfec9b69}
+
+\noindent
+\textsf{Technologies}
+\begin{itemize}
+\item 
+\end{itemize}
+
+\noindent
+\textsf{Dependent Packages:}
+\begin{itemize}
+\item The htmltools R package (for )
+\item The xml2 R package (for )
+\item The extrafont R package (for )
+\item The gdtools R package (for )
+\end{itemize}
+
+
+\subsection{Benefits}
+\label{sec:orgc9caaa8}
+\subsection{Drawbacks}
+\label{sec:orga4c9088}
+
+\newpage
+\section{DOM Backend}
+\label{sec:org9730fc8}
+
+\subsection{Overview}
+\label{sec:orgaf354c1}
+The \texttt{DOM} package is built with several existing packages described below. The package intends to meet the solution design described above. The package has been through several development cycles at the time of this report. These improvements have focused on\ldots{}(capture main items). 
+
+The package is not focused on generating interactive web applications such as the \texttt{shiny} package. Rather, the it is designed to incorporate web technologies to improve desktop publishing, typesetting and layout functionality (see \LaTeX{} stack, Adobe, others??).  (Reword => Intended as generating CODE interfaces (not graphical interfaces)\ldots{}(I need to understand this better))
+
+In the same way a web-technology stack that goes about this with HTML, SVG and JavaScript the \texttt{DOM} package would intend to build a HTML, SVG and R stack (? reword\ldots{}).  
+
+
+\subsubsection{Links}
+\label{sec:orge8dd100}
+\begin{itemize}
+\item \href{https://www.stat.auckland.ac.nz/\~paul/Reports/DOM/v0.4/DOM-v0.4.html}{DOM Version 0.4}
+\item \href{https://github.com/pmur002/DOM}{GitHub Repository}
+\item 
+\end{itemize}
+
+\subsection{Design}
+\label{sec:org7d91af4}
+
+A primary goal of the \texttt{DOM} package is to perform typesetting post-processing tasks while remaining in the R environment. This being as opposed to taking an unfinished graphic output as a \textbf{pdf} file into other environments such as \LaTeX{} or Adobe tools. 
+
+\texttt{DOM} aims to achieve this by employing the web standards set in HTML, CSS and JavaScript. The R plot would be sent along with such code into a web browser which would render the final document. 
+
+The benefit of such a work-flow lies in taking advantage of one of the richest consumer focused programming environments that exists. \textbf{Find some reference pointing to the popularity and efficacy of this.}  
+
+\noindent
+\textsf{Technologies}
+\begin{itemize}
+\item Web Sockets
+\item JavaScript DOM Scripting
+\end{itemize}
+
+\noindent
+\textsf{Dependent Packages:}
+\begin{itemize}
+\item The httpuv R package (for websockets)
+\item The jsonlite R package (for JSON messages on websockets)
+\item The css-select-generator JS library (for CSS selectors)
+\item The bowser JS library (for identifying the browser)
+\end{itemize}
+
+
+\subsubsection{Use-case scenerios}
+\label{sec:org3724a69}
+
+Need diagram to show various paths to use \texttt{DOM}  
+
+
+\begin{itemize}
+\item Some plot -> gridSVG -> SVG -> Render in browser or phantomJS -> code for layout or print
+\item data frame -> xtable -> HTML -> Render in browser or phantomJS -> code for layout or print
+\end{itemize}
+
+
+\begin{itemize}
+\item Review \texttt{layoutEngine} which will take HTML code and incorporate back into R graphics
+\end{itemize}
+
+\newpage  
+\subsubsection{How it Works}
+\label{sec:orgfa076b0}
+
+\begin{itemize}
+\item An R session will act as a web server by hosting a web page within the local network (i.e. 127.0.0.1:port a.k.a. localhost:port)
+\item The web page is only accessible on the local machine and not intended to be publicly hosted
+\item A user will then interactively generate a graphical output within the browser window essentially using the browser window as their \textit{canvas} which provides the visual feedback   
+\begin{itemize}
+\item This will be achieved by first setting up an initial html template based on predetermined needs (width/height, colour schemes(?), layout(?), etc)
+\item The graphic components are then built with packets of web data by pushing it from the server (e.g. laying down the axes and scales first, then the data points and then the text boxes)
+\item Information from the browser will be sent back to the server since some component data might depend on browser information such as knowing exact size or locations of the page elements relative to each other
+\item It is possible (as the package evolves) the user might interact with the web page and therefore send data back to the browser via requests (e.g. changing an axis range or exporting) however, since the same user has control of the browser via the server this secondary control avenue doesn't seem necessary
+\end{itemize}
+\item Once the graphic is completed the user might export this as a file either as web data (html, xml, etc) or as a rendered image (pdf, png, etc)
+\end{itemize}
+
+
+
+\begin{center}
+\begin{center}
+\includegraphics[width=5in]{/home/krc/linCode/DOM_research/resources/img/solution_1.pdf}
+\end{center}
+\end{center}
+
+
+
+\newpage  
+\subsubsection{Technical Deep Dive}
+\label{sec:orgf74d458}
+
+\begin{enumerate}
+\item Technical requirements
+\label{sec:org4b6a2ad}
+
+The general requirements to support this solution design are:  
+\begin{enumerate}
+\item The R session must create a non-blocking web server to locally host the web page as a background service while allowing the user to interact with it
+\item Various html templates and accompanying arguments (e.g. screen width/height) must be able to be selected and loaded upon initialization of the web page
+\item A browser on the local network will launch to the web page with a specified URL (either launched automatically or manually)
+\item The server will iteratively push updates to the web page description
+\item The browser will automatically update its rendered version of the web page upon any changes pushed by the server
+\item The browser will be able to send data back to the server either by (1) request of the server (i.e. a server query) or (2) in response to any update pushed to the browser
+\item \textbf{ON HOLD:} User can send requests to the server via a browser interface (forms, buttons, sliders, etc)
+\item The final result must be able to be exported as (1) code and (2) a rendered image
+\end{enumerate}
+
+
+
+\begin{center}
+\begin{center}
+\includegraphics[width=6in]{/home/krc/linCode/DOM_research/resources/img/solution_2.pdf}
+\end{center}
+\end{center}
+
+
+
+
+\newpage  
+\item R Package Design
+\label{sec:org58cde6a}
+
+\noindent    
+The \texttt{DOM} package is built with the following packages: 
+
+\begin{enumerate}
+\item \texttt{methods}: S4 class system
+\item \texttt{utils}: Basic methods for launching default browser, capturing output and extracting the package version
+\item \texttt{httpuv}: The HTTP and WebSocket server functionality
+\item \texttt{jsonlite}: To transfer data between R and the browser via JSON
+\item \texttt{whisker}: A HTML template building system
+\item \texttt{Rook}: A HTTP message specification that \texttt{httpuv} adheres to
+\end{enumerate}
+
+\noindent  
+When \texttt{DOM} is loaded into R several parameters are written to the global options from which R can access programatically (i.e. review via \textt{.Options})  
+
+\begin{itemize}
+\item \texttt{DOM.client} includes the basic functions to launch the application via \texttt{httpuv}, run the browser session and kill the server.
+\item \texttt{DOM.debug} is a flag for\ldots{}
+\item \texttt{DOM.limit} is the maximum number of concurrent server sessions to create (default to 5)
+\item \texttt{DOM.width} is the DOM.window width (default at 800 px)
+\item \texttt{DOM.length} is the DOM.window length (default at 600 px)
+\end{itemize}
+
+
+\newpage  
+\item Inner Workings
+\label{sec:org972802c}
+
+The \texttt{DOM} package has a very simple process for establishing a blank (or simple) HTML page. The \texttt{hmltPage()} method used to achieve this [ref] abstracts several processes from the user.   The following section breaks down what is happening under the hood.  
+
+
+
+\begin{wrapfigure}{R}{0.4\textwidth}
+\centering
+\includegraphics[width=0.35\textwidth]{/home/krc/linCode/DOM_research/resources/img/example_R_graphic.pdf}
+\caption{R Plot Output}
+\vspace{-5mm}
+\end{wrapfigure}
+
+The \texttt{DOM} package has a very simple process for establishing a blank (or simple) HTML page. The \texttt{hmltPage()} method used to achieve this [ref] abstracts several processes from the user. The following section breaks down what is happening under the hood.  
+
+\setlength{\parindent}{0em}
+
+A basic web page is defined with a single element in the form of a paragraph tag with some text; \texttt{"<p>Some text lies here...</p>"}. The \texttt{DOM} package initiates this simple web page with the following commands. Although this is small amount of code there is a lot going on in the background. 
+
+
+\setlength{\parskip}{0em}  
+
+\BeforeBeginEnvironment{}\{\begin{shaded}
+\begin{minted}[breaklines=true,breakanywhere=true]{r}
+library(DOM)
+text <- "<p>Some text lies here...</p>"
+p <- htmlPage(text)
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}  
+
+When the \texttt{DOM} package is loaded there are several objects loaded into the global options list. These are defined in the previous section. The \texttt{DOM.client} object is of special interest here since it defines a \texttt{app}, \texttt{run} and a \texttt{kill} method for use with the server calls. 
+
+
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{r}
+library(DOM) ## Loads methods and generates 5 objects within the global options 
+## 1) DOM.client with 3 methods
+## $app: the primary function used to define the server logic when the web page is launched 
+## $run: the function that is called to launch the browser on the host machine
+## $kill: the function called to clean up when the server is shut down 
+## 2) DOM.debug is set to FALSE 
+## 3) DOM.limit is set to 5
+## 4) DOM.width is set to 800
+## 5) DOM.length is set to 600
+
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+\newpage
+
+The \texttt{htmlPage()} method is run with the following default arguments. This function is defined within the \texttt{Page.R} file. 
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{r}
+text <- "<p>Some text lies here...</p>"
+p <- htmlPage(
+       html=text, ## Body of web page at initiation 
+       head="", ## Arguments to place into the HTML header
+       host="127.0.0.1", ## The URL address for localhost
+       client=getOption("DOM.client") ## Default definition of the server logic
+    ) 
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+Once the \texttt{htmlPage()} function is called several things happen in the background. Most notably is a list of hosted pages and responses is created to keep track of them. Therefore each page and response associated with a page has a pointer object to identify it. 
+The \texttt{getPageID()} function is defined within the \texttt{Page.R} file while the \texttt{getResponseID()} and \texttt{addRequest()} functions are defined within the \texttt{DOM.R} file. 
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{r}
+## Inside of the htmlPage() call the following steps are taken 
+pageID <- getPageID() ## Assigns an integer value within a list of page IDs
+tag <- getResponseID() ## Assigns an interger which is converted to a character 
+## The following function call adds the new tag to the list of open requests  
+addRequest(
+    tag=tag ## New tag values
+    async=FALSE ## Whether the request should block (syncronous) or not asynchronous)
+    callback=NULL ## If the request is asynchronous then what callback to use 
+    returnType="NULL" ## ?? 
+    pageID=pageID ## The pageID the request is assoicated with  
+    )
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+Next the \texttt{htmlPage()} function calls the \texttt{startDOMServer()} function which is defined within the \texttt{Page.R} file. This function takes the arguments defined so far and sends it to \texttt{httpuv::startServer()} which is the primary mechanism to launch the server and host the web page.  
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{r}
+## The arguments are passed from htmlPage() and the newly created page and response ids
+startDOMServer(
+    pageID=pageID, ## id assigned to the server instance
+    host=host,  ## URL to launch the web page with
+    app=client$app, ## from the global options
+    port=NULL, ## Currently the port # is randomly assigned at the next step
+    body=html, ## html content to pass along
+    head=head, ## any headers to add to the web page
+    tag=tag ## the request id              
+    )
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+Once the server has been successfully created via the \texttt{httpuv::startServer()} function the following steps are taken. 
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{r}
+## 1) The randomly assigned port # is captured in a private variable 
+port <- pageInfo(pageID)$port  
+## 2) The defined client$run method is called
+## By default a browser is openeded and navigated to the specified URL  
+client$run(
+    url=paste0("http://", host, ":", port, "/")
+    host=host,
+    port=port,
+    tag=tag          
+    )
+## 3) The active response is added to a list to track when its resolved 
+waitForRequest(
+    tag=tag,
+    limit=getOption("DOM.limit"), ## Default value for number of open requests
+    onTimeOut=function() closePage(pageID) ## Used to prevent indefite hanging 
+    )
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+
+
+To be continued\ldots{}
+
+
+
+\setlength{\parindent}{3em}
+\setlength{\parskip}{0.5em}
+\end{enumerate}
+
+
+\subsection{Examples}
+\label{sec:org36dbeab}
+
+A series of examples are provided to demonstrate how \texttt{DOM} can be used to perform the various aspects of generating print quality graphics. All are intended on being reproducible within the Docker environment explain in the appendix [ref].  
+
+\subsubsection{A simple overview}
+\label{sec:org19de8af}
+The following overview describes a simple workflow to use R to create a plot and then add some styling and additional components within the browser. 
+
+\setlength{\parindent}{0em}
+
+\begin{minipage}[c]{0.55\textwidth}
+\begin{enumerate}
+\item Generate a plot within R using a grid based package (\texttt{grid}, \texttt{lattice} or \texttt{ggplot2})    
+  
+\item Convert the plot to \textbf{SVG} with \texttt{gridSVG}
+  
+\item Initiate a webpage with \texttt{DOM} and navigate to the URL with a browser to initiate the WebSocket connection  
+  
+\item a;lsdkfj;lasdkfj;alsdkfj;alsdfkj   
+\end{enumerate}
+\end{minipage}   
+\hfill
+\begin{minipage}[c]{0.45\textwidth}
+\centering
+\includegraphics[width=0.8\textwidth]{/home/krc/linCode/DOM_research/resources/img/example_R_graphic.pdf}
+\end{minipage}
+
+\setlength{\parindent}{3em}
+
+\subsubsection{Content}
+\label{sec:orga366076}
+\noindent
+Ideas: 
+\begin{itemize}
+\item Custom icons as data points
+\item 
+\end{itemize}
+
+\subsubsection{Layout}
+\label{sec:org4e6e918}
+
+\noindent
+Ideas: 
+\begin{itemize}
+\item 2 or 3 column layout over plot 
+\begin{itemize}
+\item Various justified
+\item with CSS-grid
+\end{itemize}
+\item Generate different plot layouts for various screen (or document) sizes
+\begin{itemize}
+\item with CSS-grid and media queries
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Rendering}
+\label{sec:orgee61524}
+\noindent
+Ideas: 
+\begin{itemize}
+\item Gradient fill along bars
+\begin{itemize}
+\item with gridSVG and push across
+\item with CSS styling
+\item 
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Exporting}
+\label{sec:orgdaf4d3b}
+\noindent
+Ideas: 
+\begin{itemize}
+\item Using
+\end{itemize}
+
+\newpage  
+
+
+\subsection{Benefits}
+\label{sec:org6b625f8}
+
+\subsection{Drawbacks}
+\label{sec:org88ff87f}
+
+\newpage
+
+\section{RSelenium Backend}
+\label{sec:org0f9f4fe}
+\subsection{Overview}
+\label{sec:orgf069019}
+
+\subsubsection{Links}
+\label{sec:org30a6625}
+\begin{itemize}
+\item \href{https://github.com/kcullimore/layoutenginerselenium}{GitHub Repository}
+\item RSelenium R Package
+\item Selenium Server
+\end{itemize}
+
+\subsection{Design}
+\label{sec:org6b180f3}
+
+\subsection{Examples}
+\label{sec:org0b98fbe}
+\subsubsection{Overview}
+\label{sec:orgee521bc}
+\subsubsection{Content}
+\label{sec:orgdf03c33}
+\subsubsection{Layout}
+\label{sec:org921739e}
+\subsubsection{Rendering}
+\label{sec:org4391faf}
+\subsubsection{Exporting}
+\label{sec:org318e045}
+
+
+\subsection{Benefits}
+\label{sec:org212a92d}
+
+\subsection{Drawbacks}
+\label{sec:org643c8f6}
+
+\newpage
+\section{NodeJS Backend}
+\label{sec:org49ab35f}
+\subsection{Overview}
+\label{sec:org0e157fd}
+
+\subsubsection{Links}
+\label{sec:org3eb95d2}
+\begin{itemize}
+\item GitHub Repository
+\end{itemize}
+
+\subsection{Design}
+\label{sec:orgb6a2bcc}
+
+\subsection{Examples}
+\label{sec:org65a8808}
+\subsubsection{Overview}
+\label{sec:org0c02dc0}
+\subsubsection{Content}
+\label{sec:org9616c3b}
+\subsubsection{Layout}
+\label{sec:org938b51a}
+\subsubsection{Rendering}
+\label{sec:org7c13b9a}
+\subsubsection{Exporting}
+\label{sec:org571634d}
+\subsection{Benefits}
+\label{sec:orgc3fdc71}
+
+\subsection{Drawbacks}
+\label{sec:org50e6c9a}
+
+\newpage 
+\section{Comparison of Workflows}
+\label{sec:org210c6e7}
+
+\newpage
+\section{Recommendations and Future Work}
+\label{sec:org0b1982b}
+
+\newpage
+\appendix
+\addappheadtotoc
+\section{Appendix}
+\label{sec:orga2152a7}
+
+
+\sffamily  
+\setlength{\parindent}{0em}    
+\subsection{Development Environment}
+\label{sec:orge5fe788}
+
+A single Docker container is used to perform research, experimentation, R package development and documentation. This environment was chosen to easily share the development content with others for collaboration and feedback. It will also ensure that any future return to this research can be resurrected with a working code-base independent of software changes.  
+
+
+The report and R development have been performed within Emacs and ESS environment inside of the Docker container. The report is written within the Emacs org-mode markdown language which abstracts some \LaTeX{} syntax while also providing literate programming options which are more flexible than generic markdown or Rmarkdown.  
+
+
+Some basic Docker and Emacs commands are provided to walk the user through some of aspects of the build and editing processes. 
+
+
+\subsubsection{Docker container description}
+\label{sec:orgef9ecb1}
+
+
+\uline{Overview}: The Docker container is publicly available on \href{https://hub.docker.com/}{Docker Hub} with the following image name \textbf{kcull\textbackslash dom\_r}. The container is built from the Ubuntu 18.04 image and has R 3.6.1 and Emacs 26.3 installed. The container has been configured to run Emacs in its GUI environment on the host machine. 
+
+\noindent
+\uline{User and Home Directory}: The user is logged in as a sudo-user with \texttt{/home/user/} as the \$HOME directory. The sudo password is ``password.'' The working directory is \texttt{/project/} which both the shell and Emacs will initialize into. 
+
+\noindent
+\uline{Directory Organization}: The project is organized into 2 main directories which are each linked to github repositories. Directory 1 is the forked \texttt{DOM} package which is extended per this research. Directory 2 is the research effort which contains the experimental code and files used to create this report. Both directories should be created and maintained on the host machine and then connected to the Docker container with a \textbf{bind mount} option when the container is running. 
+
+\noindent
+\uline{Directory Hierarchy}:  
+
+\begin{minted}[breaklines=true,breakanywhere=true]{bash}
+# Emacs configuration files   
+/home/user/.emacs.d/ 
+# Github repository for R DOM package
+/project/DOM/     
+# Github repository for research documentation   
+./../../ 
+# Experimental code for research  
+./../../code  
+# Files to generate report    
+./../../paper 
+# Miscellaneous files such as the Dockerfile, Fonts, Images, etc.    
+./../../resources 
+\end{minted}
+
+
+
+\subsubsection{Host setup and Docker run instructions}
+\label{sec:org0c86468}
+
+The following instructions are provided to recreate the development environment. This has only been tested from within a host machine running Ubuntu 18.04 but is assumed to be compatible with other Debian derivatives. The Dockerfile used to build the container is supplied which should enable the necessary tweaks to support other host machine environments. 
+
+\setlength{\parindent}{2em}  
+
+1 - Ensure docker and git are installed and correctly configured to download the docker image and clone repositories.  
+
+2 - Obtain access to the private github repository, \url{https://github.com/kcullimore/DOM\_research}, for the research content by emailing myself at <kane@ia.house>. The \texttt{DOM} package, \url{https://github.com/kcullimore/DOM}, is publicly available.  
+
+3 - Create a working directory on the host machine and clone each github repositories as shown below:  
+
+\BeforeBeginEnvironment{}\{\begin{shaded}
+\begin{minted}[breaklines=true,breakanywhere=true]{bash}
+## Example folder structure  
+mkdir -p ~/project/{DOM,research}
+## Clone repositories
+git clone git@github.com:kcullimore/DOM.git ~/project/DOM
+git clone git@github.com:kcullimore/DOM_research.git ~/project/research
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+4 - Run the following commands within the host terminal but first ensure the target directories are correct per Step 3 (i.e. verify source= \textbf{/home/\$USER/proj...} is correct). 
+
+
+\BeforeBeginEnvironment{}\{\begin{shaded}
+\begin{minted}[breaklines=true,breakanywhere=true]{bash}
+## Open host machine devices to container (only need to do once per reboot)
+xhost +local:
+## Run docker container linked to directories with bind-mount  ------------------
+docker run --rm -it \
+       --network host \
+       --env DISPLAY=unix$DISPLAY \
+       --volume /tmp/.X11-unix:/tmp/.X11-unix \
+       --mount type=bind,source=/home/$USER/project/DOM/,target=/project/DOM/ \
+       --mount type=bind,source=/home/$USER/project/DOM_research/,target=./../../ \
+       --name dom-test \
+       kcull/dom_r:latest 
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+\newpage  
+
+5 - Once the docker container is up and running verify folder structure has correctly mapped the host directories.  
+
+6 - Open Emacs in the container's terminal: \texttt{\$ Emacs}. The host should launch Emacs in its GUI form (i.e. not within the shell). If this doesn't occur verify steps 4 were followed thoroughly (NOTE: After reboot the display device will have to be provided access again with the \texttt\{$\backslash$$ xhost +local: command). 
+
+7 - From within Emacs perform the following operations to open and recreate the current report 
+
+\begin{itemize}
+\item Opens Treemacs with \texttt{M-0}
+\item Open folder structure to \texttt{./../../paper/} with Tab-Enter or Mouse
+\item Open org-mode markdown file \texttt{/paper\_working.org} with Enter or Mouse double-click
+\item Make some edits to the file and save with \texttt{C-x C-s}
+\item Launch Export Dispatcher menu with \texttt{C-c C-e}
+\item Create new PDF file with \texttt{C-l C-o}
+\end{itemize}
+
+8 - The PDF should have opened automatically which you can scroll through with arrow keys or the mouse scroll wheel.  Use \texttt{q} key to minimize the PDF buffer.  
+
+9 - Close Emacs with \texttt{C-x C-c} and exit the container by typing \texttt{exit} at the terminal. 
+
+10 - Navigate to the project directory on the host machine and verify the new PDF and edited org-mode file were correctly saved. 
+
+11 - If the above worked the project appears to be correctly established on the host machine.  
+
+\newpage  
+\subsection{Emacs within Docker Container}
+\label{sec:orga68458b}
+
+\subsubsection{Useful report editing commands}
+\label{sec:orgdfcc96a}
+
+\setlength{\parindent}{0em}  
+
+\uline{Emacs Terminology}  
+
+\begin{itemize}
+\item \textbf{buffer:} 'Screen' or 'window' user operates within
+\item \textbf{marking:} Highlighting region of window
+\end{itemize}
+
+
+Often used commands can be found at \url{https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf}.
+
+
+
+\uline{Customized keybindings}  
+
+\begin{itemize}
+\item Open emacs configuration file with \texttt{C-c e}  (Emacs must be restarted for changes)
+\item Expand all nested/hidden text within *.org file with \texttt{Shift-Tab Shift-Tab Shift-Tab}
+\item Copy, cut and paste with standard keybindings per \textbf{Cua Mode}
+\item Switch visual line wrap with \texttt{M-9}
+\item Switch to truncate long-line view with \texttt{M-8}
+\item Enter/Exit rectangle edit mode with \texttt{C-\string^}
+\item Enter/Exit multi-edit mode by highlighting word and then \texttt{C-u}
+\item Auto-indent R script (via ESS) by highlighting buffer with \texttt{C-x h} and then \textt{C-M-\}
+\end{itemize}
+
+
+\uline{Document Export} 
+
+When a PDF version of the document is produced a standard \TeX{} file (*.tex) is also produced after transpilation. This \TeX{} file can be edited and used with a standard \LaTeX{} command: \texttt{latex report.tex}.  
+
+
+
+To be continued\ldots{}
+
+\subsection{Report Editing Process}
+\label{sec:orgdbcf5c7}
+
+
+To be continued\ldots{}
+
+\newpage  
+\subsection{Org-mode examples}
+\label{sec:orgabe2c2f}
+
+\subsubsection{Font definitions}
+\label{sec:org3293065}
+\setlength{\parindent}{0em}  
+
+
+Using \LaTeX{} fontspec package \cite{type01}
+
+\sffamily
+\uline{Sans}  
+
+Internet based applications are an increasingly popular way to communicate and interact with complex data. 
+
+\sffamily\itshape 
+\uline{Sans italic}  
+
+Internet based applications are an increasingly popular way to communicate and interact wtih complex data. 
+
+\sffamily\itshape\bfseries 
+\uline{Sans italic bold}  
+
+This might include a business application that assist employees unverstand the current state of the market.
+
+\normalfont 
+\uline{Serif}   
+
+It might also include a news website communicating techincal details from a story such census data. 
+
+\normalfont\itshape 
+\uline{Serif italic}   
+
+It might also include a news website communicating techincal details from a story such census data.  
+
+\normalfont\itshape\bfseries    
+\uline{Serif italic bold}   
+
+It might also include a news website communicating techincal details from a story such census data.  
+
+\normalfont
+\ttfamily    
+\uline{Mono type}   
+
+It might also include a news website communicating techincal details from a story such census data.  
+
+\bfseries
+\uline{Mono Bold type}
+
+\texttt{\bfseries The quick brown fox 012456789}
+
+\normalfont
+\sffamily  
+
+
+
+\newpage  
+\subsubsection{Sample R code highlighting}
+\label{sec:org48a2aee}
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{r}
+##*******10********20********30********40********50********60********70********80
+## Problem 2: START => Optical Illusion Example
+##*******10********20********30********40********50********60********70********80
+## Generate pdf file of plot (capture ends with dev.off() below)
+pdf("prob-02.pdf", width = 3, height = 6)
+## Create theta values  for each line segments (i.e. 180 degs / 4 = 45 segments)
+## Remove elements in the center of vector (i.e. 80-100 degree section)
+theta <- seq(0, pi, length = 45)[-(20:26)]
+## Set parameters to be used in plot() (R = dummy radius, B = slope of lines)
+R <- 1
+B <- sin(theta) / cos(theta)
+## Setup plot space and define coordinate axes (also remove 'edge buffer')
+plot.new()
+par(mar = c(0.1, 0.1, 0.1, 0.1))
+plot.window(xlim = c(-R, R), ylim = c(-R, R), asp = 1)
+## Create the black line segments
+for (i in 1:length(B)) abline(a = 0, b = B[i], lwd = 2)
+## Create the 2 red vertical lines
+abline(v = c(-R/2, R/2), col = "red", lwd = 4)
+## Stop image capture
+invisible(dev.off())
+##*******10********20********30********40********50********60********70********80
+## Problem 2: END
+##*******10********20********30********40********50********60********70********80
+
+
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+
+
+
+\newpage  
+\subsubsection{Sample HTML code highlighting}
+\label{sec:orgcda0b3f}
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{html}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,
+	    maximum-scale=1.0, user-scalable=0"
+    />
+    <!-- favicon -->
+  </head>
+  <body>
+    <title>DOM - Testing Application</title>
+    <div id="AppDiv" class="app-div"></div>
+  </body>
+</html>
+
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+\subsubsection{Sample CSS code highlighting}
+\label{sec:org5ac6bc6}
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{css}
+.iah-text-Raleway {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+.iah-text-black {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  font-size: 2em;
+  overflow-wrap: break-word;
+  margin: 10px;
+  color: var(--iah-grey-dark);
+}
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+\newpage 
+\subsubsection{Sample JavaScript code highlighting}
+\label{sec:org906455c}
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{javascript}
+var args = []; // Empty array, at first.
+for (var i = 0; i < arguments.length; i++) {
+    args.push(arguments[i])
+} // Now 'args' is an array that holds your arguments.
+
+// ES6 arrow function
+var multiply = (x, y) => { return x * y; };
+
+// Or even simpler
+var multiply = (x, y) => x * y;    
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}  
+
+
+
+
+
+\newpage  
+
+\section{References}
+\label{sec:org7c49532}
+
+
+\begin{thebibliography}{bib}
+
+\bibitem{type01}
+
+package used to manage fonts within xelatex (or luatex)
+fontspec: http://ctan.math.washington.edu/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf
+
+
+\end{thebibliography}
+
+
+
+
+\end{document}
+
+
+
+\newpage 
+\section{Notes}
+\label{sec:org98639fe}
+
+\begin{itemize}
+\item the front page graphic is not bad;  even better would be something
+\end{itemize}
+that could NOT be done by just including an R graphic into a web page,
+but the general idea of a typeset/desktop published image/poster is
+right I think.  It immediately looks like something that is NOT a
+standard R graphic (which is good).
+
+\begin{itemize}
+\item overall structure:
+``Problem definition'' rather than ``Market need'' ?
+
+\item overall structure:
+Might need a clear road map to those early sections - let the reader
+\end{itemize}
+know early that we are going to head down the HTML path as a solution to
+the layout/publishing problem.
+
+\begin{itemize}
+\item Section 2.1.3
+Have I shown you the latest additions to the R Graphics engine ?
+\end{itemize}
+(including colour gradients) - see \ldots{}
+\url{https://developer.r-project.org/Blog/public/2020/07/15/new-features-in-the-r-graphics-engine/}
+
+\begin{itemize}
+\item There may be too much detail in some of those earlier sections
+\end{itemize}
+(judging just by the section headings and bullet lists).   You will have
+to make sure the forest is visible and not just the trees.  We do not
+have to describe ALL of the options (that we do not take).  It is
+perfectly fine to state that this project focused on HTML as the layout
+technology without having to justify why we did not choose all of the
+other options.  It should not be hard to explain/demonstrate that HTML
+is a valid option to pursue.
+
+\begin{itemize}
+\item Shouldn't the DOM package come AFTER the layoutEngine package ?
+(as one possible back end)
+\end{itemize}
+\end{document}

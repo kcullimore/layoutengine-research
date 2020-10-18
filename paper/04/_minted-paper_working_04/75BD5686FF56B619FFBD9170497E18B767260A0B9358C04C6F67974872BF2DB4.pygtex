@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Example folder structure}
+mkdir /home/\PYG{n+nv}{\PYGZdl{}USER}/project
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Clone repositories}
+git clone git@github.com:kcullimore/DOM\PYGZus{}research.git /home/\PYG{n+nv}{\PYGZdl{}USER}/project
+\end{Verbatim}

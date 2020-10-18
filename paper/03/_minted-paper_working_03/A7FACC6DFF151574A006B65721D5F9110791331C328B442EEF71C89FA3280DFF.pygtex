@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Emacs configuration files}
+/home/user/.emacs.d/
+\PYG{c+c1}{\PYGZsh{} Github repository for R DOM package}
+/project/DOM/
+\PYG{c+c1}{\PYGZsh{} Github repository for research documentation}
+./../../
+\PYG{c+c1}{\PYGZsh{} Experimental code for research}
+./../../code
+\PYG{c+c1}{\PYGZsh{} Files to generate report}
+./../../paper
+\PYG{c+c1}{\PYGZsh{} Miscellaneous files such as the Dockerfile, Fonts, Images, etc.}
+./../../resources
+\end{Verbatim}

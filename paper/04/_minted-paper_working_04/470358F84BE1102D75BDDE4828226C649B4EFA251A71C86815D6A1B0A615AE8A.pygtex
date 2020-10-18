@@ -1,0 +1,26 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}*******10********20********30********40********50********60********70********80}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Problem 2: START =\PYGZgt{} Optical Illusion Example}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}*******10********20********30********40********50********60********70********80}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Generate pdf file of plot (capture ends with dev.off() below)}
+\PYG{n+nf}{pdf}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}prob\PYGZhy{}02.pdf\PYGZdq{}}\PYG{p}{,} \PYG{n}{width} \PYG{o}{=} \PYG{l+m}{3}\PYG{p}{,} \PYG{n}{height} \PYG{o}{=} \PYG{l+m}{6}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Create theta values  for each line segments (i.e. 180 degs / 4 = 45 segments)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Remove elements in the center of vector (i.e. 80\PYGZhy{}100 degree section)}
+\PYG{n}{theta} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{seq}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{,} \PYG{k+kc}{pi}\PYG{p}{,} \PYG{n}{length} \PYG{o}{=} \PYG{l+m}{45}\PYG{p}{)[}\PYG{o}{\PYGZhy{}}\PYG{p}{(}\PYG{l+m}{20}\PYG{o}{:}\PYG{l+m}{26}\PYG{p}{)]}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Set parameters to be used in plot() (R = dummy radius, B = slope of lines)}
+\PYG{n}{R} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+m}{1}
+\PYG{n}{B} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{sin}\PYG{p}{(}\PYG{n}{theta}\PYG{p}{)} \PYG{o}{/} \PYG{n+nf}{cos}\PYG{p}{(}\PYG{n}{theta}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Setup plot space and define coordinate axes (also remove \PYGZsq{}edge buffer\PYGZsq{})}
+\PYG{n+nf}{plot.new}\PYG{p}{()}
+\PYG{n+nf}{par}\PYG{p}{(}\PYG{n}{mar} \PYG{o}{=} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{0.1}\PYG{p}{,} \PYG{l+m}{0.1}\PYG{p}{,} \PYG{l+m}{0.1}\PYG{p}{,} \PYG{l+m}{0.1}\PYG{p}{))}
+\PYG{n+nf}{plot.window}\PYG{p}{(}\PYG{n}{xlim} \PYG{o}{=} \PYG{n+nf}{c}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{p}{,} \PYG{n}{R}\PYG{p}{),} \PYG{n}{ylim} \PYG{o}{=} \PYG{n+nf}{c}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{p}{,} \PYG{n}{R}\PYG{p}{),} \PYG{n}{asp} \PYG{o}{=} \PYG{l+m}{1}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Create the black line segments}
+\PYG{n+nf}{for }\PYG{p}{(}\PYG{n}{i} \PYG{n}{in} \PYG{l+m}{1}\PYG{o}{:}\PYG{n+nf}{length}\PYG{p}{(}\PYG{n}{B}\PYG{p}{))} \PYG{n+nf}{abline}\PYG{p}{(}\PYG{n}{a} \PYG{o}{=} \PYG{l+m}{0}\PYG{p}{,} \PYG{n}{b} \PYG{o}{=} \PYG{n}{B}\PYG{p}{[}\PYG{n}{i}\PYG{p}{],} \PYG{n}{lwd} \PYG{o}{=} \PYG{l+m}{2}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Create the 2 red vertical lines}
+\PYG{n+nf}{abline}\PYG{p}{(}\PYG{n}{v} \PYG{o}{=} \PYG{n+nf}{c}\PYG{p}{(}\PYG{o}{\PYGZhy{}}\PYG{n}{R}\PYG{o}{/}\PYG{l+m}{2}\PYG{p}{,} \PYG{n}{R}\PYG{o}{/}\PYG{l+m}{2}\PYG{p}{),} \PYG{n}{col} \PYG{o}{=} \PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{,} \PYG{n}{lwd} \PYG{o}{=} \PYG{l+m}{4}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Stop image capture}
+\PYG{n+nf}{invisible}\PYG{p}{(}\PYG{n+nf}{dev.off}\PYG{p}{())}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}*******10********20********30********40********50********60********70********80}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Problem 2: END}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}*******10********20********30********40********50********60********70********80}
+\end{Verbatim}

@@ -1,0 +1,764 @@
+% Created 2020-10-19 Mon 10:16
+\documentclass[10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[a4paper,top=2.5cm,bottom=2cm,left=1.75cm,right=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancyplain}
+\usepackage{setspace}
+\setlength{\parindent}{1.5em}
+\setlength{\parskip}{0.5em}
+\renewcommand{\baselinestretch}{1.25}
+\usepackage{fontspec}
+\usepackage{bold-extra}
+\setmainfont{Taviraj}[Path = /project/resources/fonts/Taviraj/, Extension = .ttf, Scale=1.1, UprightFont = *-Light, BoldFont = *-SemiBold, ItalicFont = *-LightItalic, BoldItalicFont = *-SemiBoldItalic ]
+\setsansfont{Montserrat}[Path = /project/resources/fonts/Montserrat/, Extension = .ttf, Scale=MatchLowercase, UprightFont = *-Regular, BoldFont = *-Bold, ItalicFont = *-Italic, BoldItalicFont = *-BoldItalic ]
+\setmonofont{Inconsolata}[Path = /project/resources/fonts/Inconsolata/, Extension = .ttf, Scale=MatchLowercase, UprightFont = *-Regular, BoldFont = *-Bold]
+\usepackage {titlesec}
+\titleformat{\section}{\LARGE\sffamily\bfseries}{\thesection}{.9em}{}
+\titleformat{\subsection}{\Large\sffamily\bfseries}{\thesubsection}{.9em}{}
+\titleformat{\subsubsection}{\large\sffamily\bfseries}{\thesubsubsection}{.9em}{}
+\usepackage{unicode-math}
+\defaultfontfeatures{Ligatures=TeX}
+\setmathfont{texgyrepagella-math}[Path = /project/resources/fonts/TexGyre/, Extension = .otf]
+\usepackage{graphicx}
+\usepackage{graphbox}
+\usepackage{minted}
+\usepackage{enumitem}
+\setlist{nosep}
+\setlist[itemize,1]{label={▶}}
+\setlist[itemize,2]{label={--}}
+\usepackage{xcolor}
+\definecolor{shadecolor}{gray}{.96}
+\chead{CS-791}
+\lhead{\today}
+\rhead{Kane Cullimore}
+\date{}
+\title{}
+\hypersetup{
+ pdfauthor={Kane Cullimore (ID 286367861)},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 27.1 (Org mode 9.3)}, 
+ pdflang={English}}
+\begin{document}
+
+\begin{document}
+
+\begin{center}
+  \vspace{10mm} 
+  \LARGE\textbf{ Can Web Technologies Help R Generate }
+  \linebreak
+  \LARGE\textbf{ Print Quality Graphics? }
+  \vspace{10mm} 
+\end{center}
+
+\begin{center}
+\begin{center}
+\includegraphics[width=6.5in]{/project/resources/img/example_latex_graphic.pdf}
+\end{center}
+\color{green}
+\large\textsf{NOTE: Image to be updated with better example}
+\end{center}
+
+\begin{center}
+  \sffamily  
+  \vspace{20mm} 
+  \normalsize\textit{CompSci 791: Research Paper [Working version]}
+  \vspace{5mm}
+  \linebreak  
+  \normalsize\textit{Kane Cullimore}
+  \vspace{5mm}
+  \linebreak  
+  \normalsize\textit{\today}
+\end{center}
+
+\thispagestyle{empty}
+
+\newpage 
+
+\begin{abstract}  
+\sffamily  
+\vspace{2mm}
+\noindent  
+Abstract paragraph to cover the following main topics:
+\begin{itemize}
+\item Introduction and problem description
+\item layoutEngine and its limitations
+\item RSelenium backend
+\item NodeJS backend
+\item Future suggestions
+\end{itemize}
+
+\vspace{5mm}
+\noindent  
+\textbf{Document Structure}
+  
+\vspace{2mm}
+\noindent  
+This report is organized in the following way:
+\begin{itemize}
+\item A problem definition is given to explain the core functionality the layoutEngine library is provided
+\item A brief explanation of how the layoutEngine is intended to be used along with its current short-comings is covered
+\item The RSelenium layoutEngine back-end is introduced
+\item The NodeJS layoutEngine back-end is introduced
+\item A comparison of each back-end is given to identify areas of advancement
+\item Finally, a review of the overall layoutEngine approach is given and compared to some existing R extensions
+\end{itemize}
+\vspace{5mm}
+\textbf{Temporary Notes}  
+  
+\vspace{2mm}
+\noindent
+The planned size of document: 
+\begin{itemize}
+\item Background = 10 pages
+\item RSelenium Backend = 10 pages
+\item NodeJS Backend = 10 pages
+\item Comparisons and Wrap-up = 10 pages
+\end{itemize}
+
+\vspace{2mm}
+\noindent
+Presentation: 
+\begin{itemize}
+\item Time ~ 10 mins with 4 mins Qs
+\item Slide: Background and What problem it solves
+\item Quick demo (with backup slide)
+\item Slide: Diagram of lE system
+\item Slide: Identification of lE limitations
+\item Slide: New development
+\item Demo of latest and greatest examples
+\item Slide: Qs
+\end{itemize}
+
+\end{abstract}  
+
+\newpage  
+\setcounter{tocdepth}{2}
+\tableofcontents
+
+\newpage
+
+\section{Introduction}
+\label{sec:org35ba7ec}
+
+The \textbf{\href{https://www.r-project.org/}{R programming language}} is a popular open-source statistical analysis tool. The language has many libraries that support sophisticated statistical techniques. Many of these rely on graphical output to communicate results. A strong appeal of this programming language is the ease at which its \textbf{core graphics system} (TODO: add glossary item) generates graphical output that is both accurate and effective at communicating this type of information. 
+
+Few open-source alternatives offer an equivalent set of sophisticated statistics married to a flexible and powerful graphics system like R. The Python programming language is a strong competitor. However, its focus is more general purpose with fewer specialized statistics libraries that generate these types of graphics  (although it is catching up(??)). 
+
+As the R programming language has grown in popularity so to has the number of specialized applications. One such use-case is the incorporation of the statistics based graphics within published articles. While the raw dots and dashes used to generate these graphics is of sufficient digital quality there are several fundamental publishing requirements which are not supported.
+
+\section{Problem Description}
+\label{sec:org1528b81}
+
+The publishing industry has a long history dating back to the 15\textsuperscript{th} century when movable type printing was first invented. As the industry evolved within digital platforms it has brought with it a system of long-standing expectations for content. As a result, digital publications often have a myriad of requirements for graphics which are referred to in this report as \textbf{\textbf{print quality graphics}}. These requirements include \textbf{(1)} writing system and font specifications, \textbf{(2)} document layout and typesetting, \textbf{(3)} sophisticated content rendering, and \textbf{(4)} control over output resolution and file format.
+
+R users have a powerful tool for generating statistics based graphics but they will struggle to support many of these requirements. Examples include (TODO: provide plot examples): 
+\begin{itemize}
+\item Using multiple font types in the same graphic
+\item Embedded tables and text-boxes with wrapped text
+\item Complex layouts of text and graph components
+\item TODO: add to or modify list
+\end{itemize}
+
+One existing solution to produce print quality graphics is to modify the R graphical output with external tools such as \LaTeX{} or \emph{Adobe Illustrator}. The user must either be proficient in both environments or have a specialist available to help. 
+
+Another solution would rely on several existing R libraries. Such libraries offer bits of this functionality ad hoc. The user would remain within the R ecosystem but might need several libraries depending on the publishing requirements. This modular feature-set composition is the \emph{standard R approach} to extend its functionality. 
+
+This research reviews an alternative approach where the print quality graphic is generated from within the R ecosystem with a single general purpose solution. This approach is central to the \textbf{layoutEngine} R library which incorporates \textbf{web technologies} to extend the functionality of the R graphics system. It is based on the understanding that web technologies and modern browsers have long supported the special needs of the publishing industry. Therefore, if the layoutEngine can successfully utilize the browsers graphics system, it can bring a full-suite of industry leading functionality to R users. 
+
+This research does \emph{not} address the relative performance and functionality difference between the layoutEngine approach and the \emph{standard R approach}. Rather, it \emph{first} explores the efficacy of this \emph{layoutEngine approach}, and \emph{second}, attempts to improve upon the implementation of the existing layoutEngine library to address several existing limitations. 
+
+\section{The layoutEngine R Library}
+\label{sec:orgdc9379c}
+
+The intent of the \textbf{\href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html}{layoutEngine}}[TODO: Add to References] R library is to extend R's graphical system by adopting functionality available in web technologies. To achieve this, its core functionality is to act as a high-level interface between R and a web browser and thereby tap into the rich feature set. While the library is available to review via the \href{https://github.com/pmur002/layoutengine}{layoutEngine repository}, it is still in development and not yet available in \textbf{\href{https://CRAN.r-project.org/}{CRAN}}. 
+
+\subsection{The Standard R Approach}
+\label{sec:org1984e58}
+
+The \emph{standard R approach} to extending its functionality has been paramount to the success of open-source programming languages. Available libraries are loaded into the scope of an environment to gain functionality. If a larger feature set is need then several libraries are loaded as a type of modular system. There are many advantages to this approach and it is a key reason why these languages and user communities have thrived. 
+
+Several \textbf{\href{https://CRAN.r-project.org/web/packages/available\_packages\_by\_name.html}{available CRAN packages}} offer functionality which meet some publishing requirements. Many of these libraries are well executed and perform admirably. The \emph{\href{https://github.com/wilkelab/ggtext}{ggtext}} package enables multiple font types to be specified in the same graphic. The \emph{\href{https://github.com/thomasp85/patchwork}{patchwork}} package offers a similar functionality specifically for arranging several ggplots with claims of increased simplicity and flexibility. In addition, the base package \emph{\href{https://stat.ethz.ch/R-manual/R-devel/library/grid/html/grid.layout.html}{grid}} has a \texttt{layout} function which creates a \texttt{Grid} layout object that enables plots from different systems to be arranged together. Many other libraries extend R towards the realm of print quality graphics but no general purpose solution exists at this point in time.[TODO: add all to References] Together they establish that a need does exists for this type of extended functionality for R users. 
+
+NOTE: Also references Paul's list per \href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html}{HTML Rendering article}
+
+This approach might eventually succeed in offering a general purpose solution to generate print quality graphics. However, several difficulties exist would first need to be overcome. First, the publishing requirements represent an extensive set of functionality. In addition, the variety of graphical output this must operate with is also large. As a result, the task of coordinating a suite of purpose-built libraries that is flexible enough to cover all scenarios would be significant. This is both difficult from both a developer and user perspective due to the large number of functions and objects to handle. 
+
+\subsection{The layoutEngine Approach}
+\label{sec:orgacc7616}
+
+The \emph{layoutEngine approach} differs with the way it extends the functionality of R. It acts as a portal between the graphics system in R and a modern web browser so as to avoid reinventing the wheel. Instead it aims to adopt from an industry that has a long history supporting publishing requirements. This approach bypasses the need to build a complex system from the ground up. 
+
+This approach aims to take advantage of preexisting technologies to generate print quality graphics. First, a user can rely on existing R libraries to generate HTML from R data objects which removes the need to translate between languages. Second, it adopts the sophistication of web technologies and modern web browsers that already support much of publishing industry requirements. In addition, since the R user will have unbridled access to these web technologies, the functionality of the R graphics system would be greatly extended. 
+
+\begin{center}
+\textsf{Placeholder for Figure: layoutEngine Process}
+\end{center}
+
+The figure above demonstrates the process of a general use-case. In summary, it starts with a graphic partially defined in R. This is converted to HTML where some additional definition could be added. The browser readable definition is transferred and loaded into a web browser where its layout and rendering engine generate the desired graphic in the browser window. A JavaScript function is then executed to calculate the position of each component on the page. This data is then sent back to R in CSV format where the layoutEngine will convert it to a R readable graphic object. This can then be displayed in the R graphics window or sent directly to an image file. 
+
+\subsection{Solution Design}
+\label{sec:orgf66871e}
+
+The layoutEngine solution is designed as a two-component system. The layoutEngine \textbf{\href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html}{primary library}} is configured to interface with one of several available layoutEngine \textbf{\href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html\#backends}{backend libraries}}[TODO: Add to References]. The primary library acts as the interface for R users while the backend library is the interface between R and the web browser. The solution design is separated into these components as much of the complexity exists in the backend library. This abstracts much of the complexity away from the user and allows improvements to be made to backend library with little impact to the user.
+
+The primary library is a relatively simple and robust interface. It provides several helper functions to pass graphics-based data between the R user and layoutEngine backend. [TODO: extend description]
+
+The backend library has many complexities to manage which present the primary challenge of this solution. The key mechanisms and complexities the backend library must contend with include:
+\begin{itemize}
+\item Variability in Host Machine 
+\begin{itemize}
+\item Cross-platform system calls (macOS, Windows and Linux)
+\item System and R dependencies
+\end{itemize}
+\item Functionality
+\begin{itemize}
+\item Locate and manage a modern web browser session
+\item Send and receive data between a R session and web browser
+\item Query and modify the web-page DOM [TODO: Add glossary term]
+\end{itemize}
+\end{itemize}
+
+There are three layoutEngine backends available for use with the layoutEngine at the time of this research. These backends successfully demonstrate the viability of this approach. 
+
+\subsection{Benefits}
+\label{sec:orga5abc74}
+\subsubsection{General}
+\label{sec:orgcd81865}
+\begin{itemize}
+\item Integration of the image within other content that is accessible programmatically
+\item Not just an embedded graphic
+\item HTML knows about the interior of the R graphic and is NOT just a dumb blob
+\item Access to a huge amount of functionality of the web technology stack
+\item Web Tech is a vibrant community
+\item Browsers are extremely sophisticated and competitively being enhanced each year
+\item Take advantage of the large variety of packages and methods that currently generaate HTML
+\begin{itemize}
+\item Knitr (markdown?)
+\item xtable
+\item htmltools (RStudio \url{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html\#pkg:htmltools})
+\item Others?
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item \href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html\#backends}{layoutEngine Backends}
+\end{itemize}
+
+\subsubsection{DOM Backend}
+\label{sec:org2441be1}
+\begin{itemize}
+\item\relax [TODO]
+\item Based on Paul's DOM package
+\item Live visual feedback for debugging, reviewing output
+\item Access to latest web browser and therefore latest HTML, CSS and JS specs
+\end{itemize}
+
+\subsubsection{PhantomJS Backend}
+\label{sec:orgc666f50}
+\begin{itemize}
+\item\relax [TODO]
+\item Simple, lightweight, few dependencies
+\item Per Ref
+\begin{itemize}
+\item Based on WebKit browser engine (Apple from Chrome)
+\item Does not require a GUI and performs layout off-screen
+\end{itemize}
+\end{itemize}
+
+\subsubsection{CSSBox Backend}
+\label{sec:orga546986}
+\begin{itemize}
+\item Per Ref
+\begin{itemize}
+\item Based on CSSBox Java library
+\item Generates HTML layout information directly (i.e. standalone HTML layout engine)
+\item Generates information for every line of text after layout which is better than most web browsers
+\end{itemize}
+\item\relax [TODO: get some feedback on this from Paul]
+\end{itemize}
+
+
+\subsection{Limitations}
+\label{sec:org9cccfee}
+\subsubsection{General}
+\label{sec:orge199104}
+\begin{itemize}
+\item Have to learn and write in HTML/CSS/JS
+\item Security layer around using a browser
+\item System dependencies across all OS is trouble
+\item Font managing software customized per OS
+\item Per Ref
+\begin{itemize}
+\item Cairo-based R graphics devices (and pdf \& postscript)
+\item Matching or converting X11 fonts for the X11 device to fonts the layout backends can use would be hard
+\item Support for native Windows and MacOS graphics devices
+\item Smallish list of CSS that is support in layoutEngine currently do nothing when pushed back to R from the backend
+\item Issues with hyphens in CSS (as string variables in R)
+\item Pixel resolution compatibility (resolution of graphics device should be set to 96 dpi)
+\item Not a fast process (rendering HTMl) => speed cost for expanded functionality
+\end{itemize}
+\end{itemize}
+
+
+
+\subsubsection{DOM Backend}
+\label{sec:orgb994d31}
+\begin{itemize}
+\item\relax [TODO]
+\item Default browser opens every call
+\item Per Ref
+\begin{itemize}
+\item See article about managing font types
+\end{itemize}
+\end{itemize}
+
+\subsubsection{PhantomJS Backend}
+\label{sec:orgf6c35f6}
+\begin{itemize}
+\item\relax [TODO]
+\item Lack of visual feedback
+\item No longer developed so will eventually lose support
+\item Based on older WebKit engine so behind on HTML and CSS specs
+\end{itemize}
+
+\subsubsection{CSSBox Backend}
+\label{sec:orgc2c77da}
+\begin{itemize}
+\item Per Ref
+\begin{itemize}
+\item Have to keep track of levels of accuracy based on what device HTML will be rendered on
+\item Lags browsers support of web standards (modern CSS specifically)
+\end{itemize}
+\item\relax [TODO]
+\end{itemize}
+
+
+
+\newpage   
+\section{layoutEngine Development}
+\label{sec:org2d05cad}
+
+\subsection{Objectives}
+\label{sec:org4e91967}
+
+The viability of the layoutEngine approach is still being explored and it is the layoutEngine backend where the majority of the limitations reside. There are several existing back-ends however each has certain limitations that must be rectified before community adoption is possible. 
+
+This report introduces two newly developed layoutEngine back-ends' which attempt to address the limitations of the existing designs. One relies on a \textbf{\href{https://www.selenium.dev/documentation/en/}{Selenium}} server hosted within a \textbf{\href{https://www.docker.com/resources/what-container}{Docker container}} container. The second is a custom \textbf{\href{https://www.docker.com/resources/what-container}{NodeJS}} server also hosted with Docker. 
+
+
+\subsection{Requirements}
+\label{sec:orgc73cf71}
+
+The backend must support a browser compatible communication protocol. Data must be transferred between R and the browser in both directions. The backend must first send the raw HTML based data to the browser. It must 
+
+\begin{enumerate}
+\item Explain improvements are needed with the \textbf{backend}
+\label{sec:org05b266f}
+\item What does the \textbf{backend} need to achieve?
+\label{sec:orga313e0e}
+\item What solution designs were considered?
+\label{sec:org949d114}
+\item How do these compare to each other?
+\label{sec:org2c431c6}
+\item What (and why) were the two \textbf{backend} designs chosen?
+\label{sec:org053f97b}
+
+\newpage
+\end{enumerate}
+\section{RSelenium Backend}
+\label{sec:org5993571}
+\subsection{Solution Design}
+\label{sec:org6103b0c}
+
+\subsection{Benefits}
+\label{sec:org2aa8bcf}
+\subsection{Limitations}
+\label{sec:orgc5ba049}
+
+\newpage
+\section{NodeJS Backend}
+\label{sec:orgcab1752}
+\subsection{Solution Design}
+\label{sec:org729507f}
+\subsection{Benefits}
+\label{sec:org3afee3d}
+\subsection{Limitations}
+\label{sec:orgc4b71ce}
+
+\newpage
+\section{Comparison}
+\label{sec:orga21328a}
+\begin{enumerate}
+\item Summary of solution features, benefits and limitations
+\label{sec:org91641df}
+\item How do they rank with the existing \textbf{backends}?
+\label{sec:org50f2b58}
+
+\newpage
+\end{enumerate}
+\section{Recommendations}
+\label{sec:org55b7a8b}
+\begin{enumerate}
+\item Overview of layoutEngine as a solution to generating print quality graphics
+\label{sec:org1b2e69e}
+\item Do the new backends improve its performance?
+\label{sec:orgdc6b0ef}
+\item Where should future development work concentrate?
+\label{sec:orgcae829d}
+
+\newpage
+\appendix
+\addappheadtotoc
+\end{enumerate}
+
+\section{Appendix}
+\label{sec:org9814386}
+\sffamily  
+\setlength{\parindent}{0em}    
+\subsection{Development Environment}
+\label{sec:orga374626}
+
+A single Docker container is used to perform research, experimentation, R package development and documentation. This environment was chosen to easily share the development content with others for collaboration and feedback. It will also ensure that any future return to this research can be resurrected with a working code-base independent of software changes.  
+
+
+The report and R development have been performed within Emacs and ESS environment inside of the Docker container. The report is written within the Emacs org-mode markdown language which abstracts some \LaTeX{} syntax while also providing literate programming options which are more flexible than generic markdown or Rmarkdown.  
+
+
+Some basic Docker and Emacs commands are provided to walk the user through some of aspects of the build and editing processes. 
+
+
+\subsubsection{Docker container description}
+\label{sec:org8abbc43}
+
+
+\uline{Overview}: The Docker container is publicly available on \href{https://hub.docker.com/}{Docker Hub} with the following image name \textbf{kcull\textbackslash dom\_r}. The container is built from the Ubuntu 18.04 image and has R 3.6.1 and Emacs 26.3 installed. The container has been configured to run Emacs in its GUI environment on the host machine. 
+
+\noindent
+\uline{User and Home Directory}: The user is logged in as a sudo-user with \texttt{/home/user/} as the \$HOME directory. The sudo password is ``password.'' The working directory is \texttt{/project/} which both the shell and Emacs will initialize into. 
+
+\noindent
+\uline{Directory Organization}: The project is organized into 2 main directories which are each linked to github repositories. Directory 1 is the forked \texttt{DOM} package which is extended per this research. Directory 2 is the research effort which contains the experimental code and files used to create this report. Both directories should be created and maintained on the host machine and then connected to the Docker container with a \textbf{bind mount} option when the container is running. 
+
+\noindent
+\uline{Directory Hierarchy}:  
+
+\begin{minted}[breaklines=true,breakanywhere=true]{bash}
+# Emacs configuration files   
+/home/user/.emacs.d/ 
+# Github repository for research paper
+/project/
+# Github repository for layoutEngine
+/opt/layoutengine
+# Experimental code for layoutEngineRSelenium
+/opt/layoutenginerselenium
+# Experimental code for layoutEngineNodeJS
+/opt/layoutenginenodejs
+\end{minted}
+
+
+
+\subsubsection{Host setup and Docker run instructions}
+\label{sec:org861ff67}
+
+The following instructions are provided to recreate the development environment. This has only been tested from within a host machine running Ubuntu 18.04 but is assumed to be compatible with other Debian derivatives. The Dockerfile used to build the container is supplied which should enable the necessary tweaks to support other host machine environments. 
+
+\setlength{\parindent}{2em}  
+
+1 - Ensure docker and git are installed and correctly configured to download the docker image and clone repositories.  
+
+2 - Obtain access to the private github repository, \url{https://github.com/kcullimore/DOM\_research}, for the research content by emailing myself at <kane@ia.house>. 
+
+3 - Create a working directory on the host machine and clone each github repositories as shown below:  
+
+\BeforeBeginEnvironment{}\{\begin{shaded}
+\begin{minted}[breaklines=true,breakanywhere=true]{bash}
+## Example folder structure  
+mkdir /home/$USER/project
+## Clone repositories
+git clone git@github.com:kcullimore/DOM_research.git /home/$USER/project
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+4 - Run the following commands within the host terminal but first ensure the target directories are correct per Step 3 (i.e. verify source= \textbf{/home/\$USER/proj...} is correct). 
+
+
+\BeforeBeginEnvironment{}\{\begin{shaded}
+\begin{minted}[breaklines=true,breakanywhere=true]{bash}
+## Open host machine devices to container (only need to do once per reboot)
+xhost +local:
+## Run docker container linked to directories with bind-mount  ------------------
+docker run --rm -it \
+       --network host \
+       --env DISPLAY=unix$DISPLAY \
+       --volume /tmp/.X11-unix:/tmp/.X11-unix \
+       --mount type=bind,source=/home/$USER/project/,target=/project/ \
+       --name layoutEngine-test \
+       kcull/layoutEngine-research:latest 
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+\newpage  
+
+5 - Once the docker container is up and running verify folder structure has correctly mapped the host directories.  
+
+6 - Open Emacs in the container's terminal: \texttt{\$ Emacs}. The host should launch Emacs in its GUI form (i.e. not within the shell). If this doesn't occur verify steps 4 were followed thoroughly (NOTE: After reboot the display device will have to be provided access again with the \texttt\{$\backslash$$ xhost +local: command). 
+
+7 - From within Emacs perform the following operations to open and recreate the current report 
+
+\begin{itemize}
+\item Opens Treemacs with \texttt{M-0}
+\item Open folder structure to \texttt{./../../paper/} with Tab-Enter or Mouse
+\item Open org-mode markdown file \texttt{/paper\_working.org} with Enter or Mouse double-click
+\item Make some edits to the file and save with \texttt{C-x C-s}
+\item Launch Export Dispatcher menu with \texttt{C-c C-e}
+\item Create new PDF file with \texttt{C-l C-o}
+\end{itemize}
+
+8 - The PDF should have opened automatically which you can scroll through with arrow keys or the mouse scroll wheel.  Use \texttt{q} key to minimize the PDF buffer.  
+
+9 - Close Emacs with \texttt{C-x C-c} and exit the container by typing \texttt{exit} at the terminal. 
+
+10 - Navigate to the project directory on the host machine and verify the new PDF and edited org-mode file were correctly saved. 
+
+11 - If the above worked the project appears to be correctly established on the host machine.  
+
+
+\subsubsection{Emacs within Docker Container}
+\label{sec:org6d2148b}
+
+\setlength{\parindent}{0em}  
+
+\uline{Emacs Terminology}  
+
+\begin{itemize}
+\item \textbf{buffer:} 'Screen' or 'window' user operates within
+\item \textbf{marking:} Highlighting region of window
+\end{itemize}
+
+
+Often used commands can be found at \url{https://www.gnu.org/software/emacs/refcards/pdf/refcard.pdf}.
+
+
+
+\uline{Customized keybindings}  
+
+\begin{itemize}
+\item Open emacs configuration file with \texttt{C-c e}  (Emacs must be restarted for changes)
+\item Expand all nested/hidden text within *.org file with \texttt{Shift-Tab Shift-Tab Shift-Tab}
+\item Copy, cut and paste with standard keybindings per \textbf{Cua Mode}
+\item Switch visual line wrap with \texttt{M-9}
+\item Switch to truncate long-line view with \texttt{M-8}
+\item Enter/Exit rectangle edit mode with \texttt{C-\string^}
+\item Enter/Exit multi-edit mode by highlighting word and then \texttt{C-u}
+\item Auto-indent R script (via ESS) by highlighting buffer with \texttt{C-x h} and then \textt{C-M-\}
+\end{itemize}
+
+
+\uline{Document Export} 
+
+When a PDF version of the document is produced a standard \TeX{} file (*.tex) is also produced after transpilation. This \TeX{} file can be edited and used with a standard \LaTeX{} command: \texttt{latex report.tex}.  
+
+
+
+To be continued\ldots{}
+
+\newpage
+\subsection{Org-mode examples}
+\label{sec:org89ce42c}
+
+\subsubsection{Font definitions}
+\label{sec:org5f5876a}
+\setlength{\parindent}{0em}  
+
+
+Using \LaTeX{} fontspec package \cite{type01}
+
+\sffamily
+\uline{Sans}  
+
+Internet based applications are an increasingly popular way to communicate and interact with complex data. 
+
+\sffamily\itshape 
+\uline{Sans italic}  
+
+Internet based applications are an increasingly popular way to communicate and interact wtih complex data. 
+
+\sffamily\itshape\bfseries 
+\uline{Sans italic bold}  
+
+This might include a business application that assist employees unverstand the current state of the market.
+
+\normalfont 
+\uline{Serif}   
+
+It might also include a news website communicating techincal details from a story such census data. 
+
+\normalfont\itshape 
+\uline{Serif italic}   
+
+It might also include a news website communicating techincal details from a story such census data.  
+
+\normalfont\itshape\bfseries    
+\uline{Serif italic bold}   
+
+It might also include a news website communicating techincal details from a story such census data.  
+
+\normalfont
+\ttfamily    
+\uline{Mono type}   
+
+It might also include a news website communicating techincal details from a story such census data.  
+
+\bfseries
+\uline{Mono Bold type}
+
+\texttt{\bfseries The quick brown fox 012456789}
+
+\normalfont
+\sffamily  
+
+
+
+\newpage  
+\subsubsection{Sample R code highlighting}
+\label{sec:orgae9a197}
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{r}
+##*******10********20********30********40********50********60********70********80
+## Problem 2: START => Optical Illusion Example
+##*******10********20********30********40********50********60********70********80
+## Generate pdf file of plot (capture ends with dev.off() below)
+pdf("prob-02.pdf", width = 3, height = 6)
+## Create theta values  for each line segments (i.e. 180 degs / 4 = 45 segments)
+## Remove elements in the center of vector (i.e. 80-100 degree section)
+theta <- seq(0, pi, length = 45)[-(20:26)]
+## Set parameters to be used in plot() (R = dummy radius, B = slope of lines)
+R <- 1
+B <- sin(theta) / cos(theta)
+## Setup plot space and define coordinate axes (also remove 'edge buffer')
+plot.new()
+par(mar = c(0.1, 0.1, 0.1, 0.1))
+plot.window(xlim = c(-R, R), ylim = c(-R, R), asp = 1)
+## Create the black line segments
+for (i in 1:length(B)) abline(a = 0, b = B[i], lwd = 2)
+## Create the 2 red vertical lines
+abline(v = c(-R/2, R/2), col = "red", lwd = 4)
+## Stop image capture
+invisible(dev.off())
+##*******10********20********30********40********50********60********70********80
+## Problem 2: END
+##*******10********20********30********40********50********60********70********80
+
+
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+
+
+
+\newpage  
+\subsubsection{Sample HTML code highlighting}
+\label{sec:orgdd9ba41}
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{html}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1,
+	    maximum-scale=1.0, user-scalable=0"
+    />
+    <!-- favicon -->
+  </head>
+  <body>
+    <title>DOM - Testing Application</title>
+    <div id="AppDiv" class="app-div"></div>
+  </body>
+</html>
+
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+\subsubsection{Sample CSS code highlighting}
+\label{sec:orgd20ee09}
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{css}
+.iah-text-Raleway {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+}
+
+.iah-text-black {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 500;
+  font-size: 2em;
+  overflow-wrap: break-word;
+  margin: 10px;
+  color: var(--iah-grey-dark);
+}
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}
+
+\newpage 
+\subsubsection{Sample JavaScript code highlighting}
+\label{sec:org5247c56}
+
+\BeforeBeginEnvironment{}\{\begin{shaded}  
+\begin{minted}[breaklines=true,breakanywhere=true]{javascript}
+var args = []; // Empty array, at first.
+for (var i = 0; i < arguments.length; i++) {
+    args.push(arguments[i])
+} // Now 'args' is an array that holds your arguments.
+
+// ES6 arrow function
+var multiply = (x, y) => { return x * y; };
+
+// Or even simpler
+var multiply = (x, y) => x * y;    
+\end{minted}
+\AfterEndEnvironment{}\{\end{shaded}  
+
+
+
+
+
+\newpage  
+\section{References}
+\label{sec:org4a2971a}
+Murrell, P. (2018). ``Rendering HTML Content in R Graphics'' Technical Report 2018-13, Department of Statistics, The University of Auckland.
+
+
+
+\begin{thebibliography}{bib}
+
+\bibitem{type01}
+
+package used to manage fonts within xelatex (or luatex)
+fontspec: http://ctan.math.washington.edu/tex-archive/macros/latex/contrib/fontspec/fontspec.pdf
+
+
+\end{thebibliography}
+
+
+
+\end{document}
+\end{document}

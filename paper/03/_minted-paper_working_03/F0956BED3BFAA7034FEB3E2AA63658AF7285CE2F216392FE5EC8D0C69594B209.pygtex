@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} The arguments are passed from htmlPage() and the newly created page and response ids}
+startDOMServer\PYG{p}{(}
+    pageID\PYG{o}{=}pageID\PYG{p}{,} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} id assigned to the server instance}
+    host\PYG{o}{=}host\PYG{p}{,}  \PYG{c+c1}{\PYGZsh{}\PYGZsh{} URL to launch the web page with}
+    app\PYG{o}{=}client\PYG{o}{\PYGZdl{}}app\PYG{p}{,} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} from the global options}
+    port\PYG{o}{=}\PYG{k+kc}{NULL}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Currently the port \PYGZsh{} is randomly assigned at the next step}
+    body\PYG{o}{=}html\PYG{p}{,} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} html content to pass along}
+    head\PYG{o}{=}\PYG{k+kp}{head}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} any headers to add to the web page}
+    tag\PYG{o}{=}tag \PYG{c+c1}{\PYGZsh{}\PYGZsh{} the request id}
+    \PYG{p}{)}
+\end{Verbatim}

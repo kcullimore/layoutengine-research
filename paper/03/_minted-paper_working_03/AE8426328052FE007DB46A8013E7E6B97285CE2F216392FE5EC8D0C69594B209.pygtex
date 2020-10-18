@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{library}\PYG{p}{(}DOM\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Loads methods and generates 5 objects within the global options}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 1) DOM.client with 3 methods}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} \PYGZdl{}app: the primary function used to define the server logic when the web page is launched}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} \PYGZdl{}run: the function that is called to launch the browser on the host machine}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} \PYGZdl{}kill: the function called to clean up when the server is shut down}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 2) DOM.debug is set to FALSE}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 3) DOM.limit is set to 5}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 4) DOM.width is set to 800}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} 5) DOM.length is set to 600}
+\end{Verbatim}

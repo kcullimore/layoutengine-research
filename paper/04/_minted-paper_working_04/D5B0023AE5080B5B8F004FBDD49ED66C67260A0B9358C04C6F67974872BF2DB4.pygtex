@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{} Emacs configuration files}
+/home/user/.emacs.d/
+\PYG{c+c1}{\PYGZsh{} Github repository for research paper}
+/project/
+\PYG{c+c1}{\PYGZsh{} Github repository for layoutEngine}
+/opt/layoutengine
+\PYG{c+c1}{\PYGZsh{} Experimental code for layoutEngineRSelenium}
+/opt/layoutenginerselenium
+\PYG{c+c1}{\PYGZsh{} Experimental code for layoutEngineNodeJS}
+/opt/layoutenginenodejs
+\end{Verbatim}

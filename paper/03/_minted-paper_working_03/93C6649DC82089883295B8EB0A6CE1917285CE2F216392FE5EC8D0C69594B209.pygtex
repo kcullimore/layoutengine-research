@@ -1,0 +1,5 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{library}\PYG{p}{(}DOM\PYG{p}{)}
+text \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZdq{}\PYGZlt{}p\PYGZgt{}Some text lies here...\PYGZlt{}/p\PYGZgt{}\PYGZdq{}}
+p \PYG{o}{\PYGZlt{}\PYGZhy{}} htmlPage\PYG{p}{(}text\PYG{p}{)}
+\end{Verbatim}
