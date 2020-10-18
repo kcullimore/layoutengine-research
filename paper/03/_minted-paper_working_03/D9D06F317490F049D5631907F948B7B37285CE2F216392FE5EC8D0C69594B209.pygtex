@@ -1,8 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-text \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZdq{}\PYGZlt{}p\PYGZgt{}Some text lies here...\PYGZlt{}/p\PYGZgt{}\PYGZdq{}}
-p \PYG{o}{\PYGZlt{}\PYGZhy{}} htmlPage\PYG{p}{(}html\PYG{o}{=}text\PYG{p}{,} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Body of web page at initiation}
-       head\PYG{o}{=}\PYG{l+s}{\PYGZdq{}\PYGZdq{}}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Arguments to place into the HTML header}
-\PYG{o}{\PYGZca{}\PYGZca{}}I      host\PYG{o}{=}\PYG{l+s}{\PYGZdq{}127.0.0.1\PYGZdq{}}\PYG{p}{,} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} The URL address for localhost}
-\PYG{o}{\PYGZca{}\PYGZca{}}I      client\PYG{o}{=}\PYG{k+kp}{getOption}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}DOM.client\PYGZdq{}}\PYG{p}{)} \PYG{c+c1}{\PYGZsh{}\PYGZsh{} Default definition of the server logic}
-    \PYG{p}{)}
-\end{Verbatim}

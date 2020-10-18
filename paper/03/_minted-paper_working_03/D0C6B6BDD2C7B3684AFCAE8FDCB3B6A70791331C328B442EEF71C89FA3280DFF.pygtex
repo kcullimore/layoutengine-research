@@ -1,7 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Example folder structure}
-mkdir \PYGZhy{}p \PYGZti{}/project/\PYG{o}{\PYGZob{}}DOM,research\PYG{o}{\PYGZcb{}}
-\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Clone repositories}
-git clone git@github.com:kcullimore/DOM.git \PYGZti{}/project/DOM
-git clone git@github.com:kcullimore/DOM\PYGZus{}research.git \PYGZti{}/project/research
-\end{Verbatim}
