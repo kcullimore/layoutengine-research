@@ -44,7 +44,7 @@ $ docker run --rm -it \
 
 From the container terminal prompt open report in Emacs:  
 ```
-$ emacs /project/paper/layoutengine-research-paper.orglp
+$ emacs /project/paper/layoutengine-research-paper.org
 ```
 
 From Emacs org-mode generate PDF with ``C-c C-e l o`` command  
