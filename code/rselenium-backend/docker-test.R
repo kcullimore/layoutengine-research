@@ -1,19 +1,19 @@
 
 
-##----------------------------------------------------------------------------80
-html <- c('<div style="width: 350px; border-width: 1px; border-style: solid">',
-          '<div style="background-color: #7db9e8;
-                       width: 200px; height: 200px;
-                       float: right; shape-outside: circle()"/>',
-          '<p>This text flows around a circle! Try doing that
-              in R!</p>',
-          '</div>')
-
-
-## layoutEngine with DOM backend
+## layoutEngineRSelenium testing the docker container functionality
 ##-------------------------------------##--------------------------------------##
-library(layoutEngine)
 library(layoutEngineRSelenium)
+
+
+settings <- list(url="localhost", port=4444L, network="bridge", shm_size="1g",
+                 browser_type="firefox", headless=FALSE,
+                 image_request=NULL, fresh_pull=FALSE)
+
+container <- dockerContainer(settings)
+container$run()
+container$getInfo()
+container$close()
+system("docker ps")
 
 ## Default - Firefox browser open and persisting after running
 options(layoutEngine.RSelenium=list(
@@ -22,6 +22,10 @@ options(layoutEngine.RSelenium=list(
                          url="localhost", headless=FALSE),
             docker=list(name="rselenium-container",
                         freshPull=FALSE, imageRequest=NULL)))
+
+
+
+
 
 
 p <- grid.html(html)

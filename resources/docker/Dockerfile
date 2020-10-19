@@ -80,7 +80,7 @@ RUN apt-get update \
       libpoppler-cpp-dev \
       bibtex2html \
       subversion \
-      fontforge
+      fontforge 
 
 # Install browsers
 RUN apt-get update && apt-get install -y \
@@ -121,6 +121,19 @@ RUN apt-get update \
 #    && apt-get install -y nodejs
 
 
+# Install docker cli for docker sibling control
+RUN apt-get update && apt-get install -y \
+    apt-transport-https \
+    gnupg-agent
+RUN curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+RUN add-apt-repository \
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    stable"
+RUN apt-get update && apt-get install -y \
+    docker-ce-cli 
+
+
 # Install R
 RUN apt-get update \ 
     && sed -i.bak "/^#.*deb-src.*universe$/s/^# //g" /etc/apt/sources.list \
@@ -139,10 +152,18 @@ RUN R -e "install.packages(c('rmarkdown', 'knitr', 'devtools', 'httpuv', 'xtable
          'RColorBrewer', 'colorspace', 'RSelenium', 'gridxl', 'gridSVG', 'jsonlite', 'httr'), \ 
          dependencies=TRUE, repos='https://cloud.r-project.org')" \
     && R -e "devtools::install_version('XML', '3.98-1.4', repos='https://cloud.r-project.org')" \
+    && R -e "devtools::install_github('pmur002/DOM')" \
     && R -e "devtools::install_github('pmur002/layoutengine')" \
     && R -e "devtools::install_github('pmur002/layoutenginedom')" \    
     && R -e "devtools::install_github('kcullimore/layoutenginerselenium')" \
     && R -e "r <- getOption('repos'); r['CRAN'] <- 'https://cloud.r-project.org'; options(repos=r)"
+
+
+# Make fonts available to R (and establish font databases and caches)
+# locale set up MUST precede this so that font set up uses correct locale
+ENV LANG=C.UTF-8
+RUN R -e 'gdtools::sys_fonts()'
+RUN R -e 'extrafont::font_import(prompt=FALSE)'
 
 
 # Setup sudo User
@@ -153,14 +174,10 @@ ENV HOME /home/user
 RUN useradd --create-home --home-dir $HOME user \
     && echo "user:password" | chpasswd \
     && adduser user sudo \ 
-    && chown -R user:user $HOME /opt
+    && chown -R user:user $HOME /opt \
+    && groupadd --gid 999 docker \
+    && usermod -aG docker user
 USER user
-
-
-# Make fonts available to R (and establish font databases and caches)
-# locale set up MUST precede this so that font set up uses correct locale
-RUN R -e 'gdtools::sys_fonts()'
-RUN R -e 'extrafont::font_import(prompt=FALSE)'
 
 
 # Copy Emacs configuration files, GitHub repos and set working directory
@@ -171,4 +188,4 @@ RUN git clone https://github.com/kcullimore/layoutenginerselenium /opt/layouteng
 WORKDIR /project
 
 
-ENV COLORTERM=gnome-terminal TERM=xterm-256color EDITOR=emacs DEBIAN_FRONTEND=newt NO_AT_BRIDGE=1 LANG=C.UTF-8
+ENV COLORTERM=gnome-terminal TERM=xterm-256color EDITOR=emacs DEBIAN_FRONTEND=newt NO_AT_BRIDGE=1 

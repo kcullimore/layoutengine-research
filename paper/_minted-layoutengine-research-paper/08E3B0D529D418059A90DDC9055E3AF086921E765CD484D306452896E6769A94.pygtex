@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Run docker container linked to directories with bind\PYGZhy{}mount  \PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}}
+\PYGZdl{} docker run \PYGZhy{}\PYGZhy{}rm \PYGZhy{}it \PYG{l+s+se}{\PYGZbs{}}
+	 \PYGZhy{}\PYGZhy{}network host \PYG{l+s+se}{\PYGZbs{}}
+	 \PYGZhy{}\PYGZhy{}privileged\PYG{o}{=}\PYG{n+nb}{true} \PYG{l+s+se}{\PYGZbs{}}
+	 \PYGZhy{}\PYGZhy{}env \PYG{n+nv}{DISPLAY}\PYG{o}{=}unix\PYG{n+nv}{\PYGZdl{}DISPLAY} \PYG{l+s+se}{\PYGZbs{}}
+	 \PYGZhy{}\PYGZhy{}volume /tmp/.X11\PYGZhy{}unix:/tmp/.X11\PYGZhy{}unix \PYG{l+s+se}{\PYGZbs{}}
+	 \PYGZhy{}\PYGZhy{}volume /var/run/docker.sock:/var/run/docker.sock \PYG{l+s+se}{\PYGZbs{}}
+	 \PYGZhy{}\PYGZhy{}mount \PYG{n+nv}{type}\PYG{o}{=}bind,source\PYG{o}{=}/home/\PYG{n+nv}{\PYGZdl{}USER}/layoutegine\PYGZhy{}research/,target\PYG{o}{=}/project/ \PYG{l+s+se}{\PYGZbs{}}
+	 \PYGZhy{}\PYGZhy{}name layoutengine\PYGZhy{}research \PYG{l+s+se}{\PYGZbs{}}
+	 kcull/layoutengine\PYGZhy{}research:latest
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Open host machine devices to container (only need to do once per reboot)}
+\PYGZdl{} xhost +local:
+\end{Verbatim}
