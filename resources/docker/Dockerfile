@@ -171,10 +171,12 @@ RUN apt-get update \
     && apt-get upgrade -y \ 
     && apt-get -y install sudo
 ENV HOME /home/user
+RUN mkdir -p /project/libraries
+RUN mkdir -p /project/research
 RUN useradd --create-home --home-dir $HOME user \
     && echo "user:password" | chpasswd \
     && adduser user sudo \ 
-    && chown -R user:user $HOME /opt \
+    && chown -R user:user $HOME /opt /project \
     && groupadd --gid 999 docker \
     && usermod -aG docker user
 USER user
@@ -182,10 +184,10 @@ USER user
 
 # Copy Emacs configuration files, GitHub repos and set working directory
 COPY --chown=user:user ./.emacs.d $HOME/.emacs.d
-RUN git clone https://github.com/pmur002/layoutengine /opt/layoutengine
-RUN git clone https://github.com/pmur002/layoutengine /opt/layoutenginedom
-RUN git clone https://github.com/kcullimore/layoutenginerselenium /opt/layoutenginerselenium
-WORKDIR /project
+RUN git clone https://github.com/pmur002/layoutengine /project/libraries/layoutengine
+RUN git clone https://github.com/pmur002/layoutengine /project/libraries/layoutenginedom
+RUN git clone https://github.com/kcullimore/layoutenginerselenium /project/libraries/layoutenginerselenium
 
+WORKDIR /project
 
 ENV COLORTERM=gnome-terminal TERM=xterm-256color EDITOR=emacs DEBIAN_FRONTEND=newt NO_AT_BRIDGE=1 

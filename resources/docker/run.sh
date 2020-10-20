@@ -12,7 +12,7 @@ docker run --rm -it \
        --env DISPLAY=unix$DISPLAY \
        --volume /tmp/.X11-unix:/tmp/.X11-unix \
        --volume /var/run/docker.sock:/var/run/docker.sock \
-       --mount type=bind,source=/home/$USER/layoutegine-research/,target=/project/ \
+       --mount type=bind,source=/home/$USER/layoutegine-research/,target=/project/research/ \
        --name layoutengine-research \
        kcull/layoutengine-research:latest 
 
@@ -22,6 +22,6 @@ docker run --rm -it \
        --env DISPLAY=unix$DISPLAY \
        --volume /tmp/.X11-unix:/tmp/.X11-unix \
        --volume /var/run/docker.sock:/var/run/docker.sock \
-       --mount type=bind,source=/home/$USER/linCode/layoutengine-research/,target=/project/ \
+       --mount type=bind,source=/home/$USER/linCode/layoutengine-research/,target=/project/research/ \
        --name layoutengine-research \
        kcull/layoutengine-research:latest 
