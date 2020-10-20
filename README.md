@@ -5,6 +5,8 @@ This is the repository for my dissertation research and paper. This research has
 ## Reproduce Report from within Linux OS
 
 The docker image ``kcull/layoutengine-research`` is built from Ubuntu 18.04. 
+- username: `user`
+- password: `password`
 
 
 Download the [docker image](https://hub.docker.com/repository/docker/kcull/layoutengine-research):  
