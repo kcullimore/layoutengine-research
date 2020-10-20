@@ -1,4 +1,4 @@
-% Created 2020-10-20 Tue 08:28
+% Created 2020-10-20 Tue 08:37
 \documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -154,7 +154,7 @@ Presentation:
 \newpage
 
 \section{Introduction}
-\label{sec:orgcb4efcc}
+\label{sec:org508c422}
 
 The \textbf{\href{https://www.r-project.org/}{R programming language}} is a popular open-source statistical analysis tool. The language has many libraries that support sophisticated statistical techniques. Many of these rely on graphical output to communicate results. A strong appeal of this programming language is the ease at which its \textbf{core graphics system} (TODO: add glossary item) generates graphical output that is both accurate and effective at communicating this type of information. 
 
@@ -163,7 +163,7 @@ Few open-source alternatives offer an equivalent set of sophisticated statistics
 As the R programming language has grown in popularity so to has the number of specialized applications. One such use-case is the incorporation of the statistics based graphics within published articles. While the raw dots and dashes used to generate these graphics is of sufficient digital quality there are several fundamental publishing requirements which are not supported.
 
 \section{Problem Description}
-\label{sec:org87ff59e}
+\label{sec:org13137f2}
 
 The publishing industry has a long history dating back to the 15\textsuperscript{th} century when movable type printing was first invented. As the industry evolved within digital platforms it has brought with it a system of long-standing expectations for content. As a result, digital publications often have a myriad of requirements for graphics which are referred to in this report as \textbf{\textbf{print quality graphics}}. These requirements include \textbf{(1)} writing system and font specifications, \textbf{(2)} document layout and typesetting, \textbf{(3)} sophisticated content rendering, and \textbf{(4)} control over output resolution and file format.
 
@@ -184,12 +184,12 @@ This research reviews an alternative approach where the print quality graphic is
 This research does \emph{not} address the relative performance and functionality difference between the layoutEngine approach and the \emph{standard R approach}. Rather, it \emph{first} explores the efficacy of this \emph{layoutEngine approach}, and \emph{second}, attempts to improve upon the implementation of the existing layoutEngine library to address several existing limitations. 
 
 \section{The layoutEngine R Library}
-\label{sec:org9cc5ea1}
+\label{sec:orgcfffbb6}
 
 The intent of the \textbf{\href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html}{layoutEngine}}[TODO: Add to References] R library is to extend R's graphical system by adopting functionality available in web technologies. To achieve this, its core functionality is to act as a high-level interface between R and a web browser and thereby tap into the rich feature set. While the library is available to review via the \href{https://github.com/pmur002/layoutengine}{layoutEngine repository}, it is still in development and not yet available in \textbf{\href{https://CRAN.r-project.org/}{CRAN}}. 
 
 \subsection{The Standard R Approach}
-\label{sec:org7002d26}
+\label{sec:org2c87c5b}
 
 The \emph{standard R approach} to extending its functionality has been paramount to the success of open-source programming languages. Available libraries are loaded into the scope of an environment to gain functionality. If a larger feature set is need then several libraries are loaded as a type of modular system. There are many advantages to this approach and it is a key reason why these languages and user communities have thrived. 
 
@@ -200,7 +200,7 @@ NOTE: Also references Paul's list per \href{https://www.stat.auckland.ac.nz/\~pa
 This approach might eventually succeed in offering a general purpose solution to generate print quality graphics. However, several difficulties exist would first need to be overcome. First, the publishing requirements represent an extensive set of functionality. In addition, the variety of graphical output this must operate with is also large. As a result, the task of coordinating a suite of purpose-built libraries that is flexible enough to cover all scenarios would be significant. This is both difficult from both a developer and user perspective due to the large number of functions and objects to handle. 
 
 \subsection{The layoutEngine Approach}
-\label{sec:org235c3fd}
+\label{sec:org40324e9}
 
 The \emph{layoutEngine approach} differs with the way it extends the functionality of R. It acts as a portal between the graphics system in R and a modern web browser so as to avoid reinventing the wheel. Instead it aims to adopt from an industry that has a long history supporting publishing requirements. This approach bypasses the need to build a complex system from the ground up. 
 
@@ -213,7 +213,7 @@ This approach aims to take advantage of preexisting technologies to generate pri
 The figure above demonstrates the process of a general use-case. In summary, it starts with a graphic partially defined in R. This is converted to HTML where some additional definition could be added. The browser readable definition is transferred and loaded into a web browser where its layout and rendering engine generate the desired graphic in the browser window. A JavaScript function is then executed to calculate the position of each component on the page. This data is then sent back to R in CSV format where the layoutEngine will convert it to a R readable graphic object. This can then be displayed in the R graphics window or sent directly to an image file. 
 
 \subsection{Solution Design}
-\label{sec:org0430b52}
+\label{sec:orge4556ca}
 
 The layoutEngine solution is designed as a two-component system. The layoutEngine \textbf{\href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html}{primary library}} is configured to interface with one of several available layoutEngine \textbf{\href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html\#backends}{backend libraries}}[TODO: Add to References]. The primary library acts as the interface for R users while the backend library is the interface between R and the web browser. The solution design is separated into these components as much of the complexity exists in the backend library. This abstracts much of the complexity away from the user and allows improvements to be made to backend library with little impact to the user.
 
@@ -237,9 +237,9 @@ The backend library has many complexities to manage which present the primary ch
 There are three layoutEngine backends available for use with the layoutEngine at the time of this research. These backends successfully demonstrate the viability of this approach. 
 
 \subsection{Benefits}
-\label{sec:org5022183}
+\label{sec:org3eb6189}
 \subsubsection{General}
-\label{sec:org774961e}
+\label{sec:org67ba8a5}
 \begin{itemize}
 \item Integration of the image within other content that is accessible programmatically
 \item Not just an embedded graphic
@@ -260,7 +260,7 @@ There are three layoutEngine backends available for use with the layoutEngine at
 \end{itemize}
 
 \subsubsection{DOM Backend}
-\label{sec:org9e9a00e}
+\label{sec:org04b2a16}
 \begin{itemize}
 \item\relax [TODO]
 \item Based on Paul's DOM package
@@ -269,7 +269,7 @@ There are three layoutEngine backends available for use with the layoutEngine at
 \end{itemize}
 
 \subsubsection{PhantomJS Backend}
-\label{sec:org5f06066}
+\label{sec:orgd58f2de}
 \begin{itemize}
 \item\relax [TODO]
 \item Simple, lightweight, few dependencies
@@ -281,7 +281,7 @@ There are three layoutEngine backends available for use with the layoutEngine at
 \end{itemize}
 
 \subsubsection{CSSBox Backend}
-\label{sec:org5bb788c}
+\label{sec:org4b3cd06}
 \begin{itemize}
 \item Per Ref
 \begin{itemize}
@@ -294,9 +294,9 @@ There are three layoutEngine backends available for use with the layoutEngine at
 
 
 \subsection{Limitations}
-\label{sec:org90de67c}
+\label{sec:org8497c8d}
 \subsubsection{General}
-\label{sec:org7dd6587}
+\label{sec:org998b06a}
 \begin{itemize}
 \item Have to learn and write in HTML/CSS/JS
 \item Security layer around using a browser
@@ -317,7 +317,7 @@ There are three layoutEngine backends available for use with the layoutEngine at
 
 
 \subsubsection{DOM Backend}
-\label{sec:org85945fe}
+\label{sec:org77495ee}
 \begin{itemize}
 \item\relax [TODO]
 \item Default browser opens every call
@@ -328,7 +328,7 @@ There are three layoutEngine backends available for use with the layoutEngine at
 \end{itemize}
 
 \subsubsection{PhantomJS Backend}
-\label{sec:org2c9bfcf}
+\label{sec:org046feeb}
 \begin{itemize}
 \item\relax [TODO]
 \item Lack of visual feedback
@@ -337,7 +337,7 @@ There are three layoutEngine backends available for use with the layoutEngine at
 \end{itemize}
 
 \subsubsection{CSSBox Backend}
-\label{sec:org1bb1981}
+\label{sec:orgb5249d2}
 \begin{itemize}
 \item Per Ref
 \begin{itemize}
@@ -351,10 +351,10 @@ There are three layoutEngine backends available for use with the layoutEngine at
 
 \newpage   
 \section{layoutEngine Development}
-\label{sec:org15f6c5d}
+\label{sec:org5e7f279}
 
 \subsection{Objectives}
-\label{sec:org4f8d712}
+\label{sec:org1ab17c8}
 
 The viability of the layoutEngine approach is still being explored and it is the layoutEngine backend where the majority of the limitations reside. There are several existing back-ends however each has certain limitations that must be rectified before community adoption is possible. 
 
@@ -362,64 +362,64 @@ This report introduces two newly developed layoutEngine back-ends' which attempt
 
 
 \subsection{Requirements}
-\label{sec:org61b9fe3}
+\label{sec:orgc393eff}
 
 The backend must support a browser compatible communication protocol. Data must be transferred between R and the browser in both directions. The backend must first send the raw HTML based data to the browser. It must 
 
 \begin{enumerate}
 \item Explain improvements are needed with the \textbf{backend}
-\label{sec:org49d2a00}
+\label{sec:org5e9af82}
 \item What does the \textbf{backend} need to achieve?
-\label{sec:org1c71a03}
+\label{sec:org49f4ec4}
 \item What solution designs were considered?
-\label{sec:org9f2996e}
+\label{sec:org99ca2d4}
 \item How do these compare to each other?
-\label{sec:orgc8dea5f}
+\label{sec:org8c7ee3d}
 \item What (and why) were the two \textbf{backend} designs chosen?
-\label{sec:org93bd4c9}
+\label{sec:orga0391a1}
 
 \newpage
 \end{enumerate}
 \section{RSelenium Backend}
-\label{sec:org794ace6}
+\label{sec:org18e63c8}
 \subsection{Solution Design}
-\label{sec:org00c886d}
+\label{sec:orgffd71e7}
 
 \subsection{Benefits}
-\label{sec:orgfbe6d70}
+\label{sec:orgea58e66}
 \subsection{Limitations}
-\label{sec:org5a69dd8}
+\label{sec:org9ecf1f4}
 
 \newpage
 \section{NodeJS Backend}
-\label{sec:org88847cc}
+\label{sec:org4231062}
 \subsection{Solution Design}
-\label{sec:org34464fa}
+\label{sec:org8b4fd7f}
 \subsection{Benefits}
-\label{sec:orgeb99d0c}
+\label{sec:org9284974}
 \subsection{Limitations}
-\label{sec:orge67c87c}
+\label{sec:orge89886a}
 
 \newpage
 \section{Comparison}
-\label{sec:org257d4d7}
+\label{sec:orgb99ad48}
 \begin{enumerate}
 \item Summary of solution features, benefits and limitations
-\label{sec:org561a96c}
+\label{sec:org564fceb}
 \item How do they rank with the existing \textbf{backends}?
-\label{sec:orga5a4d08}
+\label{sec:org29a73d3}
 
 \newpage
 \end{enumerate}
 \section{Recommendations}
-\label{sec:org2fb4842}
+\label{sec:orgd1bfa31}
 \begin{enumerate}
 \item Overview of layoutEngine as a solution to generating print quality graphics
-\label{sec:org57681d2}
+\label{sec:orgef48976}
 \item Do the new backends improve its performance?
-\label{sec:org9b519ef}
+\label{sec:org7af9eb2}
 \item Where should future development work concentrate?
-\label{sec:org01259d7}
+\label{sec:org83e9110}
 
 \newpage
 \appendix
@@ -427,11 +427,11 @@ The backend must support a browser compatible communication protocol. Data must 
 \end{enumerate}
 
 \section{Appendix}
-\label{sec:org5abec62}
+\label{sec:org9328e6b}
 \sffamily  
 \setlength{\parindent}{0em}    
 \subsection{Development Environment}
-\label{sec:orgc18f3a3}
+\label{sec:orgc79843a}
 
 A single Docker container is used to perform research, experimentation, R package development and documentation. This environment was chosen to easily share the development content with others for collaboration and feedback. It will also ensure that any future return to this research can be resurrected with a working code-base independent of software changes.  
 
@@ -443,7 +443,7 @@ Some basic Docker and Emacs commands are provided to walk the user through some 
 
 
 \subsubsection{Docker container description}
-\label{sec:orgb371416}
+\label{sec:org6162cd6}
 
 
 \uline{Overview}: The Docker container is publicly available on \href{https://hub.docker.com/}{Docker Hub} with the following image name \textbf{kcull\textbackslash layoutengine-research}. The container is built from the Ubuntu 18.04 image and has R 3.6.3 and Emacs 27.1 installed. The container has been configured to run Emacs in its GUI environment on the host machine. 
@@ -475,7 +475,7 @@ Some basic Docker and Emacs commands are provided to walk the user through some 
 
 
 \subsubsection{Host setup and Docker run instructions}
-\label{sec:org2e302c6}
+\label{sec:org7fa1438}
 
 The following instructions are provided to recreate the development environment. This has only been tested from within a host machine running Ubuntu 18.04 but is assumed to be compatible with other Debian derivatives. 
 
@@ -529,7 +529,7 @@ $ docker run --rm -it \
 \begin{itemize}
 \item Opens Treemacs with \texttt{M-0}
 \item Open folder structure to \texttt{/project/paper/} with Tab-Enter or Mouse
-\item Open org-mode markdown file \texttt{/layoutengine-research-paper.org} with Enter or Mouse double-click
+\item Open org-mode markdown file \texttt{layoutengine-research-paper.org} with Enter or Mouse double-click
 \item Make some edits to the file and save with \texttt{C-x C-s}
 \item Launch Export Dispatcher menu with \texttt{C-c C-e}
 \item Create new PDF file with \texttt{C-l C-o}
@@ -545,7 +545,7 @@ $ docker run --rm -it \
 
 
 \subsubsection{Emacs within Docker Container}
-\label{sec:org534a4af}
+\label{sec:org439c73c}
 
 \setlength{\parindent}{0em}  
 
@@ -585,10 +585,10 @@ To be continued\ldots{}
 
 \newpage
 \subsection{Org-mode examples}
-\label{sec:orgf48a0e7}
+\label{sec:org2ea2401}
 
 \subsubsection{Font definitions}
-\label{sec:org89b8720}
+\label{sec:org58f069b}
 \setlength{\parindent}{0em}  
 
 
@@ -642,7 +642,7 @@ It might also include a news website communicating techincal details from a stor
 
 \newpage  
 \subsubsection{Sample R code highlighting}
-\label{sec:org6bc4513}
+\label{sec:orgf590731}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{r}
@@ -680,7 +680,7 @@ invisible(dev.off())
 
 \newpage  
 \subsubsection{Sample HTML code highlighting}
-\label{sec:org46d42e4}
+\label{sec:orgdbdddda}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{html}
@@ -705,7 +705,7 @@ invisible(dev.off())
 \AfterEndEnvironment{}\{\end{shaded}
 
 \subsubsection{Sample CSS code highlighting}
-\label{sec:org07cdf91}
+\label{sec:org8879954}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{css}
@@ -727,7 +727,7 @@ invisible(dev.off())
 
 \newpage 
 \subsubsection{Sample JavaScript code highlighting}
-\label{sec:org972e1c5}
+\label{sec:orgefcef01}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{javascript}
@@ -750,7 +750,7 @@ var multiply = (x, y) => x * y;
 
 \newpage  
 \section{References}
-\label{sec:orge6865f7}
+\label{sec:org5441bae}
 Murrell, P. (2018). ``Rendering HTML Content in R Graphics'' Technical Report 2018-13, Department of Statistics, The University of Auckland.
 
 

@@ -1,16 +1,11 @@
 ##devtools::install_github("https://github.com/pmur002/DOM")
 ##devtools::install_github("https://github.com/pmur002/layoutenginedom")
 
-
-
-
-
-
 ##----------------------------------------------------------------------------80
 html <- c('<div style="width: 350px; border-width: 1px; border-style: solid">',
           '<div style="background-color: #7db9e8;
                        width: 200px; height: 200px;
-                       float: right; shape-outside: circle()"/>',
+                       float: right; clip-path: circle()"/>',
           '<p>This text flows around a circle! Try doing that
               in R!</p>',
           '</div>')
