@@ -51,6 +51,11 @@ From Emacs org-mode generate PDF with ``C-c C-e l o`` command
 
 Close Emacs with ``C-x C-c`` command  
 
+Reset X server privileges
+```
+$ xhost -
+```
+
 Exit the container
 ```
 $ exit
