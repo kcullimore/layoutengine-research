@@ -16,9 +16,10 @@ test <- list(name="firefox", image=firefox_image)
 # test <- list(name="chrome", image=chrome_image)
 
 ## Load custom RSelenium Session 
-RSSession <- rSSSession(url="127.0.0.1", port=4444L, network="bridge", shm_size="1g",
-                        browser_type=test$name, headless=FALSE,
-                        image_request=test$image, fresh_pull=FALSE)
+RSSession <- rSSSession(url="127.0.0.1", portRS=4444, portClient="4444",
+                 network="research-net", shm_size="1g",
+                 browser_type=test$name, headless=FALSE,
+                 image_request=test$image, fresh_pull=FALSE)
 options(layoutEngine.rSSSession=RSSession)
 
 ## layoutEngine with RSelenium backend

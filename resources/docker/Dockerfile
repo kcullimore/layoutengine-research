@@ -166,6 +166,11 @@ RUN R -e 'gdtools::sys_fonts()'
 RUN R -e 'extrafont::font_import(prompt=FALSE)'
 
 
+RUN curl https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -o /chrome.deb
+RUN dpkg -i /chrome.deb || apt-get install -yf
+RUN rm /chrome.deb
+
+
 # Setup sudo User
 RUN apt-get update \
     && apt-get upgrade -y \ 
@@ -187,6 +192,7 @@ COPY --chown=user:user ./.emacs.d $HOME/.emacs.d
 RUN git clone https://github.com/pmur002/layoutengine /project/libraries/layoutengine
 RUN git clone https://github.com/pmur002/layoutengine /project/libraries/layoutenginedom
 RUN git clone https://github.com/kcullimore/layoutenginerselenium /project/libraries/layoutenginerselenium
+
 
 WORKDIR /project
 

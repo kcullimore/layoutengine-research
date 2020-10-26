@@ -42,6 +42,8 @@ remDr <- remoteDriver(remoteServerAddr = "0.0.0.0",
                       port = 4444,
                       browserName=test$name)
 
+remDr <- remoteDriver(remoteServerAddr = "172.17.0.1",
+                      port = 4444)
 
 remDr$open()
 remDr$navigate("https://www.auckland.ac.nz/en/science/about-the-faculty/department-of-statistics.html")

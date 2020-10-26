@@ -5,9 +5,18 @@ git clone git@github.com:kcullimore/layoutengine-research.git /home/$USER/layout
 ## Open host machine devices to container (only need to do once per reboot)
 xhost +local:
 
+## Initialize docker swarm 
+docker swarm init \
+       --advertise-addr 192.168.1.78
+
+## Create bridge network 
+docker network create \
+       --driver overlay \
+       --attachable research-net
+
 ## Run docker container linked to directories with bind-mount  ------------------
 docker run --rm -it \
-       --network host \
+       --network research-net \
        --privileged=true \
        --env DISPLAY=unix$DISPLAY \
        --volume /tmp/.X11-unix:/tmp/.X11-unix \
@@ -17,7 +26,7 @@ docker run --rm -it \
        kcull/layoutengine-research:latest 
 
 docker run --rm -it \
-       --network host \
+       --network research-net \
        --privileged=true \
        --env DISPLAY=unix$DISPLAY \
        --volume /tmp/.X11-unix:/tmp/.X11-unix \
