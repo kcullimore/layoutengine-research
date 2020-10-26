@@ -28,7 +28,6 @@ Grant local access to your X server to allow Emacs to run in a local window:
 $ xhost +local:
 ```
 
-
 Run the container:   
 **NOTE: this will bind mount the repository to ``/home/$USER/project`` in the docker container ``/project`` folder.**  
 
@@ -39,9 +38,9 @@ $ docker run --rm -it \
          --env DISPLAY=unix$DISPLAY \
          --volume /tmp/.X11-unix:/tmp/.X11-unix \
          --volume /var/run/docker.sock:/var/run/docker.sock \
-         --mount type=bind,source=/home/$USER/layoutegine-research/,target=/project/ \
+         --mount type=bind,source=/home/$USER/layoutengine-research/,target=/project/research/ \
          --name layoutengine-research \
-         kcull/layoutengine-research:latest   
+         kcull/layoutengine-research:latest
 ```
 
 From the container terminal prompt open report in Emacs:  
@@ -64,3 +63,24 @@ $ exit
 ```
 
 
+## Reproduce Report from within MacOS
+
+All steps are similar to the Linux OS instructions with the exception of the `docker run` command. The difference is for the sole purpose of opening Emacs in its GUI form. 
+
+
+Run the container:   
+**NOTE: this will bind mount the repository to ``/home/$USER/project`` in the docker container ``/project`` folder.**  
+
+```
+$ docker run --rm -it \
+         --network host \
+         --privileged=true \
+         --env DISPLAY=$(ipconfig getifaddr en0):0 \
+         --env XAUTHORITY=/.Xauthority \
+         --volume /tmp/.X11-unix:/tmp/.X11-unix \
+         --volume $HOME/.Xauthority:/.Xauthority \
+         --volume /var/run/docker.sock:/var/run/docker.sock \
+         --mount type=bind,source=$HOME/macBox/iah/code/layoutengine-research/,target=/project/research/ \
+         --name layoutengine-research \
+         kcull/layoutengine-research:latest
+```
