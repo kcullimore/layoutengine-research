@@ -745,3 +745,45 @@ https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/
 
 
 \end{document}
+* Notes
+
+** Examples
+
+| R Limitation                            | Internal Option    | layoutEngine |
+|-----------------------------------------+--------------------+--------------|
+| Multiple fonts in single graphic        | ggtext             |              |
+| Text layout (wrapping, alignment, etc)  | Manual, patchwork? |              |
+| Embedded "live" objects within graphics | Grid               |              |
+| Stylized rendered content               |                    |              |
+| Wrap text around SVG                    |                    |              |
+| Write text along path                   |                    |              |
+|                                         |                    |              |
+
+*Datasets*
+
+- [[https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/00Index.html#O][datasets]]
+- library(help = "datasets")
+
+*Libraries*
+- Lattice
+- ggpolot
+- ggplot2
+- htmltools (RStudio)
+- htmlwidgets (RStudio)
+- svglite (RStudio)
+
+*Plot types*
+- Histogram (hist(), plot.histogram(), histogram())
+- Kernel density estimation (ksmooth(), densityplot())
+- Stem and leaf Plot (stem())
+- Scatterplot, (pairs(), plot(), smoothScatter(), xyplot() etc.)
+- Time series (tsplot())
+- Contour plots (contour(), contourplot(), levelplot())
+- Graph of a function of two variables evaluated on a grid(contourplot(), levelplot(), persp(), wireframe())
+- Graph multivariate data (splom(), parallelplot())
+- Greyscale (image())
+- Compare the sample distributions of two or more sets of data (bwplot(), stripplot(), qq(), etc.)
+- Graph Measurements with Labels (barchart(), dotplot(),piechart())
+- Graph the sample distribution of one set of data (histogram(),densityplot(), qqmath())
+- Graph three numerical variables (cloud(numeric1 ∼ numeric2 * numeric3))
+- Smoothing techniques (loess(), lowess(), smooth.spline(), ns(), bs(), etc.)
