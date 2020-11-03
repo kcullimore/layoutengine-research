@@ -14,6 +14,22 @@ html <- "<div><p>Hello world!!!Ye</p></div>"
 ws <- websocket::WebSocket$new(paste0("ws://", host, ":", port),
                                maxMessageSize=1e6)
 
+
+html <- "{\"head\":[\"<head>\\n<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\">\\n<style type=\\\"text/css\\\">@font-face {\\n  font-family: \\\"TeX Gyre Heros\\\";\\n  font-style: italic;\\n  font-weight: 700;\\n  src: url('assets/texgyreheros-bolditalic.otf');\\n}\\n@font-face {\\n  font-family: \\\"TeX Gyre Heros\\\";\\n  font-style: normal;\\n  font-weight: 400;\\n  src: url('assets/texgyreheros-regular.otf');\\n}\\n@font-face {\\n  font-family: \\\"TeX Gyre Heros\\\";\\n  font-style: normal;\\n  font-weight: 700;\\n  src: url('assets/texgyreheros-bold.otf');\\n}\\n@font-face {\\n  font-family: \\\"TeX Gyre Heros\\\";\\n  font-style: italic;\\n  font-weight: 400;\\n  src: url('assets/texgyreheros-italic.otf');\\n}\\nbody { font-family: \\\"TeX Gyre Heros\\\" }<\\/style>\\n<\\/head>\\n\"],\"body\":[\"<body style=\\\"width: 671.094347581552px; height: 671.680250495004px;\\\"><div><p>Hello world!!!Ye<\\/p><\\/div><\\/body>\"]}"
+
+
+data <- "{\"head\":[\"<head>\\n<meta http-equiv=\\\"Content-Type\\\" content=\\\"text/html; charset=UTF-8\\\">\\n<style type=\\\"text/css\\\">@font-face {\\n  font-family: \\\"TeX Gyre Heros\\\";\\n  font-style: italic;\\n  font-weight: 700;\\n  src: url('assets/texgyreheros-bolditalic.otf');\\n}\\n@font-face {\\n  font-family: \\\"TeX Gyre Heros\\\";\\n  font-style: normal;\\n  font-weight: 400;\\n  src: url('assets/texgyreheros-regular.otf');\\n}\\n@font-face {\\n  font-family: \\\"TeX Gyre Heros\\\";\\n  font-style: normal;\\n  font-weight: 700;\\n  src: url('assets/texgyreheros-bold.otf');\\n}\\n@font-face {\\n  font-family: \\\"TeX Gyre Heros\\\";\\n  font-style: italic;\\n  font-weight: 400;\\n  src: url('assets/texgyreheros-italic.otf');\\n}\\nbody { font-family: \\\"TeX Gyre Heros\\\" }<\\/style>\\n<\\/head>\\n\"],\"body\":[\"<body style=\\\"width: 671.094347581552px; height: 671.680250495004px;\\\"><div style=\\\"width: 350px; border-width: 1px; border-style: solid;\\\">\\n<div style=\\\"background-color: #7db9e8;\\n                       width: 200px; height: 200px;\\n                       float: right;\\n                       shape-outside: circle();\\n                       clip-path: circle();\\\"><\\/div>\\n<h1>This text flows arosadfsdafund a circle! Try doing that in R!<\\/h1>\\n<\\/div><\\/body>\"]}"
+
+new_body <- "<body style=\"width: 671.094347581552px; height: 671.680250495004px;\"><div style=\"width: 350px; border-width: 1px; border-style: solid;\">\n<div style=\"background-color: #7db9e8;\n                       width: 200px; height: 200px;\n                       float: right;\n                       shape-outside: circle();\n                       clip-path: circle();\"></div>\n<h1>This text flows arosadfsdafund a circle! Try doing that in R!</h1>\n</div></body>"
+
+new_head <- "<head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\n<style type=\"text/css\">@font-face {\n  font-family: \"TeX Gyre Heros\";\n  font-style: italic;\n  font-weight: 700;\n  src: url('assets/texgyreheros-bolditalic.otf');\n}\n@font-face {\n  font-family: \"TeX Gyre Heros\";\n  font-style: normal;\n  font-weight: 400;\n  src: url('assets/texgyreheros-regular.otf');\n}\n@font-face {\n  font-family: \"TeX Gyre Heros\";\n  font-style: normal;\n  font-weight: 700;\n  src: url('assets/texgyreheros-bold.otf');\n}\n@font-face {\n  font-family: \"TeX Gyre Heros\";\n  font-style: italic;\n  font-weight: 400;\n  src: url('assets/texgyreheros-italic.otf');\n}\nbody { font-family: \"TeX Gyre Heros\" }</style>\n</head>\n"
+
+library(jsonlite)
+
+    new_head <- paste(xml_children(xml_find_first(html$doc, "head")), collapse="")
+    new_body <- paste(xml_children(xml_find_first(html$doc, "body")), collapse="")    
+    data <- as.character(jsonlite::toJSON(data.frame(head=new_head, body=new_body)))
+
 ## ws$onOpen(function(event) {
 ##     cat(jsonlite::fromJSON(event$data))
 ## })
@@ -37,6 +53,13 @@ getOption("layoutEngine.wsID")
 getOption("layoutEngine.wsMessage")
 
 
+## Load packages
+library(layoutEngine)
+
+library(layoutEngineExpress)
+options(layoutEngine.backend=ExpressEngine)
+
+
 
 html <- c('<div style="width: 350px; border-width: 1px; border-style: solid;">',
           '<div style="background-color: #7db9e8;
@@ -47,6 +70,34 @@ html <- c('<div style="width: 350px; border-width: 1px; border-style: solid;">',
           '</div>',
           '<h1>This text flows arosadfsdafund a circle! Try doing that in R!</h1>',
           '</div>')
+
+
+html_in <- paste0(html, collapse="")[1]
+grid.html(html_in)
+
+
+
+
+##-------------------------------------##--------------------------------------##
+CSSfontsCairo <- cssFontFamily("FreeMono", device="cairo-pdf")
+html <- c('<div style="width: 350px; border-width: 1px; border-style: solid; font-family: ', CSSfontsCairo, ';">',
+          '<div style="background-color: #7db9e8;
+                       width: 200px; height: 200px;
+                       float: right;
+                       shape-outside: circle();
+                       clip-path: circle();">',
+          '</div>',
+          '<h1>This text flows arosadfsdafund a circle! Try doing that in R!</h1>',
+          '</div>')
+## Call layoutEngine 
+p <- grid.html(html, fonts=CSSfontsCairo)
+
+
+html_in <- paste0(html, collapse="")[1]
+grid.html(html)
+
+
+
 
 ws$send(paste(html, collapse=""))
 
@@ -206,3 +257,5 @@ html <- c('<div style="width: 350px; border-width: 1px; border-style: solid; fon
           '</div>')
 ## Call layoutEngine 
 p <- grid.html(html, fonts=CSSfontsCairo)
+
+
