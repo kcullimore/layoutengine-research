@@ -60,7 +60,6 @@ library(layoutEngineExpress)
 options(layoutEngine.backend=ExpressEngine)
 
 
-
 html <- c('<div style="width: 350px; border-width: 1px; border-style: solid;">',
           '<div style="background-color: #7db9e8;
                        width: 200px; height: 200px;
