@@ -20,21 +20,16 @@ USArrests
 
 data(women)
 
-data(nzMapEnv)
-nzMapEnv
-
-
-
-svg()
-install.packages("maps")
 library(maps)
-map('nz')
-map('nz', xlim = c(166, 179), ylim = c(-48, -34))
+
+
+png(filename="nz.png", width=600, height=800, units="px", bg="transparent", type="cairo-png")
+map('nz', fill=TRUE, col="#0f9960")
 dev.off()
-a
+
 ## Create SVG for clip-path
 
-svg()
+
 
 library(grid)
 library(gridGraphics)
