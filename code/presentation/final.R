@@ -1,6 +1,9 @@
 library(layoutEngine)
 library(layoutEngineRSelenium)
 options(layoutEngine.backend=RSeleniumEngine)
+library(png)
+library(lattice)
+
 ## Firefox Selenium docker image
 firefox_build <- "3.141.59-20200525"
 firefox_image <- paste0("selenium/standalone-firefox-debug:", firefox_build)
@@ -53,10 +56,10 @@ dev.off()
 ## Demo 2: Show word wrap around transparent PNG 
 ##----------------------------------------------------------------------------80
 ## Create transparent PNG of NZ map
-library(maps)
-png(filename="nz.png", width=600, height=800, units="px", bg="transparent", type="cairo-png")
-map('nz', fill=TRUE, col="#0f9960")
-dev.off()
+##library(maps)
+##png(filename="nz.png", width=600, height=800, units="px", bg="transparent", type="cairo-png")
+##map('nz', fill=TRUE, col="#0f9960")
+##dev.off()
 
 ASSETS <- c("nz.png")
 
@@ -88,7 +91,8 @@ font-family: Montserrat;
 }
 ')
 
-library(png)
+
+dev.off()
 mapNZ <- readPNG("nz.png")
 flowedhtml <- flow(html=HTML, css=CSS, assets=ASSETS, fonts=CSSfonts)
 grid.html(flowedhtml, viewports=TRUE)
@@ -105,11 +109,9 @@ dev.off()
 ## Demo 3: Showing CSS-Grid
 ##----------------------------------------------------------------------------80
 
-library(lattice)
-
-png(filename="cars.png", width=800, height=600, units="px", bg="transparent", type="cairo-png")
-xyplot(mpg ~ disp, mtcars) 
-dev.off()
+##png(filename="cars.png", width=800, height=600, units="px", bg="transparent", type="cairo-png")
+##xyplot(mpg ~ disp, mtcars) 
+##dev.off()
 
 ASSETS <- c("cars.png")
 
@@ -208,7 +210,7 @@ color: #0f9960;
 }
 '
 
-library(png)
+dev.off()
 carsPNG <- readPNG("cars.png")
 flowedhtml <- flow(html=HTML, css=CSS, assets=ASSETS, fonts=CSSfonts)
 grid.html(flowedhtml, viewports=TRUE)
