@@ -9,9 +9,12 @@ firefox_image <- paste0("selenium/standalone-firefox-debug:", firefox_build)
 test <- list(name="firefox", image=firefox_image)
 # test <- list(name="chrome", image=chrome_image)
 
+## Enable X Server
+system("xhost +local:")
+
 ## Load custom RSelenium Session 
 RSSession <- rSSSession(url="127.0.0.1", portRS=4444, portClient="4444",
-                 network="research-net", shm_size="1g",
+                 network="host", shm_size="1g",
                  browser_type=test$name, headless=FALSE,
                  image_request=test$image, fresh_pull=FALSE)
 options(layoutEngine.rSSSession=RSSession)
@@ -27,7 +30,7 @@ html <- c('<div style="width: 350px; border-width: 1px; border-style: solid;">',
                        shape-outside: circle();
                        clip-path: circle();">',
           '</div>',
-          '<h1>This text flows arosadfsdafund a circle! Try doing that in R!</h1>',
+          '<h1>This text flows around a circle! Try doing that in R!</h1>',
           '</div>')
 ## Call layoutEngine
 p <- grid.html(html)
@@ -45,7 +48,7 @@ html <- c('<div style="width: 350px; border-width: 1px; border-style: solid; fon
                        shape-outside: circle();
                        clip-path: circle();">',
           '</div>',
-          '<h1>This text flows arosadfsdafund a circle! Try doing that in R!</h1>',
+          '<h1>This text flows around circle! Try doing that in R!</h1>',
           '</div>')
 ## Call layoutEngine 
 p <- grid.html(html, fonts=CSSfontsCairo)
@@ -68,7 +71,7 @@ map('nz', fill=TRUE, col="#0f9960")
 dev.off()
 
 ## Create HTML & CSS
-CSSfontsCairo <- cssFontFamily("Montserrat-Italic", device="cairo-pdf")
+CSSfontsCairo <- cssFontFamily("Montserrat-Italic", device="cairo_pdf")
 ipsumText <- '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, esse vel? Dolorem cupiditate sunt dolor nesciunt molestias eligendi aliquid, quae eaque maiores expedita a error, explicabo, id magnam praesentium sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum eligendi reiciendis aspernatur eaque fugit commodi doloremque aut soluta dolor, quaerat amet blanditiis quibusdam rem! Nesciunt nostrum dignissimos ad commodi reiciendis.</p>'
 
 HTML <- c('<div class="container">',
@@ -106,11 +109,16 @@ png(filename="map-with-text.png", width=1000, heigh=800)
 p <- grid.html(html=HTML,
                css=CSS,
                assets=c("nz.png",
-                        "../../resources/fonts/Montserrat/Montserrat-Italic.ttf"),
-               fonts=CSSfontsCairo)
+                        "../../resources/fonts/Montserrat/Montserrat-Italic.ttf"))
 grid.raster(mapNZ, x=0.67, width=0.45)
 dev.off()
 
+
+p <- grid.html(html=HTML,
+               css=CSS,
+               assets=c("nz.png",
+                        "../../resources/fonts/Montserrat/Montserrat-Italic.ttf"),
+               fonts="../../resources/fonts/Montserrat/Montserrat-Italic.ttf")
 
 ## Demo 2: Different fonts within axes (similar to ggtext example)
 ##----------------------------------------------------------------------------80
@@ -124,6 +132,7 @@ dev.off()
 library(grid)
 library(gridSVG)
 library(lattice)
+library(XML)
 
 car_set <- mtcars[1:10, ]
 cars <- row.names(car_set)
