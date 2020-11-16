@@ -1,0 +1,13 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} The outer most component starts all encapusalated components}
+\PYG{n}{RSSession} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{rSSSession}\PYG{p}{(}\PYG{n}{url}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}127.0.0.1\PYGZdq{}}\PYG{p}{,} \PYG{n}{portRS}\PYG{o}{=}\PYG{l+m}{4444}\PYG{p}{,} \PYG{n}{portClient}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}4444\PYGZdq{}}\PYG{p}{,}
+		 \PYG{n}{network}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}research\PYGZhy{}net\PYGZdq{}}\PYG{p}{,} \PYG{n}{shm\PYGZus{}size}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}1g\PYGZdq{}}\PYG{p}{,}
+		 \PYG{n}{browser\PYGZus{}type}\PYG{o}{=}\PYG{n}{test}\PYG{o}{\PYGZdl{}}\PYG{n}{name}\PYG{p}{,} \PYG{n}{headless}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{,}
+		 \PYG{n}{image\PYGZus{}request}\PYG{o}{=}\PYG{n}{test}\PYG{o}{\PYGZdl{}}\PYG{n}{image}\PYG{p}{,} \PYG{n}{fresh\PYGZus{}pull}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Open a browser instance hosted on a Selenium server within the Docker container}
+\PYG{n}{RSSession}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{open}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get status of all the components}
+\PYG{n}{RSServer}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{getStatus}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Close all components (browser session, server and Docker container)}
+\PYG{n}{RSSession}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{close}\PYG{p}{()}
+\end{Verbatim}

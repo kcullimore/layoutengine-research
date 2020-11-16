@@ -1,0 +1,18 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load libraries for layoutEngine and Backend and set the Backend}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{layoutEngine}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{layoutEngineRSelenium}\PYG{p}{)}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{layoutEngine.backend}\PYG{o}{=}\PYG{n}{RSeleniumEngine}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Basic example supplying HTML, FONTS, CSS, ASSETS}
+\PYG{n}{FONTS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{cssFontFamily}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}FreeMono\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{ASSETS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZdq{}../resources/img/example\PYGZus{}R\PYGZus{}graphic.pdf\PYGZdq{}}
+\PYG{n}{CSS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}}
+\PYG{l+s}{body \PYGZob{}font\PYGZhy{}family: FreeMono;\PYGZcb{}}
+\PYG{l+s}{img \PYGZob{}width: 200px;\PYGZcb{}\PYGZsq{}}
+\PYG{n}{HTML} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}\PYGZlt{}div\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}h1\PYGZgt{}This is some simple text\PYGZlt{}/h1\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}img src=\PYGZdq{}assets/example\PYGZus{}R\PYGZus{}graphic.pdf\PYGZdq{} /\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}/div\PYGZgt{}\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Call layoutEngine}
+\PYG{n}{p} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{grid.html}\PYG{p}{(}\PYG{n}{html}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,} \PYG{n}{fonts}\PYG{o}{=}\PYG{n}{FONTS}\PYG{p}{,} \PYG{n}{css}\PYG{o}{=}\PYG{n}{CSS}\PYG{p}{,} \PYG{n}{assets}\PYG{o}{=}\PYG{n}{ASSETS}\PYG{p}{)}
+\end{Verbatim}

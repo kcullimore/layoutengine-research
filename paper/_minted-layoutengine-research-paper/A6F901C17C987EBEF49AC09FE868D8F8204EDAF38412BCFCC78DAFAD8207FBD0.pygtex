@@ -1,0 +1,19 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} User settings for component test}
+\PYG{n}{settings} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{list}\PYG{p}{(}\PYG{n}{url}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}127.0.0.1\PYGZdq{}}\PYG{p}{,} \PYG{n}{portRS}\PYG{o}{=}\PYG{l+m}{4444}\PYG{p}{,} \PYG{n}{portClient}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}4444\PYGZdq{}}\PYG{p}{,}
+		 \PYG{n}{network}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}research\PYGZhy{}net\PYGZdq{}}\PYG{p}{,} \PYG{n}{shm\PYGZus{}size}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}1g\PYGZdq{}}\PYG{p}{,}
+		 \PYG{n}{browser\PYGZus{}type}\PYG{o}{=}\PYG{n}{test}\PYG{o}{\PYGZdl{}}\PYG{n}{name}\PYG{p}{,} \PYG{n}{headless}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{,}
+		 \PYG{n}{image\PYGZus{}request}\PYG{o}{=}\PYG{n}{test}\PYG{o}{\PYGZdl{}}\PYG{n}{image}\PYG{p}{,} \PYG{n}{fresh\PYGZus{}pull}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Setup RSelenium Backend Docker container based on user settings}
+\PYG{n}{container} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{dockerContainer}\PYG{p}{(}\PYG{n}{settings}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Run the RSelenium docker container}
+\PYG{n}{container}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{run}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get RSelenium docker container status}
+\PYG{n}{container}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{getInfo}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get system status to confirm Docker container is running}
+\PYG{n+nf}{system}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}docker ps\PYGZdq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Stop and delete the RSelenium Docker container}
+\PYG{n}{container}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{close}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get system status to confirm Docker container is not running}
+\PYG{n+nf}{system}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}docker ps\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

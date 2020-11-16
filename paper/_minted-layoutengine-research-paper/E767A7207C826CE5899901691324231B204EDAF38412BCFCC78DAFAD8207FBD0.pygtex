@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load libraries for layoutEngine and Backend}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}80}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{layoutEngine}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{layoutEngineRSelenium}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Set the backend to the desired configuration}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{layoutEngine.backend}\PYG{o}{=}\PYG{n}{RSeleniumEngine}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Basic example supplying HTML elements with in\PYGZhy{}line styling}
+\PYG{n}{html} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}\PYGZlt{}div style=\PYGZdq{}width: 350px; border\PYGZhy{}width: 1px; border\PYGZhy{}style: solid;\PYGZdq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}div style=\PYGZdq{}background\PYGZhy{}color: \PYGZsh{}7db9e8;}
+\PYG{l+s}{		       width: 200px; height: 200px;}
+\PYG{l+s}{		       float: right;}
+\PYG{l+s}{		       shape\PYGZhy{}outside: circle();}
+\PYG{l+s}{		       clip\PYGZhy{}path: circle();\PYGZdq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}/div\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}h1\PYGZgt{}This text flows arosadfsdafund a circle! Try doing that in R!\PYGZlt{}/h1\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}/div\PYGZgt{}\PYGZsq{}}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Call layoutEngine}
+\PYG{n}{p} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{grid.html}\PYG{p}{(}\PYG{n}{html}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Shut down R display}
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+\end{Verbatim}

@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Setup RSelenium Backend Selenium server hosted on the docker container}
+\PYG{n}{RSServer} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{rSServer}\PYG{p}{(}\PYG{n}{settings}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get Selenium server status}
+\PYG{n}{RSServer}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{getStatus}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Open a browser instance hosted within the Docker container}
+\PYG{n}{RSServer}\PYG{o}{\PYGZdl{}}\PYG{n}{remDr}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{open}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get hosted browser session status}
+\PYG{n}{RSServer}\PYG{o}{\PYGZdl{}}\PYG{n}{remDr}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{getStatus}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get list of all hosted browser sessions (should only be one)}
+\PYG{n}{RSServer}\PYG{o}{\PYGZdl{}}\PYG{n}{remDr}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{getSessions}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Close browser instance hosted within the Docker container}
+\PYG{n}{RSServer}\PYG{o}{\PYGZdl{}}\PYG{n}{remDr}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{close}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Close RSelenium Backend Selenium server hosted on the docker container}
+\PYG{n}{RSServer}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{close}\PYG{p}{()}
+\end{Verbatim}

@@ -147,62 +147,97 @@ Presentation:
 
 The *[[https://www.r-project.org/][R programming language]]* is a popular open-source statistical analysis tool. The language has many libraries that support sophisticated statistical techniques. Many of these rely on graphical output to communicate results. A strong appeal of this programming language is the ease at which its *core graphics system* (TODO: add glossary item) generates graphical output that is both accurate and effective at communicating this type of information. 
 
-Few open-source alternatives offer an equivalent set of sophisticated statistics married to a flexible and powerful graphics system like R. The Python programming language is a strong competitor. However, its focus is more general purpose with fewer specialized statistics libraries that generate these types of graphics  (although it is catching up(??)). 
+Few open-source alternatives offer an equivalent set of sophisticated statistical methods married with a flexible and powerful graphics system. The Python programming language is a strong competitor. However, its focus is more as general purpose programming language with fewer specialized statistics libraries that generate these types of graphic types with equivalent rigor. 
 
-As the R programming language has grown in popularity so to has the number of specialized applications. One such use-case is the incorporation of the statistics based graphics within published articles. While the raw dots and dashes used to generate these graphics is of sufficient digital quality there are several fundamental publishing requirements which are not supported.
+The number of specialized applications R is used within has grown with its popularity. One such use-case is the incorporation of the statistical graphic within published articles. While the raw dots and dashes used to generate these graphics is of sufficient digital quality there are several fundamental publishing requirements which are not supported.
 
 * Problem Description
 
-The publishing industry has a long history dating back to the 15^{th} century when movable type printing was first invented. As the industry evolved within digital platforms it has brought with it a system of long-standing expectations for content. As a result, digital publications often have a myriad of requirements for graphics which are referred to in this report as **print quality graphics**. These requirements include *(1)* writing system and font specifications, *(2)* document layout and typesetting, *(3)* sophisticated content rendering, and *(4)* control over output resolution and file format.
+The publishing industry has a long history dating back to the 15^{th} century when movable type printing was first invented. As the industry integrated within digital media it has brought with it a system of long-standing expectations for content. As a result, digital publications often have a myriad of requirements for graphics which are referred to in this report as **print quality graphics**. 
 
-R users have a powerful tool for generating statistics based graphics but they will struggle to support many of these requirements. Examples include (TODO: provide plot examples): 
-  - Using multiple font types in the same graphic (see Appendix XXX)
-  - Embedded tables and text-boxes with wrapped text (see Appendix XXX)
-  - Complex layouts of text and graph components (see Appendix XXX)
-  - TODO: add to or modify list
+Several of the more important requirements include *(1)* writing system and font specifications, *(2)* document layout and typesetting, *(3)* sophisticated content rendering, and *(4)* control over output resolution and file format.
 
-\newpage 
-One existing solution to produce print quality graphics is to modify the R graphical output with external tools such as LaTeX or /Adobe Illustrator/. The user must either be proficient in both environments or have a specialist available to help. 
+R users have a powerful tool for generating statistics based graphics but they will struggle to support many of these requirements. Several examples are presented below which show features which are not currently possible with the core R graphics system.
+
+#+BEGIN_center 
+#+ATTR_LATEX: :width 4in  
+[[/project/research/code/examples/ex-1.png]]
+\textsf{Example 1: Using multiple font types in the same graphical component}
+#+END_center 
+
+#+BEGIN_center 
+#+ATTR_LATEX: :width 2.5in  
+[[/project/research/code/examples/ex-2.png]]
+\textsf{Example 2: Embedded graphics with wrapped text}
+#+END_center 
+
+
+#+BEGIN_center 
+#+ATTR_LATEX: :width 2.5in  
+[[/project/research/code/examples/ex-3.png]]
+\textsf{Example 3: Complex layouts of text and graph components}
+#+END_center 
+
+
+An existing solution to produce print quality graphics is to modify the R graphical output with external tools such as LaTeX or /Adobe Illustrator/. The user must either be proficient in both environments or have a specialist available to help. 
 
 
 #+BEGIN_center 
 #+ATTR_LATEX: :width 5.5in  
 [[/project/research/resources/img/old-system-external.png]]
-\textsf{Produce Print Quality Graphics Using External Applications}
+\textsf{External Applications Used to Produce Print Quality Graphics}
 #+END_center 
 
 Another solution would rely on several existing R libraries. Such libraries offer bits of this functionality ad hoc. The user would remain within the R ecosystem but might need several libraries depending on the publishing requirements. This modular feature-set composition is the /standard R approach/ to extend its functionality. 
 
 
-This research reviews an alternative approach where the print quality graphic is generated from within the R ecosystem with a single general purpose solution. This approach is central to the *layoutEngine* R library which incorporates *web technologies* to extend the functionality of the R graphics system. It is based on the understanding that web technologies and modern browsers have long supported the special needs of the publishing industry. Therefore, if the layoutEngine can successfully utilize the browsers graphics system, it can bring a full-suite of industry leading functionality to R users. 
+#+BEGIN_center 
+#+ATTR_LATEX: :width 5.5in  
+[[/project/research/resources/img/old-system-internal.png]]
+\textsf{Standard R Approach to Produce Print Quality Graphics}
+#+END_center 
 
-This research does /not/ address the relative performance and functionality difference between the layoutEngine approach and the /standard R approach/. Rather, it /first/ explores the efficacy of this /layoutEngine approach/, and /second/, attempts to improve upon the implementation of the existing layoutEngine library to address several existing limitations. 
+
+This research explores an alternative approach, referred to as the /layoutEngine approach/, which offers a general purpose solution to generate print quality graphics from within the R ecosystem. This approach is encapsulated by the layoutEngine R library which incorporates web technologies to extend the functionality of the R graphics system. 
+
+The motivation of this approach is based on the understanding that web technologies and modern browsers have long supported the special needs of the publishing industry. As a result, there is much functionality to be gained by leveraging this technology. The layoutEngine intends to create access to a full-suite of industry leading functionality. This hinges on whether it can successfully utilize the browsers graphics system in an easy to use R package with accessible dependencies. 
+
+Please note that this research does not address the relative performance and functionality difference between the /layoutEngine approach/ and the /standard R approach/. Rather, it /first/ explores the efficacy of this /layoutEngine approach/, and /second/, attempts to improve upon the implementation of the existing layoutEngine library to address several existing limitations. 
 
 * The layoutEngine R Library
 
-The intent of the *[[https://www.stat.auckland.ac.nz/~paul/Reports/HTML/layoutengine/layoutengine.html][layoutEngine]]*[TODO: Add to References] R library is to extend R's graphical system by adopting functionality available in web technologies. To achieve this, its core functionality is to act as a high-level interface between R and a web browser and thereby tap into the rich feature set. While the library is available to review via the [[https://github.com/pmur002/layoutengine][layoutEngine repository]], it is still in development and not yet available in *[[https://CRAN.r-project.org/][CRAN]]*. 
+The intent of the *[[https://www.stat.auckland.ac.nz/~paul/Reports/HTML/layoutengine/layoutengine.html][layoutEngine]]*[TODO: Add to References] R library is to extend R's graphical system by adopting functionality available in web technologies. Its core functionality is to act as an interface between R and a web browser to provide access to the rich feature set. The library is available to review via the [[https://github.com/pmur002/layoutengine][layoutEngine repository]] however it is still in development and not yet available in *[[https://CRAN.r-project.org/][CRAN]]*. 
 
 ** The Standard R Approach 
 
-The /standard R approach/ to extending its functionality has been paramount to the success of open-source programming languages. Available libraries are loaded into the scope of an environment to gain functionality. If a larger feature set is need then several libraries are loaded as a type of modular system. There are many advantages to this approach and it is a key reason why these languages and user communities have thrived. 
+The /standard R approach/ to its extend functionality is paramount to the success of open-source programming languages. Available libraries are freely shared within the community which can be loaded into the scope of an environment to gain specific functionality. If a broader feature set is needed then several libraries are loaded which acts as a modular system. There are many advantages to this approach and it is a key reason why these languages and user communities have thrived. 
 
 Several *[[https://CRAN.r-project.org/web/packages/available_packages_by_name.html][available CRAN packages]]* offer functionality which meet some publishing requirements. Many of these libraries are well executed and perform admirably. The /[[https://github.com/wilkelab/ggtext][ggtext]]/ package enables multiple font types to be specified in the same graphic. The /[[https://github.com/thomasp85/patchwork][patchwork]]/ package offers a similar functionality specifically for arranging several ggplots with claims of increased simplicity and flexibility. In addition, the base package /[[https://stat.ethz.ch/R-manual/R-devel/library/grid/html/grid.layout.html][grid]]/ has a \texttt{layout} function which creates a \texttt{Grid} layout object that enables plots from different systems to be arranged together. Many other libraries extend R towards the realm of print quality graphics but no general purpose solution exists at this point in time.[TODO: add all to References] Together they establish that a need does exists for this type of extended functionality for R users. 
 
 NOTE: Also references Paul's list per [[https://www.stat.auckland.ac.nz/~paul/Reports/HTML/layoutengine/layoutengine.html][HTML Rendering article]]
 
-#+BEGIN_center 
-#+ATTR_LATEX: :width 5.5in  
-[[/project/research/resources/img/old-system-internal.png]]
-\textsf{Produce Print Quality Graphics Using Multiple R Libraries}
-#+END_center 
-
-This approach might eventually succeed in offering a general purpose solution to generate print quality graphics. However, several difficulties exist would first need to be overcome. First, the publishing requirements represent an extensive set of functionality. In addition, the variety of graphical output this must operate with is also large. As a result, the task of coordinating a suite of purpose-built libraries that is flexible enough to cover all scenarios would be significant. This is both difficult from both a developer and user perspective due to the large number of functions and objects to handle. 
+The standard R approach might eventually succeed in offering a general purpose solution to generate print quality graphics. However, several difficulties exist would first need to be overcome. First, the publishing requirements represent an extensive set of functionality. In addition, the variety of graphical output this must operate with is also large. As a result, the task of coordinating a suite of purpose-built libraries that is flexible enough to cover all scenarios would be significant. This is both difficult from both a developer and user perspective due to the large number of functions and objects to handle. 
 
 ** The layoutEngine Approach 
 
-The /layoutEngine approach/ differs with the way it extends the functionality of R. It acts as a portal between the graphics system in R and a modern web browser so as to avoid reinventing the wheel. Instead it aims to adopt from an industry that has a long history supporting publishing requirements. This approach bypasses the need to build a complex system from the ground up. 
+The /layoutEngine approach/ differs with the way it extends the functionality of R. It acts as an interface between the graphics system in R and another technology ecosystem; the web browser. This general purpose solution attempts to adopt from an industry that has a long history supporting publishing requirements so as to avoid reinventing the wheel. 
+
+This approach bypasses the need to build a complex general purpose solution from the ground up and instead employs existing tools. These tools are part of the web-based languages (HTML, CSS and JavaScript) and R packages which can be used generate HTML from R objects. The table below identifies some of these technologies which can be used to generate a print quality graphic.
   
-This approach aims to take advantage of preexisting technologies to generate print quality graphics. First, a user can rely on existing R libraries to generate HTML from R data objects which removes the need to translate between languages. Second, it adopts the sophistication of web technologies and modern web browsers that already support much of publishing industry requirements. In addition, since the R user will have unbridled access to these web technologies, the functionality of the R graphics system would be greatly extended. 
+#+BEGIN_CENTER
+\sffamily\small
+#+attr_latex: :align p{0.25\textwidth}p{0.5\textwidth}
+| *Functionality*        | *Technology*                                               |
+|------------------------+------------------------------------------------------------|
+| Layout and Typesetting | HTML elements styled with CSS Grid or Flexbox              |
+| Font Type and Styling  | CSS @font-face with traditional CSS styles                 |
+| Text Wrapping          | Standard HTM, CSS shape-outside                            |
+| R to HTML Conversion   | xtable, formattable, htmltools, gridSVG, rmarkdown, etc... |
+|                        |                                                            |
+#+END_CENTER
+
+The simplified diagram below demonstrates how the layoutEngine is used for a general use-case. The graphic is first defined as an R object. This is converted to HTML where some additional definition could be added. The browser readable definition is transferred and loaded into a web browser. The browser's layout and rendering engine generates the desired graphic in the browser window. A JavaScript function is then executed to calculate the position of each component on the page. This data is then sent back to R in CSV format where the layoutEngine will convert it to a R readable graphic object. This can then be displayed in the R graphics window or sent directly to an image file. 
+
 
 #+BEGIN_center 
 #+ATTR_LATEX: :width 5.5in  
@@ -210,29 +245,51 @@ This approach aims to take advantage of preexisting technologies to generate pri
 \textsf{Produce Print Quality Graphics Using the layoutEngine}
 #+END_center 
 
-The figure above demonstrates the process of a general use-case. In summary, it starts with a graphic partially defined in R. This is converted to HTML where some additional definition could be added. The browser readable definition is transferred and loaded into a web browser where its layout and rendering engine generate the desired graphic in the browser window. A JavaScript function is then executed to calculate the position of each component on the page. This data is then sent back to R in CSV format where the layoutEngine will convert it to a R readable graphic object. This can then be displayed in the R graphics window or sent directly to an image file. 
-
 ** Solution Design 
 
-The layoutEngine solution is designed as a two-component system. The layoutEngine *[[https://www.stat.auckland.ac.nz/~paul/Reports/HTML/layoutengine/layoutengine.html][primary library]]* is configured to interface with one of several available layoutEngine *[[https://www.stat.auckland.ac.nz/~paul/Reports/HTML/layoutengine/layoutengine.html#backends][backend libraries]]*[TODO: Add to References]. The primary library acts as the interface for R users while the backend library is the interface between R and the web browser. The solution design is separated into these components as much of the complexity exists in the backend library. This abstracts much of the complexity away from the user and allows improvements to be made to backend library with little impact to the user.
-
-The primary library is a relatively simple and robust interface. It provides several helper functions to pass graphics-based data between the R user and layoutEngine backend. [TODO: extend description]
-
-The backend library has many complexities to manage which present the primary challenge of this solution. The key mechanisms and complexities the backend library must contend with include:
-- Variability in Host Machine 
-  - Cross-platform system calls (macOS, Windows and Linux)
-  - System and R dependencies
-- Functionality
-  - Locate and manage a modern web browser session
-  - Send and receive data between a R session and web browser
-  - Query and modify the web-page DOM [TODO: Add glossary term] 
-
+The layoutEngine solution design is comprised of two components as shown in the figure blow. The *[[https://www.stat.auckland.ac.nz/~paul/Reports/HTML/layoutengine/layoutengine.html][layoutEngine]]* is configured to interface with one of several available *[[https://www.stat.auckland.ac.nz/~paul/Reports/HTML/layoutengine/layoutengine.html#backends][layoutEnging Backends]]*[TODO: Add to References]. The layoutEngine acts as the interface for the R user while the layoutEngine Backend is the interface between R and the web browser. This solution was chosen as much of the complexity exists in the Backend. This abstracts much of the complexity away from the user and allows various Backend designs to be swapped out with little impact to the main layoutEngine interface.
 
 #+BEGIN_center 
 #+ATTR_LATEX: :width 5.5in  
 [[/project/research/resources/img/layoutEngine-system-context.png]]
 \textsf{layoutEngine Solution Design}
 #+END_center 
+
+*** layoutEngine Package  
+  
+The layoutEngine is responsible for handling all the web-based data to send to the layoutEngine Backend. It must also take the returned data from the Backend and render this within the R graphics display. A major piece of this involves locating the correct fonts within the host machine to ensure the browser calculations are made using the exact font specifications. 
+
+\noindent  
+Requirements: 
+- Interface for R Users to execute commands and configure the Backend
+- Handling of web page content (HTML, CSS, Fonts, Assets)
+- Call of Backend primary interface
+- Handle returned layout calculation
+- Rendering of new content within R Graphics Display
+
+\noindent
+Challenges: 
+- Ensuring ease-of-use for R Users by accepting various web-based content formats
+- Cross-platform access to system fonts
+- Support conversion of web-based graphic data to the R graphics display 
+
+
+*** layoutEngine Backend Package  
+  
+The layoutEngine Backend is where much of complexity exists required to interface with a web browser. Since there are many possible ways to implement this functionality it is contained within a separate R package. The main purpose of the Backend is to serve the R graphic to a browser, execute the layout calculation script and return data to the layoutEngine. The Backend contains the primary challenge of the /layoutEngine Approach/.
+  
+\noindent
+Requirements: 
+  - Locate and manage a modern web browser session
+  - Send and receive data between a R session and web browser
+  - Query and modify the web-page DOM [TODO: Add glossary term] 
+  
+\noindent
+Challenges: 
+- Variability in Host Machine 
+  - Cross-platform system calls (macOS, Windows and Linux)
+  - System and R dependencies
+
 
 There are three layoutEngine backends available for use with the layoutEngine at the time of this research. These backends successfully demonstrate the viability of this approach. 
 
@@ -335,32 +392,140 @@ The following list summarizes the desired requirements for a layoutEngine backen
 
 ** Objectives
 
-The viability of the layoutEngine approach is still being explored and it is the layoutEngine backend where the majority of the limitations reside. There are several existing backends however each has certain limitations that must be rectified before community adoption is possible. 
+The viability of the layoutEngine approach is still being explored and it is the layoutEngine backend where the majority of the limitations reside. There are several existing backends ([TODO:] see reference) however each has certain limitations that must be rectified before community adoption is possible. 
 
 This report introduces two newly developed layoutEngine backends which attempt to address the limitations of the existing designs. One relies on a *[[https://www.selenium.dev/documentation/en/][Selenium]]* server hosted within a *[[https://www.docker.com/resources/what-container][Docker container]]* container. The second is a custom *[[https://www.docker.com/resources/what-container][NodeJS]]* server also hosted within a Docker container. 
 
-** Minimal Requirements
+
+** layoutEngine and Backend Interfaces
+
+Development for a layoutEngine Backend requires meeting the interface requirements for the layoutEngine package itself. In the example below, the Backend is specified and then the layoutEngine \texttt{\bfseries grid.html()} function is called with the specified arguments. Since the Backend is isolated, this /R User interface/ remains the same for all Backends. 
+
+\BeforeBeginEnvironment{}{\begin{shaded}  
+#+NAME: layoutEngine-interface
+#+BEGIN_SRC R :exports code
+## Load libraries for layoutEngine and Backend and set the Backend
+library(layoutEngine)
+library(layoutEngineRSelenium)
+options(layoutEngine.backend=RSeleniumEngine)
+## Basic example supplying HTML, FONTS, CSS, ASSETS
+HTML <- c('<div class="content">',
+          '<h1>This is some simple text</h1>',
+          '</div>')
+FONTS <- cssFontFamily("FreeMono")
+CSS <- '.content {font-family: FreeMono; border: solid; width: 800px; height: 100px; display: flex; justify-content: right;}'
+## Call layoutEngine
+png("essential-example.png", width=800, height=100)
+grid.html(html=HTML, fonts=FONTS, css=CSS)
+dev.off()
+#+END_SRC 
+\AfterEndEnvironment{}{\end{shaded}
+  
+#+BEGIN_center 
+#+ATTR_LATEX: :width 4in  
+[[/project/research/code/examples/essential-example.png]]
+#+END_center 
+
+The /Backend interface/ is contained within the engine.R component of all the Backends. This file specifies a *Layout* and *fontFile* function that is used to instantiate a layoutEngine Backend Engine object using the \texttt{\bfseries makeEngine()} function. The requirements and flexibility of this object is documented within the [[https://github.com/pmur002/layoutengine/blob/master/man/makeEngine.Rd][layoutEngine::makeEngine() help page]]. 
+
+The \texttt{\bfseries layout} argument is the minimum requirement needed to instantiate Backend object. This function should perform take the supplied web-page data and then layout the page with a layout engine. This engine is expected to be provided within a typical browser but as seen with the CSS-Box Backend solution can also be a non-typical implementation of a layout engine. 
+
+Once the web-page layout has been performed within the browser (or equivalent), the next requirement is the layout is captured within a R readable form. This is a critical piece of the layoutEngine functionality. For this research, the script that executes this step was taken from the [[https://github.com/pmur002/layoutenginedom/blob/master/inst/JS/layout.js][DOM Backend]]. In general, this JavaScript script updates the web-page DOM to isolate all text characters within a single bounding box. Once each element has its bounding box, the locations and content for each box is exported from the DOM and transformed into CSV format. 
+
+The layout CSV is then transferred back to the layoutEngine primary package where it redraws the graphic within the R graphic display. For all of this to work well, each component must be defined and tracked through this entire process. Of special concern is that of the specified fonts. Since all fonts vary dramatically in their sizes, the actual font files must be identified on the host machine and then transferred to the browser where they are incorporated into the web-page using the \texttt{\bfseries @font-face} CSS feature.
+
+The layoutEngine Backend has much flexibility in the way it can be implemented provided this core functionality is provided. In general, these minimum requirements of the \texttt{\bfseries layout} function include: 
+1. Start up a server used to host the web-page
+2. Find the specified font files within the host system 
+3. Copy asset files to the server (fonts, images, embedded HTML, etc) 
+4. Open a web browser 
+6. Serve the web-page
+7. Execute the layout calculation script within the browser
+8. Send the returned CSV back to the layoutEngine
+
+
+** Technical Requirements
+
+The layoutEngine Backend must meet several key technical requirements to adequately perform the necessary functions as outline in the previous section. These requirements can be addressed in a variety of ways as is evident in comparing the existing Backends ([TODO:] see reference). 
+
+Technical requirements have been categorized to improve the ease of comparison. 
+
+*** Locally Hosted Server
+
+- Live refresh of the browser upon updates to the DOM as a debugging tool
+  - Server to host web-page
+
+*** Browser Integration 
+
+- Maintain a single web browser instance for each layoutEngine call to prevent multiple browsers from sending layout calculations back to R
+- Use of latest web browser to ensure ability to utilize the best features of HTML, CSS and JavaScript as they become available
+  - Control of browser
+    - Automated (Selenium, or "open" call)
+    - Manual control 
+  - Access to latest web technologies
+
+*** Bi-directional Communication
 
 The backend must support a browser compatible communication protocol. Data must be transferred between R and the browser in both directions. The backend must first send the raw HTML based data to the browser. It must 
+  - Communication Protocol
+    - Access to webpage to POST and GET
+- Has to support the transfer information in both directions
+  - To the browser
+    - Asset files such as images and font files to the hosted webpage from the host machine
+    - DOM components from the R layoutEngine call
+    - Call to execute the layout calculation script
+  - From the browser
+    - Either request or accept the layout calculation CSV as a file or in memory data
+- Control of DOM
+  - Add content to the page
+  - Execute a JavaScript script and send the contents back 
 
-** Enhancements
+*** Installation Requirements
 
-*** Cross Platform      
+- Few dependencies on other development teams for critical components that might either create bugs or prevent the support of the latest web technologies
+- As simple implementation as possible to 
+  - reduce the weight of the installed package
+  - Enable easy future support or extensions by others
+  - Provide as few opportunities for issues, bugs, etc and improve the maintainability and comprehension by other contributors to the project
+- Cross platform support
+  - Reduce the dependencies of OS specific packages to reduce the number cross-platform issues
+- No security vulnerabilities 
+  - Opening up graphics device or network access of the host machine
+  - Cross-platform support
+    - Installation dependencies
+    - Graphics device usage
+
+*** Performance & Maintainability
+
+- While not a high-priority, there should not be a large performance hit for the full function call
+  - Performance
+  - Bugs / Issues
+  - Low dependencies on other embedded technologies
+  - Ease of support and maintenance by other contributors 
+
+
+
+** Target Enhancements
+
+*** Cross Platform
+
 An emphasis is placed on new layoutEngine backends to support all three major platforms (Linux, MacOS and Windows). While the existing backends prove the viability of the layoutEngine functionality it is deemed absolutely necessary for the package to be easily used on all platforms. There is little chance the package would be found useful across the industry if it were only available on Linux platforms. A primary reason for this being that a majority of users are on either Windows or MacOS. 
 
 *** Simple Dependencies 
-Secondary to cross platform support, the backend must also have relatively simple installation requirements for all platforms. The intention here is to improve the user experience by making the installation as easy as possible. In addition, with fewer requirements there is less opportunities for future incompatibilities to arise. 
 
+Secondary to cross platform support, the backend must also have relatively simple installation requirements for all platforms. The intention here is to improve the user experience by making the installation as easy as possible. In addition, with fewer requirements there is less opportunities for future incompatibilities to arise.
 
-*** Industry Support    
+*** Industry Support
+
 It is critical that any technologies that are incorporated into the layoutEngine backend have development support into the future. The more common and widely used such technologies are the less likely there will be technical issues as other parts of the ecosystem advance. 
 
-
 *** Modern Web Standards
+
 It is preferred the backend design is able to support modern web standards for *Web Design and Applications* as defined by [[https://www.w3.org/standards/webdesign/][W3C]]. If the latest and greatest standards are not fully supported then an acceptable lag of 1 to 2 years from the most recent release. This feature should be considered as relatively important as many users will be turned off from too much lag between what is seen as industry standard versus cutting edge. 
 
-*** Visual Feedback     
-It should be considered valuable to have access to a live browser for several reasons. Although headless browsers might be considered more easily implemented there is significant value in being able to see the graphical output within the browser. For example, the user can see quickly identify any discrepancies between in supported web technologies between the browser and R graphics display. 
+*** Visual Feedback 
+
+It should be considered valuable to have access to a live browser for several reasons. Although headless browsers might be considered more easily implemented there is significant value in being able to see the graphical output within the browser. For example, the user can see quickly identify any discrepancies between in supported web technologies between the browser and R graphics display.
 
 
 \newpage
@@ -372,7 +537,28 @@ The primary interest in using Selenium is that is a powerful and popular tool th
 
 This section first presents the solution design of the layoutEngine backend using Selenium. This is then followed by a review of the benefits and limitations of the design. 
 
-** Solution Design
+*** Overview 
+
+The motivation behind the RSelenium Backend package includes the following: 
+- Selenium Server 
+  - Robust solution that offers a large set of ways to control a browser
+  - Strong technical community with evidence of future support due to wide industry use
+  - Support of docker containers
+  - Docker container includes controlled web browser types which improves consistency
+  - Direct access to the webpage DOM via the Selenium server commands 
+- RSelenium
+  - R interface to Selenium Server already exists
+  - Tests shows relatively simple controls
+
+
+*** Solution Design
+
+
+- RSelenium R Package
+- Selenium Docker images
+- Docker container
+- Browser launches from docker container (good and bad)
+ 
 
 
 #+BEGIN_center 
@@ -381,13 +567,155 @@ This section first presents the solution design of the layoutEngine backend usin
 \textsf{RSelenium Backend Design}
 #+END_center 
 
-** Benefits
+**** RSelenium Backend Arguments
 
-** Limitations
+\ttfamily   
+- - url='127.0.0.1'
+- - portRS=4444
+- - portClient=4444
+- - network='bridge'
+- - shm\textunderscore size='1g'
+- - browser\textunderscore type='firefox'
+- - headless=FALSE
+- - image\textunderscore request=NULL
+- - fresh\textunderscore pull=FALSE
+
+\normalfont
+**** layoutEngineRSelenium Backend Setup 
+
+\BeforeBeginEnvironment{}{\begin{shaded}  
+#+NAME: layoutEngine-interface
+#+BEGIN_SRC R :exports code
+library(layoutEngine)
+library(layoutEngineRSelenium)
+options(layoutEngine.backend=RSeleniumEngine)
+## Firefox Selenium docker image
+firefox_build <- "3.141.59-20200525"
+firefox_image <- paste0("selenium/standalone-firefox-debug:", firefox_build)
+## Chrome Selenium docker image
+# chrome_build <- "3.141.59-20200525"
+# chrome_image <- paste0("selenium/standalone-chrome-debug:", chrome_build)
+## Select which image to test
+test <- list(name="firefox", image=firefox_image)
+# test <- list(name="chrome", image=chrome_image)
+#+END_SRC 
+\AfterEndEnvironment{}{\end{shaded}
+  
+
+**** Docker Container Component
+
+
+The Selenium Docker container call \texttt{\bfseries dockerContainer()} will start up the Selenium Docker container per the argument settings. It also has methods to get status and stop the container. 
+
+\BeforeBeginEnvironment{}{\begin{shaded}  
+#+NAME: layoutEngine-interface
+#+BEGIN_SRC R :exports code
+## User settings for component test
+settings <- list(url="127.0.0.1", portRS=4444, portClient="4444", network="bridge", shm_size="1g",                      
+                 browser_type=test$name, headless=FALSE, image_request=test$image, fresh_pull=FALSE)
+## Setup RSelenium Backend Docker container based on user settings
+container <- dockerContainer(settings)
+## Run the RSelenium docker container 
+container$run()
+## Get RSelenium docker container status
+container$getInfo()
+## Stop and delete the RSelenium Docker container 
+container$close()
+#+END_SRC 
+\AfterEndEnvironment{}{\end{shaded}
+  
+
+
+**** Selenium Server Component 
+  
+The Selenium server call \texttt{\bfseries rSServer()} will start up the Selenium Docker container with the  \texttt{\bfseries dockerContainer()} call shown above. It will also setup the RSelenium server hosted within the Docker container with the  \texttt{\bfseries open()} method. It also has methods to get status and stop the container. 
+  
+
+\BeforeBeginEnvironment{}{\begin{shaded}  
+#+NAME: layoutEngine-interface
+#+BEGIN_SRC R :exports code
+## Setup RSelenium Backend Selenium server hosted on the docker container
+RSServer <- rSServer(settings)
+## Get Selenium server status
+RSServer$getStatus()
+## Open a browser instance hosted within the Docker container
+RSServer$open()
+## Close RSelenium Backend Selenium server hosted on the docker container
+RSServer$close()
+#+END_SRC 
+\AfterEndEnvironment{}{\end{shaded}
+  
+
+**** Selenium Browser Session Component
+  
+The RSelenium Server call \texttt{\bfseries rSServer()} will start up the RSelenium Docker container with the  \texttt{\bfseries dockerContainer()} call shown above. It will also setup the RSelenium server hosted within the Docker container with the  \texttt{\bfseries open()} method. It also has methods to get status and stop the container. 
+  
+
+\BeforeBeginEnvironment{}{\begin{shaded}  
+#+NAME: layoutEngine-interface
+#+BEGIN_SRC R :exports code
+## The outer most component starts all encapusalated components
+RSSession <- rSSSession(url="127.0.0.1", portRS=4444, portClient="4444", network="bridge", shm_size="1g",
+                        browser_type=test$name, headless=FALSE, image_request=test$image, fresh_pull=FALSE)
+## Open a browser instance hosted on a Selenium server within the Docker container
+RSSession$open()
+## Get status of all the components
+RSSession$getStatus()
+## Close all components (browser session, server and Docker container)
+RSSession$close()
+#+END_SRC 
+\AfterEndEnvironment{}{\end{shaded}
+  
+
+*** Benefits
+
+The backend performs quite well when working properly. 
+- The use of the Selenium server and browser session made it easy to ensure only a single browser session was used for each R layoutEngine call. 
+- The communication protocol used to control the Selenium browser's DOM was abstracted away from our development efforts. Since the Selenium server's primary functionality is offering tight controls of a browser we were able to take full advantage of this. This meant that JavaScript DOM scripting methods can be directly applied to modify its content without the need for worrying about using a communication protocol such at HTTP or a WebSocket. 
+- Since we can directly modify the contents of the webpage DOM via the Selenium server controls we see live updates in the browser without having to refresh the page. This both improves the user feedback of the using the browser as a debugging device and adds the ability to execute the layout calculation script immediately upon the DOM update. 
+- Stand alone server seperate from R
+
+*** Limitations 
+
+Some downsides of the RSelenium Backend include the following: 
+- Scheduling the start-up of the container, Selenium Server and then the web browser session created some difficulties
+- Time required to open the full stack was near 5-10 seconds
+- Opening the browser application hosted within the docker container in full mode (i.e. no headless) poses difficulties for Windows and MacOS due to the sharing of the host graphics system. It can be finicky to get this working on all host machines easily. 
+- The browser version is controlled by the Selenium development team which must be supported via one of their docker images. This creates a dependency on this external development team to ensure the latest browsers (and therefore latest web specifications) can be maintained. 
+- It was found that a latest docker image created a bug with the RSelenium R package that was no longer up to date. Dependencies on both the Selenium docker iamges and RSelenium R Package poses some risk of future bugs or lack of support for the latest features. 
+
+
+
+
+
+*** Summary
+
+
+In general, the RSelenium backend offers a simple way of controlling a browser. However, there are several issues that this approach presents to future development. As a result, it does not seem to be a robust solution to continue development with. 
+
+
+
+
+
+
 
 \newpage
 * NodeJS Backend
-** Solution Design
+
+*** Overview
+The motivation behind the NodeJS Backend package includes the following:
+- Building the server from scratch would result in very light-weight package
+- Easily customize the functionality of it to suit the layoutEngine
+- NodeJS is a very popular language with a large community and strong support into the future
+- Several Node packages/libraries can be used to take advantage of
+- Ability to stay at the very fore-front of web language support since we're in control of all depencies
+- Few risky dependencies (i.e. RSlenenium and Selenium images)
+- Easily work within Docker image for support multiple OS types via communication protocol such as WebSocket or HTTP API
+- Can extend functionality of the backend service in an endless variety
+
+
+*** Solution Design
+
 
 
 #+BEGIN_center 
@@ -397,9 +725,35 @@ This section first presents the solution design of the layoutEngine backend usin
 #+END_center 
 
 
+- Webpack Dev Server
+- Express Server
+- Web Socket 
+- Docker Container
 
-** Benefits
-** Limitations
+
+*** Benefits
+- Ability to design server side functionality to extend the usefulness and robustness of the solution
+  - For example, transformations or formatting can be performed on the server before sending back to R
+  - Very tight compatibiity between a Node server and the browser ensures strong solution design on that side
+  - Aim would be to simplify the function calls as much as possible on the R interface
+- Live reload still exists via WebPack dev server
+- Lightweight dependencies 
+- Local browser (good and bad)
+- Docker container 
+- Stand alone server separate from R
+- Server could reside external to the host if there were ever a need or use-case for
+
+*** Limitations
+- Have to implement communication protocol
+- Managing multiple browser and/or open tabs needs managing
+- Performance hit to stand-up docker container and node server
+- Unforeseen issues due to new design with little testing 
+
+
+
+
+*** Summary
+
 
 \newpage
 * Comparison
