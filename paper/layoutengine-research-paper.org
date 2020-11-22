@@ -556,9 +556,9 @@ The following list outlines how each layoutEngine Backend was ranked against the
 
 The RSelenium Backend has been developed with the use of two preexisting technologies. The first is the *[[https://www.selenium.dev/][Selenium WebDriver]]* \cite{base19} which is a robust browser automation tool. The second is the *[[https://cran.r-project.org/web/packages/RSelenium/index.html][RSelenium R package]]* \cite{base24} which provides an interface to the Selenium WebDriver from within R. The Selenium WebDriver is used from supported Docker images which they host on their [[https://hub.docker.com/u/selenium][Selenium Docker Hub]] site \cite{base25}.
 
-The primary interest in using Selenium is that is a powerful and popular tool that offers a more robust platform to control a web browser. The fact the RSelenium package allowed for easy use of this tool off-the-shelf further increased its appeal. While the benefits for this solution design are significant there are also several limitations (or downsides) to its use. 
-
 This section first presents the solution design of the layoutEngine Backend using Selenium. This is then followed by an evaluation of the design based on the Minimum Technical Requirements and Target Feature Set defined earlier in the report. 
+
+The primary interest in using Selenium is that is a powerful and popular tool that offers a more robust platform to control a web browser. The fact the RSelenium package allowed for easy use of this tool off-the-shelf further increased its appeal. While the benefits for this solution design are significant there are also several limitations (or downsides) to its use. 
 
 The motivation behind the RSelenium Backend package includes the following: 
 - Selenium Server 
@@ -737,11 +737,11 @@ In general, the RSelenium Backend offers a simple way of controlling a browser. 
 \newpage
 * NodeJS Backend
 
-The NodeJS backend has been developed with the use of three preexisting JavaScript projects. WebPack. Express. WebSocket.
-
-The primary interest in using...
+The NodeJS backend has been developed with the use of three preexisting JavaScript projects. The *[[https://webpack.js.org/configuration/dev-server/][webpack DevServer]]* \cite{base27} is used as a local server environment that supports live reload of the browser. The *[[https://expressjs.com/][Express Server]]* \cite{base28} is used as a lightweight web server that is easy to customize. The *[[https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API][WebSocket API]]* \cite{base29} is used to support the bidirectional communication protocol between R and the web browser.
 
 This section first presents the solution design of the layoutEngine Backend using NodeJS. This is then followed by an evaluation of the design based on the Minimum Technical Requirements and Target Feature Set defined earlier in the report. 
+
+The primary interest in using a NodeJS based Backend was due to the flexibility in which it can be customized to this specific application. The Backend could be built to reside in a number of different locations including a cloud or external server. It could incorporate complex logic and functionality to execute helpful transformations on the server on each side of the data transmission between R and the browser. 
 
 The motivation behind the NodeJS Backend package includes the following:
 - Building the server from scratch would result in very light-weight package
@@ -1040,6 +1040,18 @@ Selenium Docker Hub.
 \bibitem{base26}
 Introduction to the DOM 
 <https://developer.mozilla.org/en-US/docs/Web/API/Document\textunderscoreObject\textunderscoreModel/Introduction>
+
+\bibitem{base27}
+webpack DevServer. 
+<https://webpack.js.org/configuration/dev-server/>
+
+\bibitem{base28}
+Express Server Project.
+<https://expressjs.com/>
+
+\bibitem{base29}
+WebSocket API
+<https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API>
 
 
 \end{thebibliography}
