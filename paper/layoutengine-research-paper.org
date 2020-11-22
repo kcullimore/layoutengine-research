@@ -681,7 +681,6 @@ RSSession$close()
 #+END_SRC 
 \AfterEndEnvironment{}{\end{shaded}
   
-
 ** Solution Evaluation
 *** Benefits
 The RSelenium Backend performs quite well when working properly. 
@@ -870,24 +869,24 @@ Some downsides of the NodeJS Backend include the following:
 *** Minimum Technical Requirements
 
 - Locally Hosted Server:
-  - 
+  - The NodeJS Backend uses a well designed development server to host a web page on the host machine. The server implementation is actually two server implementations that are configured operate together. The webpack development server is used to provide a robust auto reloading of the web page when any changes are detected. The Express serve is used to provide a flexible platform to customize the server with a variety of functionality. This extended functionality is the addition of a purpose built WebSocket connection. 
 - Browser Integration:
-  - 
+  - The current design relies on the R user to navigate to the correct URL (http://localhost:port-number) via their locally installed browser. This provides the flexibility to use any standard web browser. However, it is important to manage the active connections between a R session and a single browser tab. For example, if a user was to open a Firefox and Chrome browser at the same time and navigate to this URL the R session must be explicit in receiving the returning layout calculations from the expected browser. 
 - Bidirectional Communication:
-  - 
+  - The communication between the R session and the browser is supplied by a simple Web Socket API. The logic of this functionality is split between the server and Backend implementations. The server WS definition manages the connections to ensure messages are routed to the correct clients. The Backend client sends HTML based data to the server when the \texttt{grid.html()} function is called via a stringified \texttt{JSON} object. The browser client (i) accepts this HTML based data, (ii) loads in into the \texttt{body} of the web page DOM, (iii) executes the layout JavaScript function and (iv) accesses the results and sends it back to the Backend client as a CSV within a stringified \texttt{JSON} object. 
   
 *** Ratings for Target Feature Set
 
 - Cross Platform: *High*
-  - 
+  - The NodeJS Backend was purposefully designed to be easily used on all major operating systems. 
 - Simple Dependencies: *High*
-  - 
+  - The Backend requires only Docker and the Backend's Docker image to be available on the host system. All the additional dependencies are installed in the Docker container thereby making the installation relatively straightforward. 
 - Industry Support: *Medium*
-  - 
+  - All underlying technologies and projects used within the NodeJS Backend are extremely well supported with strong community of developers and applications. There should not be any lack of support and ongoing development for any of these in the foreseeable future. The primary reason for the reduction in score is the fact this Backend implementation is purpose built for the layoutEngine. As such, it would be up to the maintainer of this Backend to ensure ongoing compatibility with any dependencies. 
 - Modern Web Standards: *High*
-  - 
+  - The R user has access to the latest Web Standards by having the freedom to use the browser of their choice. This is the optimal arrangement. 
 - Visual Feedback: *High*
-  - 
+  - The local browser can of course offer live visual feedback of the content. 
 
 ** Summary
 
