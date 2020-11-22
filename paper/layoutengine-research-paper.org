@@ -558,9 +558,7 @@ The RSelenium Backend has been developed with the use of two preexisting technol
 
 This section first presents the solution design of the layoutEngine Backend using Selenium. This is then followed by an evaluation of the design based on the Minimum Technical Requirements and Target Feature Set defined earlier in the report. 
 
-The primary interest in using Selenium is that is a powerful and popular tool that offers a more robust platform to control a web browser. The fact the RSelenium package allowed for easy use of this tool off-the-shelf further increased its appeal. While the benefits for this solution design are significant there are also several limitations (or downsides) to its use. 
-
-The motivation behind the RSelenium Backend package includes the following: 
+The primary interest in using Selenium is that is a powerful and popular tool that offers a more robust platform to control a web browser. The fact the RSelenium package allowed for easy use of this tool off-the-shelf further increased its appeal. While the benefits for this solution design are significant there are also several limitations (or downsides) to its use. The motivation behind the RSelenium Backend package includes the following: 
 - Selenium Server 
   - Robust solution that offers a large set of ways to control a browser
   - Strong technical community with evidence of future support due to wide industry use
@@ -741,9 +739,7 @@ The NodeJS backend has been developed with the use of three preexisting JavaScri
 
 This section first presents the solution design of the layoutEngine Backend using NodeJS. This is then followed by an evaluation of the design based on the Minimum Technical Requirements and Target Feature Set defined earlier in the report. 
 
-The primary interest in using a NodeJS based Backend was due to the flexibility in which it can be customized to this specific application. The Backend could be built to reside in a number of different locations including a cloud or external server. It could incorporate complex logic and functionality to execute helpful transformations on the server on each side of the data transmission between R and the browser. 
-
-The motivation behind the NodeJS Backend package includes the following:
+The primary interest in using a NodeJS based Backend was due to the flexibility in which it can be customized to this specific application. The Backend could be built to reside in a number of different locations including a cloud or external server. It could incorporate complex logic and functionality to execute helpful transformations on the server on each side of the data transmission between R and the browser. The motivation behind the NodeJS Backend package includes the following:
 - Building the server from scratch would result in very light-weight package
 - Easily customize the functionality of it to suit the layoutEngine
 - NodeJS is a very popular language with a large community and strong support into the future

@@ -1,0 +1,11 @@
+## User settings for component test
+settings <- list(url="0.0.0.0", portServer=8080, portClient=8080,
+		 network="host", fresh_pull=FALSE)
+## Setup Express Backend Docker container based on user settings
+container <- dockerContainer(settings)
+## Run the RSelenium docker container
+container$run()
+## Get Express docker container status
+container$getInfo()
+## Stop and delete the Express Docker container
+container$close()

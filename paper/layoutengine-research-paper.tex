@@ -1,4 +1,4 @@
-% Created 2020-11-23 Mon 09:09
+% Created 2020-11-23 Mon 09:12
 \documentclass[10pt]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -136,7 +136,7 @@ The following GitHub repositories and Docker images were developed as part of th
 \newpage
 
 \section{Introduction}
-\label{sec:org70ebcb6}
+\label{sec:orgc6fe330}
 
 The \textbf{\href{https://www.r-project.org/}{R programming language}} \cite{base04} is a popular open-source statistical analysis tool. The language has many packages that support sophisticated statistical techniques. Many of these rely on graphical output to communicate results. A strong appeal of this programming language is the ease at which its core \textbf{graphics system} \cite{base05} generates graphical output that is both accurate and effective at communicating this type of information. 
 
@@ -145,7 +145,7 @@ Few open-source alternatives offer an equivalent set of sophisticated statistica
 The number of specialized applications R is used within has grown with its popularity. One such use-case is the incorporation of the statistical graphic within published articles. While the raw dots and dashes used to generate these graphics is of sufficient digital quality there are several fundamental publishing requirements which are not supported.
 
 \section{Problem Description}
-\label{sec:orgd02d5a4}
+\label{sec:org915fd70}
 
 The publishing industry has a long history dating back to the 15\textsuperscript{th} century when movable type printing was first invented. As the industry integrated within digital media it has brought with it a system of long-standing expectations for content. As a result, digital publications often have a myriad of requirements for graphics which are referred to in this report as \textbf{\textbf{print quality graphics}}. 
 
@@ -204,12 +204,12 @@ The motivation of this approach is based on the understanding that web technolog
 Please note that this research does not address the relative performance and functionality difference between the \emph{layoutEngine approach} and the \emph{standard R approach}. Rather, it \emph{first} explores the efficacy of this \emph{layoutEngine approach}, and \emph{second}, attempts to improve upon the implementation of the existing layoutEngine package to address several existing limitations. 
 
 \section{The layoutEngine R Package}
-\label{sec:org66c07d1}
+\label{sec:orgac744dc}
 
 The intent of the \textbf{\href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html}{layoutEngine}} \cite{base02} R package is to extend R's graphics system by adopting functionality available in web technologies. Its core functionality is to act as an interface between R and a web browser to provide access to the rich feature set. The package is available to review via the \href{https://github.com/pmur002/layoutengine}{layoutEngine GitHub repository} \cite{base03} however it is still in development and not yet available in \textbf{\href{https://CRAN.r-project.org/}{CRAN}} \cite{base06}. 
 
 \subsection{The Standard R Approach}
-\label{sec:org7d46410}
+\label{sec:org9e13b1e}
 
 The \emph{standard R approach} to extend its functionality is paramount to the success of open-source programming languages. Available packages are freely shared within the community which can be loaded into the scope of an environment to gain specific functionality. If a broader feature set is needed then several packages are loaded which acts as a modular system. There are many advantages to this approach and it is a key reason why these languages and user communities have thrived. 
 
@@ -218,7 +218,7 @@ Several \textbf{\href{https://CRAN.r-project.org/web/packages/available\_package
 The standard R approach might eventually succeed in offering a general purpose solution to generate print quality graphics. However, several difficulties exist would first need to be overcome. First, the publishing requirements represent an extensive set of functionality. In addition, the variety of graphical output this must operate with is also large. As a result, the task of coordinating a suite of purpose-built packages that is flexible enough to cover all scenarios would be significant. This is both difficult from both a developer and user perspective due to the large number of package specific syntax to navigate. 
 
 \subsection{The layoutEngine Approach}
-\label{sec:orgc428ff0}
+\label{sec:org7477cc4}
 
 The \emph{layoutEngine approach} differs with the way it extends the functionality of R. It acts as an interface between the graphics system in R and another technology ecosystem: the web browser. This general purpose solution attempts to adopt from an industry that has a long history supporting publishing requirements so as to avoid reinventing the wheel. 
 
@@ -259,7 +259,7 @@ The simplified diagram below demonstrates how the layoutEngine is used for a gen
 \end{center}
 
 \subsubsection{Benefits}
-\label{sec:org707784d}
+\label{sec:org551091e}
 
 There are several key benefits to the \emph{layoutEngine approach} that are the motivating drivers of this exploration. 
 
@@ -276,7 +276,7 @@ A second key advantage is that web technologies serve a large economy that has d
 Lastly, there are already several R packages that generate and manipulate HTML and SVG content. The hope is that an R User can take advantage of these packages to help improve the efficiency the can generate the needed HTML to work with the layoutEngine. Some of these packages are Knitr, xtable and htmltools. 
 
 \subsubsection{Limitations}
-\label{sec:org14e96ec}
+\label{sec:orgfcb28c4}
 
 The \emph{layoutEngine approach} offers some compelling advances but there are several limitations that should be recognized. 
 
@@ -287,7 +287,7 @@ The complexity of the interface between the R Session and the web browser is sub
 Another important limitation is based around the state of the implementation of this layoutEngine R package. Since it is very much in a prototype phase there are several missing features and incompatibilities between the web languages and what is able to be converted back to an R graphic object. As such, there might be some frustration or lack of completion due to these gaps. 
 
 \subsection{Solution Design}
-\label{sec:orgf0a6320}
+\label{sec:org0b79c97}
 
 The layoutEngine solution design is comprised of two components as shown in the figure below. The \href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html}{layoutEngine} is configured to interface with one of several available \textbf{\href{https://www.stat.auckland.ac.nz/\~paul/Reports/HTML/layoutengine/layoutengine.html\#Backends}{layoutEngine Backends}} \cite{base02}. The layoutEngine acts as the interface for the R user while the layoutEngine Backend is the interface between R and the web browser. This solution was chosen as much of the complexity exists in the Backend. This abstracts much of the complexity away from the user and allows various Backend designs to be swapped out with little impact to the main layoutEngine interface.
 
@@ -299,7 +299,7 @@ The layoutEngine solution design is comprised of two components as shown in the 
 \end{center}
 
 \subsubsection{layoutEngine R Package}
-\label{sec:org8d50e23}
+\label{sec:orgddfcb18}
 The layoutEngine is responsible for handling all the web-based data to send to the layoutEngine Backend. It must also take the returned data from the Backend and render this within the R graphics display. A major piece of this involves locating the correct fonts within the host machine to ensure the browser calculations are made using the exact font specifications. 
 
 \noindent  
@@ -321,7 +321,7 @@ The layoutEngine is responsible for handling all the web-based data to send to t
 \end{itemize}
 
 \subsubsection{layoutEngine Backend R Package}
-\label{sec:orgd719d6c}
+\label{sec:orgd5e9659}
 
 The layoutEngine Backend is where much of complexity exists required to interface with a web browser. Since there are many possible ways to implement this functionality it is contained within a separate R package. The main purpose of the Backend is to serve the R graphic to a browser, execute the layout calculation script and return data to the layoutEngine. The Backend contains the primary challenge of the \emph{layoutEngine approach}.
 
@@ -349,7 +349,7 @@ The layoutEngine Backend is where much of complexity exists required to interfac
 \end{itemize}
 
 \section{layoutEngine Development}
-\label{sec:orga723bc5}
+\label{sec:orgbc2f1b0}
 
 The viability of the \emph{layoutEngine approach} is still being explored and it is the layoutEngine backend where the majority of the limitations reside. There are several existing layoutEngine Backends which are presented in this section. Each has certain benefits and limitations. At this point in the exploration of the \emph{layoutEngine approach} none are good candidates for a \emph{production} variant. 
 
@@ -358,7 +358,7 @@ The focus of the subject research focuses primarily on developing some alternati
 This section outlines the primary requirements for these development efforts including: \textbf{(1)} Component Interfaces, \textbf{(2)} Minimum Technical Requirements and \textbf{(3)} the Target Feature Set. The existing Backends are presented and qualitatively scored against these requirements as a means of comparison of the new development effort. 
 
 \subsection{Component Interfaces}
-\label{sec:orgdc28fc2}
+\label{sec:org662186f}
 
 Development for a layoutEngine Backend requires meeting the interface requirements for the layoutEngine package itself. In the example below, the Backend is specified and then the layoutEngine \texttt{\bfseries grid.html()} function is called with the specified arguments. Since the Backend is isolated, this \emph{R user interface} remains the same for all Backends. 
 
@@ -406,7 +406,7 @@ The layoutEngine Backend has much flexibility in the way it can be implemented p
 \end{enumerate}
 
 \subsection{Minimum Technical Requirements}
-\label{sec:org11df5a1}
+\label{sec:orgfdee307}
 
 The layoutEngine Backend must meet several key technical requirements to adequately perform the necessary functions as outline in the previous section. These requirements can be addressed in a variety of ways as is evident in comparing the existing Backends later in this section. These Minimum Technical Requirements have been categorized as-follows to improve the ease of comparison. 
 
@@ -458,7 +458,7 @@ The layoutEngine Backend must meet several key technical requirements to adequat
 \end{itemize}
 
 \subsection{Target Feature Set}
-\label{sec:orga5b5425}
+\label{sec:org0d42757}
 
 A Target Feature Set is defined below to include features that are identified as being paramount to the needs of a production ready solution. These features limit the barrier to successfully utilizing the layoutEngine approach for a general R user. If these can't be met, the approach would be too cumbersome for most users to adopt. 
 
@@ -497,12 +497,12 @@ It is preferred the backend design is able to support modern web standards for \
 It should be considered valuable to have access to a live browser for several reasons. Although headless browsers might be considered more easily implemented there is significant value in being able to see the graphical output within the browser. For example, the user can see quickly identify any discrepancies between in supported web technologies between the browser and R graphics display.
 
 \subsection{Existing Backend Designs}
-\label{sec:orgd5b0706}
+\label{sec:org457b0f4}
 
 There are three layoutEngine Backends available for use with the layoutEngine at the time of this research. These Backends successfully demonstrate the viability of this approach. 
 
 \subsubsection{DOM Backend}
-\label{sec:orgb5c0f36}
+\label{sec:org40b8d35}
 
 The DOM Backend \cite{base12} is fully contained within R and employs only R packages to gain the minimum technical requirements. 
 
@@ -574,7 +574,7 @@ The DOM Backend \cite{base12} is fully contained within R and employs only R pac
 \end{itemize}
 
 \subsubsection{PhantomJS \& CSSBox Backends}
-\label{sec:orge03d59b}
+\label{sec:org656fbd2}
 
 The PhantomJS and CSSBox Backends have been combined here since they are very similar in their implementations as it pertains to the following requirements. Both utilize non-browser layout engines. The PhantomJS Backend \cite{base14} uses the PhantomJS \cite{base15} scriptable headless browser to interface directly with the web page DOM. The CSSBox Backend \cite{base16} uses the Java based CSSBox \cite{base17} headless browser to interface directly with the web page DOM. 
 
@@ -649,7 +649,7 @@ The PhantomJS and CSSBox Backends have been combined here since they are very si
 \end{itemize}
 
 \subsubsection{Qualitative Comparison}
-\label{sec:org706363e}
+\label{sec:orge1f16aa}
 
 The following list outlines how each layoutEngine Backend was ranked against the target feature set: 
 \small
@@ -679,15 +679,13 @@ Visual Feedback & High & Low & Low\\
 
 \newpage 
 \section{RSelenium Backend}
-\label{sec:orgef98d79}
+\label{sec:orgb64e035}
 
 The RSelenium Backend has been developed with the use of two preexisting technologies. The first is the \textbf{\href{https://www.selenium.dev/}{Selenium WebDriver}} \cite{base19} which is a robust browser automation tool. The second is the \textbf{\href{https://cran.r-project.org/web/packages/RSelenium/index.html}{RSelenium R package}} \cite{base24} which provides an interface to the Selenium WebDriver from within R. The Selenium WebDriver is used from supported Docker images which they host on their \href{https://hub.docker.com/u/selenium}{Selenium Docker Hub} site \cite{base25}.
 
 This section first presents the solution design of the layoutEngine Backend using Selenium. This is then followed by an evaluation of the design based on the Minimum Technical Requirements and Target Feature Set defined earlier in the report. 
 
-The primary interest in using Selenium is that is a powerful and popular tool that offers a more robust platform to control a web browser. The fact the RSelenium package allowed for easy use of this tool off-the-shelf further increased its appeal. While the benefits for this solution design are significant there are also several limitations (or downsides) to its use. 
-
-The motivation behind the RSelenium Backend package includes the following: 
+The primary interest in using Selenium is that is a powerful and popular tool that offers a more robust platform to control a web browser. The fact the RSelenium package allowed for easy use of this tool off-the-shelf further increased its appeal. While the benefits for this solution design are significant there are also several limitations (or downsides) to its use. The motivation behind the RSelenium Backend package includes the following: 
 \begin{itemize}
 \item Selenium Server 
 \begin{itemize}
@@ -705,10 +703,10 @@ The motivation behind the RSelenium Backend package includes the following:
 \end{itemize}
 
 \subsection{Solution Design}
-\label{sec:orgd8a73be}
+\label{sec:org46aebb8}
 
 \subsubsection{Primary Components}
-\label{sec:orgf49995d}
+\label{sec:orga4c5ff3}
 \begin{itemize}
 \item RSelenium R Package
 \item Selenium Docker images
@@ -724,11 +722,11 @@ The motivation behind the RSelenium Backend package includes the following:
 \end{center}
 
 \subsubsection{Function Call Relationships}
-\label{sec:orgaf31a8d}
+\label{sec:orgdf363f8}
 
 \begin{enumerate}
 \item RSelenium Backend Arguments
-\label{sec:orgb107352}
+\label{sec:org147d5f0}
 
 \ttfamily   
 \begin{itemize}
@@ -745,7 +743,7 @@ The motivation behind the RSelenium Backend package includes the following:
 
 \normalfont
 \item layoutEngineRSelenium Backend Setup
-\label{sec:orgf7ebd03}
+\label{sec:orga583737}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{r}
@@ -765,7 +763,7 @@ test <- list(name="firefox", image=firefox_image)
 \AfterEndEnvironment{}\{\end{shaded}
 
 \item Docker Container Component
-\label{sec:org5a7c125}
+\label{sec:org878a419}
 
 
 The Selenium Docker container call \texttt{\bfseries dockerContainer()} will start up the Selenium Docker container per the argument settings. It also has methods to get status and stop the container. 
@@ -788,7 +786,7 @@ container$close()
 
 
 \item Selenium Server Component
-\label{sec:org46bb8ca}
+\label{sec:orgcd307ab}
 
 The Selenium server call \texttt{\bfseries rSServer()} will start up the Selenium Docker container with the  \texttt{\bfseries dockerContainer()} call shown above. It will also setup the RSelenium server hosted within the Docker container with the  \texttt{\bfseries open()} method. It also has methods to get status and stop the container. 
 
@@ -807,7 +805,7 @@ RSServer$close()
 \AfterEndEnvironment{}\{\end{shaded}
 
 \item Selenium Browser Session Component
-\label{sec:orgfd04070}
+\label{sec:org674e798}
 
 The RSelenium Server call \texttt{\bfseries rSServer()} will start up the RSelenium Docker container with the  \texttt{\bfseries dockerContainer()} call shown above. It will also setup the RSelenium server hosted within the Docker container with the  \texttt{\bfseries open()} method. It also has methods to get status and stop the container. 
 
@@ -829,9 +827,9 @@ RSSession$close()
 
 
 \subsection{Solution Evaluation}
-\label{sec:orgeb6b127}
+\label{sec:org785b6aa}
 \subsubsection{Benefits}
-\label{sec:org10a5e36}
+\label{sec:orge122876}
 The RSelenium Backend performs quite well when working properly. 
 \begin{itemize}
 \item The use of the Selenium server and browser session made it easy to ensure only a single browser session was used for each R layoutEngine call.
@@ -841,7 +839,7 @@ The RSelenium Backend performs quite well when working properly.
 \end{itemize}
 
 \subsubsection{Limitations}
-\label{sec:org14f17cd}
+\label{sec:orgfcb7dd7}
 
 Some downsides of the RSelenium Backend include the following: 
 \begin{itemize}
@@ -853,7 +851,7 @@ Some downsides of the RSelenium Backend include the following:
 \end{itemize}
 
 \subsubsection{Minimum Technical Requirements}
-\label{sec:org74a6301}
+\label{sec:org81ba1c2}
 
 \begin{itemize}
 \item Locally Hosted Server: 
@@ -871,7 +869,7 @@ Some downsides of the RSelenium Backend include the following:
 \end{itemize}
 
 \subsubsection{Ratings for Target Feature Set}
-\label{sec:orgca531f7}
+\label{sec:orgfea807b}
 
 \begin{itemize}
 \item Cross Platform: \textbf{Medium}
@@ -897,7 +895,7 @@ Some downsides of the RSelenium Backend include the following:
 \end{itemize}
 
 \subsection{Summary}
-\label{sec:org72ddf0a}
+\label{sec:org5611923}
 
 
 In general, the RSelenium Backend offers a simple way of controlling a browser. However, there are several issues that this approach presents to future development. As a result, it does not seem to be a robust solution to continue development with. 
@@ -910,15 +908,13 @@ In general, the RSelenium Backend offers a simple way of controlling a browser. 
 
 \newpage
 \section{NodeJS Backend}
-\label{sec:org6499e50}
+\label{sec:org8248af9}
 
 The NodeJS backend has been developed with the use of three preexisting JavaScript projects. The \textbf{\href{https://webpack.js.org/configuration/dev-server/}{webpack DevServer}} \cite{base27} is used as a local server environment that supports live reload of the browser. The \textbf{\href{https://expressjs.com/}{Express Server}} \cite{base28} is used as a lightweight web server that is easy to customize. The \textbf{\href{https://developer.mozilla.org/en-US/docs/Web/API/WebSockets\_API}{WebSocket API}} \cite{base29} is used to support the bidirectional communication protocol between R and the web browser.
 
 This section first presents the solution design of the layoutEngine Backend using NodeJS. This is then followed by an evaluation of the design based on the Minimum Technical Requirements and Target Feature Set defined earlier in the report. 
 
-The primary interest in using a NodeJS based Backend was due to the flexibility in which it can be customized to this specific application. The Backend could be built to reside in a number of different locations including a cloud or external server. It could incorporate complex logic and functionality to execute helpful transformations on the server on each side of the data transmission between R and the browser. 
-
-The motivation behind the NodeJS Backend package includes the following:
+The primary interest in using a NodeJS based Backend was due to the flexibility in which it can be customized to this specific application. The Backend could be built to reside in a number of different locations including a cloud or external server. It could incorporate complex logic and functionality to execute helpful transformations on the server on each side of the data transmission between R and the browser. The motivation behind the NodeJS Backend package includes the following:
 \begin{itemize}
 \item Building the server from scratch would result in very light-weight package
 \item Easily customize the functionality of it to suit the layoutEngine
@@ -931,10 +927,10 @@ The motivation behind the NodeJS Backend package includes the following:
 \end{itemize}
 
 \subsection{Solution Design}
-\label{sec:org454f853}
+\label{sec:orgb313a3e}
 
 \subsubsection{Primary Components}
-\label{sec:orge68a50c}
+\label{sec:org4c443fd}
 
 \begin{itemize}
 \item Webpack Dev Server
@@ -953,11 +949,11 @@ The motivation behind the NodeJS Backend package includes the following:
 
 
 \subsubsection{Function Call Relationships}
-\label{sec:org42894c9}
+\label{sec:org208de93}
 
 \begin{enumerate}
 \item RSelenium Backend Arguments
-\label{sec:org17acc20}
+\label{sec:org09eb1ca}
 
 \ttfamily   
 \begin{itemize}
@@ -970,7 +966,7 @@ The motivation behind the NodeJS Backend package includes the following:
 
 \normalfont
 \item layoutEngineExpress Backend Setup
-\label{sec:org4e32dcd}
+\label{sec:org4d88b6c}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{r}
@@ -981,7 +977,7 @@ options(layoutEngine.backend=ExpressEngine)
 \AfterEndEnvironment{}\{\end{shaded}
 
 \item Docker Container Component
-\label{sec:orgd399680}
+\label{sec:orgc931694}
 
 The Selenium Docker container call \texttt{\bfseries dockerContainer()} will start up the Selenium Docker container per the argument settings. It also has methods to get status and stop the container. 
 
@@ -1002,7 +998,7 @@ container$close()
 \AfterEndEnvironment{}\{\end{shaded}
 
 \item Express Server Component
-\label{sec:org8eb164b}
+\label{sec:org9bf6096}
 
 The Selenium server call \texttt{\bfseries rSServer()} will start up the Selenium Docker container with the  \texttt{\bfseries dockerContainer()} call shown above. It will also setup the RSelenium server hosted within the Docker container with the  \texttt{\bfseries open()} method. It also has methods to get status and stop the container. 
 
@@ -1021,7 +1017,7 @@ webSocket$close()
 \AfterEndEnvironment{}\{\end{shaded}
 
 \item Express Browser Session Component
-\label{sec:orgfb9467d}
+\label{sec:orgbae652a}
 
 The RSelenium Server call \texttt{\bfseries rSServer()} will start up the RSelenium Docker container with the  \texttt{\bfseries dockerContainer()} call shown above. It will also setup the RSelenium server hosted within the Docker container with the  \texttt{\bfseries open()} method. It also has methods to get status and stop the container. 
 
@@ -1042,9 +1038,9 @@ WSSession$close()
 \end{enumerate}
 
 \subsection{Solution Evaluation}
-\label{sec:org3282bf1}
+\label{sec:org1f2e623}
 \subsubsection{Benefits}
-\label{sec:org99d5abd}
+\label{sec:orgd79aa47}
 The NodeJS Backend has the following benefits:  
 \begin{itemize}
 \item Ability to design server side functionality to extend the usefulness and robustness of the solution
@@ -1062,7 +1058,7 @@ The NodeJS Backend has the following benefits:
 \end{itemize}
 
 \subsubsection{Limitations}
-\label{sec:org12234bc}
+\label{sec:orga1abe8e}
 Some downsides of the NodeJS Backend include the following: 
 \begin{itemize}
 \item Have to implement communication protocol
@@ -1072,7 +1068,7 @@ Some downsides of the NodeJS Backend include the following:
 \end{itemize}
 
 \subsubsection{Minimum Technical Requirements}
-\label{sec:org3916d82}
+\label{sec:org68230df}
 
 \begin{itemize}
 \item Locally Hosted Server:
@@ -1090,7 +1086,7 @@ Some downsides of the NodeJS Backend include the following:
 \end{itemize}
 
 \subsubsection{Ratings for Target Feature Set}
-\label{sec:org7439f4b}
+\label{sec:orgd3e8f9e}
 
 \begin{itemize}
 \item Cross Platform: \textbf{High}
@@ -1116,23 +1112,23 @@ Some downsides of the NodeJS Backend include the following:
 \end{itemize}
 
 \subsection{Summary}
-\label{sec:org0dca5c1}
+\label{sec:orgf057aaa}
 
 
 \newpage
 \section{Comparisons and Recommendations}
-\label{sec:org38ec1a3}
+\label{sec:org20d6c96}
 \begin{enumerate}
 \item Summary of solution features, benefits and limitations
-\label{sec:orgb99a4a0}
+\label{sec:org0de5cbe}
 \item How do they rank with the existing \textbf{Backends}?
-\label{sec:org66a39cb}
+\label{sec:org4554c05}
 \item Overview of layoutEngine as a solution to generating print quality graphics
-\label{sec:orgd292226}
+\label{sec:orgd12c403}
 \item Do the new Backends improve its performance?
-\label{sec:orgc085331}
+\label{sec:orgf327e20}
 \item Where should future development work concentrate?
-\label{sec:org26a2529}
+\label{sec:orge516541}
 
 \newpage
 \appendix
@@ -1140,7 +1136,7 @@ Some downsides of the NodeJS Backend include the following:
 \end{enumerate}
 
 \section{References}
-\label{sec:org6ef2bb7}
+\label{sec:org39853f2}
 
 
 \begin{thebibliography}{bib}
@@ -1289,11 +1285,11 @@ WebSocket API
 \end{thebibliography}
 
 \section{Appendix}
-\label{sec:org529c9fc}
+\label{sec:org0380828}
 \sffamily  
 \setlength{\parindent}{0em}    
 \subsubsection{Development Environment}
-\label{sec:orgb1ec616}
+\label{sec:orge67384e}
 
 A single Docker container is used to perform research, experimentation, R package development and documentation. This environment was chosen to easily share the development content with others for collaboration and feedback. It will also ensure that any future return to this research can be resurrected with a working code-base independent of software changes.  
 
@@ -1306,7 +1302,7 @@ Some basic Docker and Emacs commands are provided to walk the user through some 
 
 \begin{enumerate}
 \item Docker container description
-\label{sec:orgf6e0e13}
+\label{sec:orgda5c382}
 
 
 \uline{Overview}: The Docker container is publicly available on \href{https://hub.docker.com/}{Docker Hub} with the following image name \textbf{kcull\textbackslash layoutengine-research}. The container is built from the Ubuntu 18.04 image and has R 3.6.3 and Emacs 27.1 installed. The container has been configured to run Emacs in its GUI environment on the host machine. 
@@ -1338,7 +1334,7 @@ Some basic Docker and Emacs commands are provided to walk the user through some 
 
 
 \item Host setup and Docker run instructions
-\label{sec:orgab20c06}
+\label{sec:org45dd1d9}
 
 The following instructions are provided to recreate the development environment. This has only been tested from within a host machine running Ubuntu 18.04 but is assumed to be compatible with other Debian derivatives. 
 
@@ -1408,7 +1404,7 @@ $ docker run --rm -it \
 
 
 \item Emacs within Docker Container
-\label{sec:org697bf5d}
+\label{sec:org5650398}
 
 \setlength{\parindent}{0em}  
 
@@ -1449,11 +1445,11 @@ To be continued\ldots{}
 \newpage
 \end{enumerate}
 \subsubsection{Org-mode examples}
-\label{sec:org9d04d47}
+\label{sec:orge0854e5}
 
 \begin{enumerate}
 \item Font definitions
-\label{sec:org72d5482}
+\label{sec:orgd162dcc}
 \setlength{\parindent}{0em}  
 
 
@@ -1507,7 +1503,7 @@ It might also include a news website communicating techincal details from a stor
 
 \newpage  
 \item Sample R code highlighting
-\label{sec:org097e4e7}
+\label{sec:org05b3ea0}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{r}
@@ -1545,7 +1541,7 @@ invisible(dev.off())
 
 \newpage  
 \item Sample HTML code highlighting
-\label{sec:orgfa9bd3b}
+\label{sec:org162895d}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{html}
@@ -1570,7 +1566,7 @@ invisible(dev.off())
 \AfterEndEnvironment{}\{\end{shaded}
 
 \item Sample CSS code highlighting
-\label{sec:orgeb35980}
+\label{sec:org9df011b}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{css}
@@ -1592,7 +1588,7 @@ invisible(dev.off())
 
 \newpage 
 \item Sample JavaScript code highlighting
-\label{sec:org2cfea1e}
+\label{sec:org3735846}
 
 \BeforeBeginEnvironment{}\{\begin{shaded}  
 \begin{minted}[breaklines=true,breakanywhere=true]{javascript}
@@ -1619,10 +1615,10 @@ var multiply = (x, y) => x * y;
 \end{enumerate}
 
 \section{Notes}
-\label{sec:orgb23e591}
+\label{sec:orgbc64daf}
 
 \subsection{Examples}
-\label{sec:orgf67317b}
+\label{sec:orgb9c97ad}
 
 \begin{center}
 \begin{tabular}{lll}
@@ -1674,7 +1670,7 @@ Write text along path &  & \\
 \end{itemize}
 
 \subsection{{\bfseries\sffamily TODO} }
-\label{sec:org051027b}
+\label{sec:org0299b9c}
 
 \begin{itemize}
 \item Define design objectives as having minimum technical requirements and enhancement features (move stuff around to accommodate)
@@ -1697,7 +1693,7 @@ Write text along path &  & \\
 
 
 \subsection{Presentation}
-\label{sec:orgcc36a5d}
+\label{sec:org27918d9}
  Slide 1) 
 Hello, I’m Kane Cullimore
 I’ll be presenting my research for Comp Sci 791 which is my final course for my Data Science degree
