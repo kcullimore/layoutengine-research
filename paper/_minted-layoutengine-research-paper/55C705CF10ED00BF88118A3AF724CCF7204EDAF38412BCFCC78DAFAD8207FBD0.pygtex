@@ -1,0 +1,11 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} The outer most component starts all encapusalated components}
+\PYG{n}{WSSession} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{WSSession}\PYG{p}{(}\PYG{n}{url}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0.0.0.0\PYGZdq{}}\PYG{p}{,} \PYG{n}{portServer}\PYG{o}{=}\PYG{l+m}{8080}\PYG{p}{,} \PYG{n}{portClient}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}8080\PYGZdq{}}\PYG{p}{,}
+		       \PYG{n}{network}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}host\PYGZdq{}}\PYG{p}{,} \PYG{n}{fresh\PYGZus{}pull}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Open a browser instance hosted on a Selenium server within the Docker container}
+\PYG{n}{WSSession}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{open}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get status of all the components}
+\PYG{n}{WSSession}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{getStatus}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Close all components (browser session, server and Docker container)}
+\PYG{n}{WSSession}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{close}\PYG{p}{()}
+\end{Verbatim}

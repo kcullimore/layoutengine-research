@@ -129,7 +129,7 @@ setwd("../DOM_research/code/experiments/07")
 ## Load packages
 library(layoutEngine)
 
-library(layoutEngineExpress)
+library(layoutEngineExpress) 
 options(layoutEngine.backend=ExpressEngine)
 
 
@@ -156,12 +156,12 @@ webSocket <- webSocket(settings)
 
 webSocket$getStatus()
 webSocket$ws$readyState()
-
+webSocket$close()
 
 ## Browser Session
 ##-------------------------------------##--------------------------------------## 
-WSSession <- WSSession(url="0.0.0.0", portServer=8080, portClient="8080",
-                 network="host", fresh_pull=FALSE)
+WSSes <- WSSession(url="0.0.0.0", portServer=8080, portClient="8080",
+                   network="host", fresh_pull=FALSE)
 
 WSSes <- WSSession()
 WSSes$close()

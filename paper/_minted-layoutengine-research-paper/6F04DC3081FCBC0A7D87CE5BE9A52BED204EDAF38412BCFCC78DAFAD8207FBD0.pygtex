@@ -1,0 +1,10 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Setup Express Backend WebSocket server hosted on the docker container}
+\PYG{n}{webSocket} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{webSocket}\PYG{p}{(}\PYG{n}{settings}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get WebSocket server status}
+\PYG{n}{webSocket}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{getStatus}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Get WebSocket connection status}
+\PYG{n}{webSocket}\PYG{o}{\PYGZdl{}}\PYG{n}{ws}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{readyState}\PYG{p}{()}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Close Express Backend WebSocket server hosted on the docker container}
+\PYG{n}{webSocket}\PYG{o}{\PYGZdl{}}\PYG{n+nf}{close}\PYG{p}{()}
+\end{Verbatim}

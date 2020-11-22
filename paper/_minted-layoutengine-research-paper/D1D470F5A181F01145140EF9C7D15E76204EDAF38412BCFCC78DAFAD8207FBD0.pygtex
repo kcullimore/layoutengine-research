@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n+nf}{package}\PYG{p}{(}\PYG{n}{layoutEngine}\PYG{p}{)}
+\PYG{n+nf}{package}\PYG{p}{(}\PYG{n}{layoutEngineRSelenium}\PYG{p}{)}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{layoutEngine.backend}\PYG{o}{=}\PYG{n}{RSeleniumEngine}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Firefox Selenium docker image}
+\PYG{n}{firefox\PYGZus{}build} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZdq{}3.141.59\PYGZhy{}20200525\PYGZdq{}}
+\PYG{n}{firefox\PYGZus{}image} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{paste0}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}selenium/standalone\PYGZhy{}firefox\PYGZhy{}debug:\PYGZdq{}}\PYG{p}{,} \PYG{n}{firefox\PYGZus{}build}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Chrome Selenium docker image}
+\PYG{c+c1}{\PYGZsh{} chrome\PYGZus{}build \PYGZlt{}\PYGZhy{} \PYGZdq{}3.141.59\PYGZhy{}20200525\PYGZdq{}}
+\PYG{c+c1}{\PYGZsh{} chrome\PYGZus{}image \PYGZlt{}\PYGZhy{} paste0(\PYGZdq{}selenium/standalone\PYGZhy{}chrome\PYGZhy{}debug:\PYGZdq{}, chrome\PYGZus{}build)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Select which image to test}
+\PYG{n}{test} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{list}\PYG{p}{(}\PYG{n}{name}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}firefox\PYGZdq{}}\PYG{p}{,} \PYG{n}{image}\PYG{o}{=}\PYG{n}{firefox\PYGZus{}image}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} test \PYGZlt{}\PYGZhy{} list(name=\PYGZdq{}chrome\PYGZdq{}, image=chrome\PYGZus{}image)}
+\end{Verbatim}

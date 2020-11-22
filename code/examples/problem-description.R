@@ -121,7 +121,7 @@ dev.off()
 ## Example 3: Complex layouts of text and graph components
 ##----------------------------------------------------------------------------80
 
-ASSETS = c("cars-plot.png")
+ASSETS = c("ex-2.png")
 
 
 layoutFonts <- c("Montserrat", "Taviraj", "Inconsolata")
@@ -220,7 +220,7 @@ color: #0f9960;
 '
 
 
-carsPNG <- readPNG("cars-plot.png")
+carsPNG <- readPNG("ex-2.png")
 png(filename="ex-3.png", width=1200, height=900, units="px", type="cairo-png")
 flowedhtml <- flow(html=HTML, css=CSS, assets=ASSETS, fonts=CSSfonts)
 grid.html(flowedhtml, viewports=TRUE)
