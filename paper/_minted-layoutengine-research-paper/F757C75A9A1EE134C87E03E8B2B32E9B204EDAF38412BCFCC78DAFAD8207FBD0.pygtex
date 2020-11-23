@@ -1,0 +1,15 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{devtools}\PYG{o}{::}\PYG{n+nf}{install\PYGZus{}github}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}https://github.com/pmur002/layoutengine\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{devtools}\PYG{o}{::}\PYG{n+nf}{install\PYGZus{}github}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}https://github.com/kcullimore/layoutengineexpress\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{layoutEngine}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{layoutEngineExpress}\PYG{p}{)}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{layoutEngine.backend}\PYG{o}{=}\PYG{n}{ExpressEngine}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Enable X Server}
+\PYG{n+nf}{system}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}xhost +local:\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load custom NodeJS Session and set Backend}
+\PYG{n}{WSS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{WSSession}\PYG{p}{(}\PYG{n}{url}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}0.0.0.0\PYGZdq{}}\PYG{p}{,} \PYG{n}{portServer}\PYG{o}{=}\PYG{l+m}{8080}\PYG{p}{,} \PYG{n}{portClient}\PYG{o}{=}\PYG{l+m}{8080}\PYG{p}{,}
+		 \PYG{n}{network}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}host\PYGZdq{}}\PYG{p}{,} \PYG{n}{fresh\PYGZus{}pull}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{)}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{layoutEngine.WSSession}\PYG{o}{=}\PYG{n}{WSS}\PYG{p}{)}
+\end{Verbatim}

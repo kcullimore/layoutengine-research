@@ -1,0 +1,25 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{devtools}\PYG{o}{::}\PYG{n+nf}{install\PYGZus{}github}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}https://github.com/pmur002/layoutengine\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{devtools}\PYG{o}{::}\PYG{n+nf}{install\PYGZus{}github}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}https://github.com/kcullimore/layoutenginerselenium\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{layoutEngine}\PYG{p}{)}
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{layoutEngineRSelenium}\PYG{p}{)}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{layoutEngine.backend}\PYG{o}{=}\PYG{n}{RSeleniumEngine}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Firefox Selenium docker image}
+\PYG{n}{firefox\PYGZus{}build} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZdq{}3.141.59\PYGZhy{}20200525\PYGZdq{}}
+\PYG{n}{firefox\PYGZus{}image} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{paste0}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}selenium/standalone\PYGZhy{}firefox\PYGZhy{}debug:\PYGZdq{}}\PYG{p}{,} \PYG{n}{firefox\PYGZus{}build}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Select which image to test}
+\PYG{n}{test} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{list}\PYG{p}{(}\PYG{n}{name}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}firefox\PYGZdq{}}\PYG{p}{,} \PYG{n}{image}\PYG{o}{=}\PYG{n}{firefox\PYGZus{}image}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{} test \PYGZlt{}\PYGZhy{} list(name=\PYGZdq{}chrome\PYGZdq{}, image=chrome\PYGZus{}image)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Enable X Server}
+\PYG{n+nf}{system}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}xhost +local:\PYGZdq{}}\PYG{p}{)}
+
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load custom RSelenium Session}
+\PYG{n}{RSSession} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{rSSSession}\PYG{p}{(}\PYG{n}{url}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}127.0.0.1\PYGZdq{}}\PYG{p}{,} \PYG{n}{portRS}\PYG{o}{=}\PYG{l+m}{4444}\PYG{p}{,} \PYG{n}{portClient}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}4444\PYGZdq{}}\PYG{p}{,}
+		 \PYG{n}{network}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}bridge\PYGZdq{}}\PYG{p}{,} \PYG{n}{shm\PYGZus{}size}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}1g\PYGZdq{}}\PYG{p}{,}
+		 \PYG{n}{browser\PYGZus{}type}\PYG{o}{=}\PYG{n}{test}\PYG{o}{\PYGZdl{}}\PYG{n}{name}\PYG{p}{,} \PYG{n}{headless}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{,}
+		 \PYG{n}{image\PYGZus{}request}\PYG{o}{=}\PYG{n}{test}\PYG{o}{\PYGZdl{}}\PYG{n}{image}\PYG{p}{,} \PYG{n}{fresh\PYGZus{}pull}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{)}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{layoutEngine.rSSSession}\PYG{o}{=}\PYG{n}{RSSession}\PYG{p}{)}
+\end{Verbatim}

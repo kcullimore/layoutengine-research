@@ -1,0 +1,43 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{layoutFonts} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Montserrat\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Taviraj\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Inconsolata\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{CSSfonts} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{cssFontFamily}\PYG{p}{(}\PYG{n}{layoutFonts}\PYG{p}{)}
+
+\PYG{n}{ipsumText} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}\PYGZlt{}p\PYGZgt{}Lorem ipsum dolor sit amet \PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}1\PYGZdq{}\PYGZgt{}consectetur adipisicing\PYGZlt{}/span\PYGZgt{} elit. Omnis, esse vel? Dolorem \PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}2\PYGZdq{}\PYGZgt{}cupiditate sunt dolor nesciunt molestias\PYGZlt{}/span\PYGZgt{} eligendi aliquid, quae \PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}3\PYGZdq{}\PYGZgt{}eaque maiores expedita a error, explicabo \PYGZlt{}/span\PYGZgt{}, id magnam praesentium sit. \PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}4\PYGZdq{}\PYGZgt{}Lorem ipsum dolor sit amet consectetur\PYGZlt{}/span\PYGZgt{} adipisicing elit.\PYGZlt{}/p\PYGZgt{}\PYGZsq{}}
+
+\PYG{n}{HTML} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{paste0}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}
+\PYG{l+s}{\PYGZlt{}div class=\PYGZdq{}text\PYGZhy{}box\PYGZdq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{ipsumText}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}\PYGZlt{}/div\PYGZgt{}}
+\PYG{l+s}{\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{CSS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}}
+\PYG{l+s}{.text\PYGZhy{}box \PYGZob{}}
+\PYG{l+s}{  width: 600px;}
+\PYG{l+s}{  border\PYGZhy{}style: solid;}
+\PYG{l+s}{  color: \PYGZsh{}5c7080;}
+\PYG{l+s}{  margin: 20px;}
+\PYG{l+s}{  padding: 40px;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}1 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Montserrat;}
+\PYG{l+s}{color: \PYGZsh{}0f9960;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}2 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Taviraj;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}3 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Montserrat\PYGZhy{}Black;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}4 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Inconsolata;}
+\PYG{l+s}{color: \PYGZsh{}a82a2a;}
+\PYG{l+s}{font\PYGZhy{}size: 1.5em;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}5 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Taviraj;}
+\PYG{l+s}{color: \PYGZsh{}0f9960;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{\PYGZsq{}}
+
+\PYG{n+nf}{png}\PYG{p}{(}\PYG{n}{filename}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}ex\PYGZhy{}1.png\PYGZdq{}}\PYG{p}{,} \PYG{n}{width}\PYG{o}{=}\PYG{l+m}{600}\PYG{p}{,} \PYG{n}{height}\PYG{o}{=}\PYG{l+m}{200}\PYG{p}{,} \PYG{n}{units}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}px\PYGZdq{}}\PYG{p}{,} \PYG{n}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}cairo\PYGZhy{}png\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{grid.html}\PYG{p}{(}\PYG{n}{html}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,} \PYG{n}{css}\PYG{o}{=}\PYG{n}{CSS}\PYG{p}{,} \PYG{n}{fonts}\PYG{o}{=}\PYG{n}{CSSfonts}\PYG{p}{)}
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+\end{Verbatim}

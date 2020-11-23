@@ -1,0 +1,112 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}80}
+\PYG{n}{ASSETS} \PYG{o}{=} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ex\PYGZhy{}2.png\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{layoutFonts} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}Montserrat\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Taviraj\PYGZdq{}}\PYG{p}{,} \PYG{l+s}{\PYGZdq{}Inconsolata\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{CSSfonts} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{cssFontFamily}\PYG{p}{(}\PYG{n}{layoutFonts}\PYG{p}{)}
+
+\PYG{n}{ipsumText} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}\PYGZlt{}p\PYGZgt{}Lorem ipsum dolor sit amet \PYGZlt{}b\PYGZgt{}consectetur adipisicing\PYGZlt{}/b\PYGZgt{} elit. Omnis, esse vel? Dolorem \PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}4\PYGZdq{}\PYGZgt{}cupiditate sunt dolor nesciunt molestias\PYGZlt{}/span\PYGZgt{} eligendi aliquid, quae eaque maiores expedita a error, explicabo, id magnam praesentium sit. \PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}5\PYGZdq{}\PYGZgt{}Lorem ipsum dolor sit amet consectetur\PYGZlt{}/span\PYGZgt{} adipisicing elit. Rerum eligendi reiciendis aspernatur eaque fugit commodi doloremque aut soluta dolor, quaerat amet blanditiis quibusdam rem! Nesciunt nostrum dignissimos ad commodi reiciendis.\PYGZlt{}/p\PYGZgt{}\PYGZsq{}}
+
+\PYG{n}{HTML} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{paste0}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}}
+\PYG{l+s}{\PYGZlt{}div class=\PYGZdq{}graphic\PYGZdq{}\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}div class=\PYGZdq{}A\PYGZdq{}\PYGZgt{}\PYGZlt{}h1\PYGZgt{}A Large Title for this \PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}5\PYGZdq{}\PYGZgt{}Graphic\PYGZlt{}/span\PYGZgt{}\PYGZlt{}/h1\PYGZgt{}\PYGZlt{}/div\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}div class=\PYGZdq{}B\PYGZdq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{ipsumText}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}\PYGZlt{}/div\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}div class=\PYGZdq{}C\PYGZdq{}\PYGZgt{}\PYGZlt{}h1\PYGZgt{}This is some side Text...\PYGZlt{}/h1\PYGZgt{}\PYGZlt{}/div\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}div class=\PYGZdq{}D\PYGZdq{}\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}1\PYGZdq{}\PYGZgt{}Montserrat\PYGZlt{}/span\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}2\PYGZdq{}\PYGZgt{}Taviraj\PYGZlt{}/span\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}span class=\PYGZdq{}text\PYGZhy{}3\PYGZdq{}\PYGZgt{}Inconsolata\PYGZlt{}/span\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}/div\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}div id=\PYGZdq{}fig01\PYGZdq{} class=\PYGZdq{}E\PYGZdq{}\PYGZgt{}\PYGZlt{}/div\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}div class=\PYGZdq{}F\PYGZdq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{,} \PYG{n}{ipsumText}\PYG{p}{,} \PYG{n}{ipsumText}\PYG{p}{,} \PYG{n}{ipsumText}\PYG{p}{,} \PYG{l+s}{\PYGZsq{}\PYGZlt{}/div\PYGZgt{}}
+\PYG{l+s}{\PYGZlt{}/div\PYGZgt{}}
+\PYG{l+s}{\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{CSS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}}
+\PYG{l+s}{body \PYGZob{}}
+\PYG{l+s}{  padding: 0;}
+\PYG{l+s}{  margin: 0;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.graphic \PYGZob{}}
+\PYG{l+s}{  display: grid;}
+\PYG{l+s}{  grid\PYGZhy{}gap: 10px;}
+\PYG{l+s}{  width: 1400px;}
+\PYG{l+s}{  grid\PYGZhy{}template\PYGZhy{}areas:}
+\PYG{l+s}{    \PYGZdq{} A A A F \PYGZdq{}}
+\PYG{l+s}{    \PYGZdq{} . B B F \PYGZdq{}}
+\PYG{l+s}{    \PYGZdq{} C E E F \PYGZdq{}}
+\PYG{l+s}{    \PYGZdq{} . D D F \PYGZdq{};}
+\PYG{l+s}{  grid\PYGZhy{}template\PYGZhy{}columns: 200px 400px 400px 400px;}
+\PYG{l+s}{  grid\PYGZhy{}template\PYGZhy{}rows: 100px 1fr 600px 1fr;}
+
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.A \PYGZob{}}
+\PYG{l+s}{grid\PYGZhy{}area: A;}
+\PYG{l+s}{background\PYGZhy{}color: \PYGZsh{}a6a5a5;}
+\PYG{l+s}{color: \PYGZsh{}293742;}
+\PYG{l+s}{text\PYGZhy{}align: center;}
+\PYG{l+s}{padding: 20px;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.B \PYGZob{}}
+\PYG{l+s}{grid\PYGZhy{}area: B;}
+\PYG{l+s}{background\PYGZhy{}color: \PYGZsh{}f1f8ed;}
+\PYG{l+s}{padding: 20px;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.C \PYGZob{}}
+\PYG{l+s}{grid\PYGZhy{}area: C;}
+\PYG{l+s}{background\PYGZhy{}color: \PYGZsh{}0a6640;}
+\PYG{l+s}{color: \PYGZsh{}ced9e0;}
+\PYG{l+s}{padding: 20px;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.D \PYGZob{}}
+\PYG{l+s}{grid\PYGZhy{}area: D;}
+\PYG{l+s}{font\PYGZhy{}size: 2em;}
+\PYG{l+s}{background\PYGZhy{}color: \PYGZsh{}a7b6c2;}
+\PYG{l+s}{padding: 20px;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.E \PYGZob{}}
+\PYG{l+s}{grid\PYGZhy{}area: E;}
+\PYG{l+s}{background: url(\PYGZdq{}assets/cars\PYGZhy{}plot.png\PYGZdq{}) no\PYGZhy{}repeat;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.F \PYGZob{}}
+\PYG{l+s}{grid\PYGZhy{}area: F;}
+\PYG{l+s}{background\PYGZhy{}color: \PYGZsh{}5c7080;}
+\PYG{l+s}{color: \PYGZsh{}ced9e0;}
+\PYG{l+s}{padding: 20px;}
+\PYG{l+s}{margin\PYGZhy{}left: 40px;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}1 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Montserrat;}
+\PYG{l+s}{font\PYGZhy{}weight: bold;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}2 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Taviraj;}
+\PYG{l+s}{font\PYGZhy{}weight: bold;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}3 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Inconsolata;}
+\PYG{l+s}{font\PYGZhy{}weight: bold;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}4 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Inconsolata;}
+\PYG{l+s}{color: \PYGZsh{}a82a2a;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.text\PYGZhy{}5 \PYGZob{}}
+\PYG{l+s}{font\PYGZhy{}family: Taviraj;}
+\PYG{l+s}{color: \PYGZsh{}0f9960;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{\PYGZsq{}}
+
+
+\PYG{n}{carsPNG} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{readPNG}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}ex\PYGZhy{}2.png\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{png}\PYG{p}{(}\PYG{n}{filename}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}ex\PYGZhy{}3.png\PYGZdq{}}\PYG{p}{,} \PYG{n}{width}\PYG{o}{=}\PYG{l+m}{1200}\PYG{p}{,} \PYG{n}{height}\PYG{o}{=}\PYG{l+m}{900}\PYG{p}{,} \PYG{n}{units}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}px\PYGZdq{}}\PYG{p}{,} \PYG{n}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}cairo\PYGZhy{}png\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{flowedhtml} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{flow}\PYG{p}{(}\PYG{n}{html}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,} \PYG{n}{css}\PYG{o}{=}\PYG{n}{CSS}\PYG{p}{,} \PYG{n}{assets}\PYG{o}{=}\PYG{n}{ASSETS}\PYG{p}{,} \PYG{n}{fonts}\PYG{o}{=}\PYG{n}{CSSfonts}\PYG{p}{)}
+\PYG{n+nf}{grid.html}\PYG{p}{(}\PYG{n}{flowedhtml}\PYG{p}{,} \PYG{n}{viewports}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{)}
+\PYG{n}{figvps} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{grid.grep}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}fig\PYGZdq{}}\PYG{p}{,} \PYG{n}{grep}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{,} \PYG{n}{global}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{,}
+		    \PYG{n}{grobs}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{,} \PYG{n}{viewports}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{)}
+\PYG{n+nf}{downViewport}\PYG{p}{(}\PYG{n}{figvps}\PYG{p}{[[}\PYG{l+m}{1}\PYG{p}{]])}
+\PYG{n+nf}{grid.raster}\PYG{p}{(}\PYG{n}{carsPNG}\PYG{p}{)}
+\PYG{n+nf}{upViewport}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{)}
+
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+\end{Verbatim}

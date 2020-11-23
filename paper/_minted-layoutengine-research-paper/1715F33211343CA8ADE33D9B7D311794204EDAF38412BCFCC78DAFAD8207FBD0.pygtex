@@ -1,0 +1,14 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Load packages for layoutEngine and Backend and set the Backend}
+\PYG{n+nf}{package}\PYG{p}{(}\PYG{n}{layoutEngine}\PYG{p}{)}
+\PYG{n+nf}{package}\PYG{p}{(}\PYG{n}{layoutEngineRSelenium}\PYG{p}{)}
+\PYG{n+nf}{options}\PYG{p}{(}\PYG{n}{layoutEngine.Backend}\PYG{o}{=}\PYG{n}{RSeleniumEngine}\PYG{p}{)}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Basic example supplying HTML, FONTS, CSS, ASSETS}
+\PYG{n}{HTML} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}\PYGZlt{}div class=\PYGZdq{}content\PYGZdq{}\PYGZgt{}\PYGZlt{}h1\PYGZgt{}This is some simple text\PYGZlt{}/h1\PYGZgt{}\PYGZlt{}/div\PYGZgt{}\PYGZsq{}}
+\PYG{n}{FONTS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{cssFontFamily}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}FreeMono\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{CSS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}.content \PYGZob{}font\PYGZhy{}family: FreeMono; border: solid; width: 800px; height: 100px; display: flex; justify\PYGZhy{}content: right;\PYGZcb{}\PYGZsq{}}
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{} Call layoutEngine}
+\PYG{n+nf}{png}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}essential\PYGZhy{}example.png\PYGZdq{}}\PYG{p}{,} \PYG{n}{width}\PYG{o}{=}\PYG{l+m}{800}\PYG{p}{,} \PYG{n}{height}\PYG{o}{=}\PYG{l+m}{100}\PYG{p}{)}
+\PYG{n+nf}{grid.html}\PYG{p}{(}\PYG{n}{html}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,} \PYG{n}{fonts}\PYG{o}{=}\PYG{n}{FONTS}\PYG{p}{,} \PYG{n}{css}\PYG{o}{=}\PYG{n}{CSS}\PYG{p}{)}
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+\end{Verbatim}

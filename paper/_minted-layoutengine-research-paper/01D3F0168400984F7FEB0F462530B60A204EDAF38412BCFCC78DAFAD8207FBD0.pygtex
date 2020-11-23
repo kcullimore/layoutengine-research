@@ -1,0 +1,49 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{c+c1}{\PYGZsh{}\PYGZsh{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}\PYGZhy{}80}
+\PYG{n+nf}{png}\PYG{p}{(}\PYG{n}{filename}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}cars\PYGZhy{}plot.png\PYGZdq{}}\PYG{p}{,} \PYG{n}{width}\PYG{o}{=}\PYG{l+m}{600}\PYG{p}{,} \PYG{n}{height}\PYG{o}{=}\PYG{l+m}{400}\PYG{p}{,} \PYG{n}{units}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}px\PYGZdq{}}\PYG{p}{,} \PYG{n}{bg}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}transparent\PYGZdq{}}\PYG{p}{,} \PYG{n}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}cairo\PYGZhy{}png\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{plot}\PYG{p}{(}\PYG{n}{mpg} \PYG{o}{\PYGZti{}} \PYG{n}{disp}\PYG{p}{,} \PYG{n}{data}\PYG{o}{=}\PYG{n}{mtcars}\PYG{p}{,} \PYG{n}{xlim}\PYG{o}{=}\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{40}\PYG{p}{,} \PYG{l+m}{500}\PYG{p}{),} \PYG{n}{ylim}\PYG{o}{=}\PYG{n+nf}{c}\PYG{p}{(}\PYG{l+m}{10}\PYG{p}{,} \PYG{l+m}{35}\PYG{p}{),} \PYG{n}{axes}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{,} \PYG{n}{cex}\PYG{o}{=}\PYG{l+m}{2}\PYG{p}{,} \PYG{n}{pch}\PYG{o}{=}\PYG{l+m}{2}\PYG{p}{,} \PYG{n}{col}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}red\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{axis}\PYG{p}{(}\PYG{n}{side}\PYG{o}{=}\PYG{l+m}{1}\PYG{p}{)}
+\PYG{n+nf}{axis}\PYG{p}{(}\PYG{n}{side}\PYG{o}{=}\PYG{l+m}{2}\PYG{p}{)}
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+
+\PYG{n}{ASSETS} \PYG{o}{=} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}cars\PYGZhy{}plot.png\PYGZdq{}}\PYG{p}{)}
+
+\PYG{n}{ipsumText} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}\PYGZlt{}p\PYGZgt{}Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, esse vel? Dolorem cupiditate sunt dolor nesciunt molestias eligendi aliquid, quae eaque maiores expedita a error, explicabo, id magnam praesentium sit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis, esse vel? Lorem ipsum dolor sit amet consectetur adipisicing elit.\PYGZlt{}/p\PYGZgt{}\PYGZsq{}}
+
+\PYG{n}{HTML} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{c}\PYG{p}{(}\PYG{l+s}{\PYGZsq{}\PYGZlt{}div class=\PYGZdq{}container\PYGZdq{}\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}div id=\PYGZdq{}fig\PYGZdq{}\PYGZgt{}\PYGZlt{}img class=\PYGZdq{}image\PYGZdq{} src=\PYGZdq{}assets/cars\PYGZhy{}plot.png/\PYGZdq{}\PYGZgt{}\PYGZlt{}/div\PYGZgt{}\PYGZsq{}}\PYG{p}{,}
+	  \PYG{n}{ipsumText}\PYG{p}{,}
+	  \PYG{l+s}{\PYGZsq{}\PYGZlt{}/div\PYGZgt{}\PYGZsq{}}\PYG{p}{)}
+
+\PYG{n}{CSS} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{l+s}{\PYGZsq{}}
+\PYG{l+s}{.container \PYGZob{}}
+\PYG{l+s}{width: 600px;}
+\PYG{l+s}{height: 400px;}
+\PYG{l+s}{padding: 20px;}
+\PYG{l+s}{border\PYGZhy{}width: 2px;}
+\PYG{l+s}{border\PYGZhy{}style: solid;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{.image \PYGZob{}}
+\PYG{l+s}{shape\PYGZhy{}outside: url(\PYGZdq{}assets/cars\PYGZhy{}plot.png\PYGZdq{});}
+\PYG{l+s}{shape\PYGZhy{}margin: 20px;}
+\PYG{l+s}{float: left;}
+\PYG{l+s}{width: 580px;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{p \PYGZob{}}
+\PYG{l+s}{margin\PYGZhy{}top: 50px;}
+\PYG{l+s}{font\PYGZhy{}size: 0.85em;}
+\PYG{l+s}{\PYGZcb{}}
+\PYG{l+s}{\PYGZsq{}}
+
+\PYG{n+nf}{library}\PYG{p}{(}\PYG{n}{png}\PYG{p}{)}
+\PYG{n}{carsPlot} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{readPNG}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}cars\PYGZhy{}plot.png\PYGZdq{}}\PYG{p}{)}
+\PYG{n+nf}{png}\PYG{p}{(}\PYG{n}{filename}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}ex\PYGZhy{}2.png\PYGZdq{}}\PYG{p}{,} \PYG{n}{width}\PYG{o}{=}\PYG{l+m}{600}\PYG{p}{,} \PYG{n}{height}\PYG{o}{=}\PYG{l+m}{400}\PYG{p}{,} \PYG{n}{units}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}px\PYGZdq{}}\PYG{p}{,} \PYG{n}{type}\PYG{o}{=}\PYG{l+s}{\PYGZdq{}cairo\PYGZhy{}png\PYGZdq{}}\PYG{p}{)}
+\PYG{n}{flowedhtml} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{flow}\PYG{p}{(}\PYG{n}{html}\PYG{o}{=}\PYG{n}{HTML}\PYG{p}{,} \PYG{n}{css}\PYG{o}{=}\PYG{n}{CSS}\PYG{p}{,} \PYG{n}{assets}\PYG{o}{=}\PYG{n}{ASSETS}\PYG{p}{)}
+\PYG{n+nf}{grid.html}\PYG{p}{(}\PYG{n}{flowedhtml}\PYG{p}{,} \PYG{n}{viewports}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{)}
+\PYG{n}{figvps} \PYG{o}{\PYGZlt{}\PYGZhy{}} \PYG{n+nf}{grid.grep}\PYG{p}{(}\PYG{l+s}{\PYGZdq{}fig\PYGZdq{}}\PYG{p}{,} \PYG{n}{grep}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{,} \PYG{n}{global}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{,}
+		    \PYG{n}{grobs}\PYG{o}{=}\PYG{k+kc}{FALSE}\PYG{p}{,} \PYG{n}{viewports}\PYG{o}{=}\PYG{k+kc}{TRUE}\PYG{p}{)}
+\PYG{n+nf}{downViewport}\PYG{p}{(}\PYG{n}{figvps}\PYG{p}{[[}\PYG{l+m}{1}\PYG{p}{]])}
+\PYG{n+nf}{grid.raster}\PYG{p}{(}\PYG{n}{carsPlot}\PYG{p}{,} \PYG{n}{vjust}\PYG{o}{=}\PYG{l+m}{1}\PYG{p}{,} \PYG{n}{hjust}\PYG{o}{=}\PYG{l+m}{0.5}\PYG{p}{,} \PYG{n}{width}\PYG{o}{=}\PYG{l+m}{0.9}\PYG{p}{)}
+\PYG{n+nf}{upViewport}\PYG{p}{(}\PYG{l+m}{0}\PYG{p}{)}
+\PYG{n+nf}{dev.off}\PYG{p}{()}
+\end{Verbatim}
